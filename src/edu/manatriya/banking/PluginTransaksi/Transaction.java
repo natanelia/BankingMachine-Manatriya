@@ -3,14 +3,12 @@ package edu.manatriya.banking.PluginTransaksi;
 /**
  * Created by Natan Elia on 4/12/2015.
  */
-public class Transaction {
-    private Account acc;
+public abstract class Transaction implements Runnable {
+    protected Account acc;
 
-    public void execute() {
-        
+    public Transaction(Account _acc) {
+        acc = _acc;
     }
 
-    public void stop() {
-
-    }
+    public abstract void run();
 }
