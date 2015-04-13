@@ -1,9 +1,9 @@
-package PengolahNonTransaksi;
+package edu.manatriya.banking.PengolahNonTransaksi;
 
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
-public class ShowTransactionHistory implements Command {
+public class CheckBalance implements  Command {
     /**
      * adalah salah satu kelas NonTransaksi
      *
@@ -19,11 +19,11 @@ public class ShowTransactionHistory implements Command {
     /**
      * 4 sekawan
      */
-    public ShowTransactionHistory(){
+    public CheckBalance(){
         acc = new Account();
     }
 
-    public ShowTransactionHistory(Account _acc){
+    public CheckBalance(Account _acc){
         acc= _acc;
     }
 
@@ -33,8 +33,9 @@ public class ShowTransactionHistory implements Command {
      */
 
     @Override
-    public void Execute(){
+    public void execute(){
     }
+
 
 
 }

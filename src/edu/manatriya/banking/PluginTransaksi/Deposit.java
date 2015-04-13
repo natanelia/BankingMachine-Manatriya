@@ -11,10 +11,16 @@ public class Deposit extends Transaction {
         amount = _amount;
     }
 
-    public int getAmount() {return amount; }
-    public void setAmount(int _amount) {amount = _amount; }
+    public int getAmount() {
+        return amount;
+    }
 
-    public void run() {
+    public void setAmount(int _amount) {
+        amount = _amount;
+    }
+
+    @Override
+    public synchronized void run() {
         acc.updateSaldo(amount);
     }
 }

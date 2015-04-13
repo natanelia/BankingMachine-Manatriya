@@ -15,12 +15,24 @@ public class PayPhoneBill extends Transaction {
         amount = _amount;
     }
 
-    public String getPhoneNumber() {return phoneNumber; }
-    public String getProvider() {return provider; }
-    public int getAmount() {return amount; }
-    public void setAmount(int _amount) {amount = _amount; }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-    public void run() {
+    public String getProvider() {
+        return provider;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int _amount) {
+        amount = _amount;
+    }
+
+    @Override
+    public synchronized void run() {
         acc.updateSaldo(-amount);
     }
 }

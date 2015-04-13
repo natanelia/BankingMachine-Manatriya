@@ -17,16 +17,37 @@ public class Transfer extends Transaction {
         amount = _amount;
     }
 
-    public String getBankName() {return bankName; }
-    public String getAccountID() {return accountID; }
+    public String getBankName() {
+        return bankName;
+    }
 
-    public int getDuration() {return duration; }
-    public void setDuration(int _duration) {duration = _duration;}
+    public String getAccountID() {
+        return accountID;
+    }
 
-    public int getAmount() {return amount; }
-    public void setAmount(int _amount) {amount = _amount; }
+    public int getDuration() {
+        return duration;
+    }
 
-    public void run() {
-        acc.updateSaldo(-amount);
+    public void setDuration(int _duration) {
+        duration = _duration;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int _amount) {
+        amount = _amount;
+    }
+
+    @Override
+    public synchronized void run(){
+        try {
+            Thread.sleep(getDuration());
+            acc.updateSaldo(-amount);
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

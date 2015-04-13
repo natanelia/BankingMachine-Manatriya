@@ -1,4 +1,4 @@
-package PengolahNonTransaksi;
+package edu.manatriya.banking.PengolahNonTransaksi;
 
 /**
  * Created by Marco Orlando on 4/11/2015.
@@ -67,7 +67,7 @@ public class NonTransactionProcessor {
      */
     public void process(){
         //menghidupkan command-command yang ada untuk
-        cmd.Execute();
+        cmd.execute();
     }
 }
 
