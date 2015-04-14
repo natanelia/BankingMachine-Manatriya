@@ -1,5 +1,7 @@
 package PengolahNonTransaksi;
 
+import java.util.Scanner;
+
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
@@ -38,14 +40,18 @@ public class AccountSignIn implements Command {
      * jika acc bernilai Null, artinya belum dilakukan login, dan harus melakukan login
      */
     private void CheckLoginStatus{
-        if (acc == Null){
+        while (acc == null){
             System.out.println("masukkan AccountID anda:");
-
+            Scanner s = new Scanner(System.in);
+            String AccID = s.nextLine();
+            acc= new Account(AccID);
         }
+        // Acount sudah berisis (login telah berhasil)
     }
 
     @Override
     public void Execute(){
+        CheckLoginStatus();
     }
 
 }

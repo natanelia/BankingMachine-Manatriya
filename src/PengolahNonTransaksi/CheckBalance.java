@@ -19,10 +19,6 @@ public class CheckBalance implements  Command {
     /**
      * 4 sekawan
      */
-    public CheckBalance(){
-        acc = new Account();
-    }
-
     public CheckBalance(Account _acc){
         acc= _acc;
     }
@@ -31,9 +27,16 @@ public class CheckBalance implements  Command {
     /**
      * Method-method
      */
+    public  void ShowBalance(){
+        System.out.print("Saldo anda adalah sebesar Rp ");
+        System.out.print(acc.GetSaldo());
+        System.out.println(",00");
+    }
+
 
     @Override
     public void Execute(){
+        ShowBalance();
     }
 
 
