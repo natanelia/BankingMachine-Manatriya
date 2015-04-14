@@ -55,7 +55,7 @@ public class TransactionProcessor {
                     System.out.println("param #" + j + " " + parameterConstructor[j]);
 
                 try {
-                    //Memanggil Konstruktor plugin dengan refelction
+                    //Memanggil Konstruktor plugin dengan reflection
                     Object plugin = pluginConstructor.newInstance(parameterConstructor);
 
                     try {
@@ -103,7 +103,7 @@ public class TransactionProcessor {
     }
 
     public void addTranstoAccount(){
-        acc.addSuccesfulTransaction();
+
     }
 
 }

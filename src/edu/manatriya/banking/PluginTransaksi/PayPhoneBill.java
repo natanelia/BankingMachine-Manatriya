@@ -6,13 +6,12 @@ package edu.manatriya.banking.PluginTransaksi;
 public class PayPhoneBill extends Transaction {
     private String phoneNumber;
     private String provider;
-    private int amount;
 
     public PayPhoneBill(Account _acc, String _phoneNumber, String _provider, int _amount) {
-        super(_acc);
+        super(_acc, _amount);
         phoneNumber = _phoneNumber;
         provider = _provider;
-        amount = _amount;
+        transactionName = this.getName();
     }
 
     public String getPhoneNumber() {
@@ -23,13 +22,6 @@ public class PayPhoneBill extends Transaction {
         return provider;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int _amount) {
-        amount = _amount;
-    }
 
     @Override
     public synchronized void run() {

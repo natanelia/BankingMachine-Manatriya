@@ -5,25 +5,17 @@ package edu.manatriya.banking.PluginTransaksi;
  */
 public class PayElectricity extends Transaction {
     private String elecID;
-    private int amount;
 
     public PayElectricity(Account _acc, String _elecID, int _amount) {
-        super(_acc);
+        super(_acc, _amount);
         elecID = _elecID;
-        amount = _amount;
+        transactionName = this.getName();
     }
 
     public String getElecID() {
         return elecID;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int _amount) {
-        amount = _amount;
-    }
 
     @Override
     public synchronized void run() {
