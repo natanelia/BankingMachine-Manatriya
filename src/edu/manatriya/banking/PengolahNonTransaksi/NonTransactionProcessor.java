@@ -1,4 +1,4 @@
-package PengolahNonTransaksi;
+package edu.manatriya.banking.PengolahNonTransaksi;
 
 /**
  * Created by Marco Orlando on 4/11/2015.
@@ -40,9 +40,6 @@ public class NonTransactionProcessor {
         acc = N2.acc;
     }
 
-    public ~NonTransactionProcessor(){
-        ;
-    }
 
 
     /**
@@ -54,6 +51,14 @@ public class NonTransactionProcessor {
 
     public Account Getacc(){
         return acc;
+    }
+
+    public void setCmd(Command cmd2){
+        cmd= cmd2;
+    }
+
+    public  void setAcc (Account acc2){
+        acc = acc2;
     }
 
 

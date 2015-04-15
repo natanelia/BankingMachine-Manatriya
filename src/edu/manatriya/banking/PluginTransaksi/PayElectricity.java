@@ -13,11 +13,20 @@ public class PayElectricity extends Transaction {
         amount = _amount;
     }
 
-    public getElecID() { return elecID; }
-    public getAmount() { return amount; }
-    public setAmount(int _amount) { amount = _amount; }
+    public String getElecID() {
+        return elecID;
+    }
 
-    public void run() {
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int _amount) {
+        amount = _amount;
+    }
+
+    @Override
+    public synchronized void run() {
         acc.updateSaldo(-amount);
     }
 }

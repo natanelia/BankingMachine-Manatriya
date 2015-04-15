@@ -1,4 +1,4 @@
-package PengolahNonTransaksi;
+package edu.manatriya.banking.PengolahNonTransaksi;
 
 /**
  * Created by Marco Orlando on 4/11/2015.
@@ -24,19 +24,32 @@ public class CheckBalance implements  Command {
     }
 
 
+
+    /**
+     * Getter and setter
+     */
+    public Account getAcc(){
+        return acc;
+    }
+
+    public void setAcc(Account A2){
+        acc = A2;
+    }
+
+
     /**
      * Method-method
      */
-    public  void ShowBalance(){
+    public  void showBalance(){
         System.out.print("Saldo anda adalah sebesar Rp ");
-        System.out.print(acc.GetSaldo());
+        System.out.print(acc.getSaldo());
         System.out.println(",00");
     }
 
 
     @Override
     public void Execute(){
-        ShowBalance();
+        showBalance();
     }
 
 
