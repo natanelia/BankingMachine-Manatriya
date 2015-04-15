@@ -7,14 +7,14 @@ public class Transfer extends Transaction {
     private String bankName;
     private String accountID;
     private int duration;
-    private int amount;
 
     public Transfer(Account _acc, String _bankName, String _accountID, int _duration, int _amount) {
-        super(_acc);
+        super(_acc, _amount);
         bankName = _bankName;
         accountID = _accountID;
         duration = _duration;
-        amount = _amount;
+        transactionName = this.getName();
+        setDescription("TO: " + getBankName() + "|" + "ID: " + getAccountID());
     }
 
     public String getBankName() {
@@ -33,21 +33,16 @@ public class Transfer extends Transaction {
         duration = _duration;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int _amount) {
-        amount = _amount;
-    }
-
     @Override
-    public synchronized void run(){
+    public synchronized void run() {
         try {
             Thread.sleep(getDuration());
             acc.updateSaldo(-amount);
+
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
     }
+
+
 }
