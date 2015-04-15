@@ -1,5 +1,11 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
+import edu.manatriya.banking.akunbanking.Account;
+import edu.manatriya.banking.akunbanking.CreditAccount;
+import edu.manatriya.banking.akunbanking.DebitAccount;
+
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -47,14 +53,54 @@ public class AcountSignIn implements Command {
      * Mengecek apakah sudah melakukan login account
      * jika acc bernilai Null, artinya belum dilakukan login, dan harus melakukan login
      */
+
+    private void checkAccValidity(){
+        boolean found = false;
+        Scanner inputreader = new Scanner(System.in);
+        String input = inputreader.nextLine();
+        Scanner filescan = null;
+        filescan = new Scanner(new File("out/Accounts/account.txt"));
+
+        System.out.println("Masukkan Account ID anda:");
+        while (filescan.hasNextLine() && (!found)) {
+            String line = filescan.nextLine();
+            if (line.contains(input))
+                found = true;
+        }
+        if (found) {
+            String accID= input;
+            input.concat(".acc");
+            File transactionHistory = new File(input);
+            Scanner transactionHistoryScan = new Scanner(transactionHistory);
+            String line = transactionHistoryScan.nextLine();
+            String accName = line;
+            long accSaldo = transactionHistoryScan.nextLong();
+
+            if (input.contains("cr")){
+                acc = new CreditAccount(accID,accName,accSaldo);
+            }
+            else {
+                acc = new DebitAccount(accID, accName, accSaldo);
+            }
+            while (transactionHistoryScan.hasNextLine()){
+                String[] history = transactionHistoryScan.nextLine().split("||");
+                ArrayList<String> temp = null;
+                for (int i = 0; i < history.length; ++i){
+                    temp.add(history[i]);
+                }
+                acc.addSuccessfulTransaction(temp);
+            }
+        }
+        else {
+            System.out.println("account not found");
+        }
+    }
+
+
+
     private void checkLoginStatus    {
         while (acc == null) {
-            if (acc == null) {
-                System.out.println("masukkan AccountID anda:");
-                Scanner s = new Scanner(System.in);
-                String AccID = s.nextLine();
-                acc = new Account(AccID);
-            }
+            checkAccValidity();
             // Acount sudah berisis (login telah berhasil)
         }
     }
