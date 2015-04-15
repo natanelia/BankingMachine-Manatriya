@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
-public class AcountSignIn implements Command {
+public class AccountSignIn implements Command {
     /**
      * adalah salah satu kelas NonTransaksi
      *
