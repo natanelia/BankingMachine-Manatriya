@@ -27,13 +27,13 @@ public class TransactionProcessor {
     public Transaction getRunningTrans(int runningTransID ){
         return runningTrans.get(runningTransID);
     }
-
-    public Transaction getPendingTrans(int pendingTransID ){
+	
+    public Transaction getPendingTrans(){
         return pendingTrans.element();
     }
 
-    public void setAccount(Account acc){
-        this.acc = acc;
+    public void setAccount(Account _acc){
+        acc = _acc;
     }
 
 
@@ -43,7 +43,7 @@ public class TransactionProcessor {
             Class pluginTransaction = Class.forName("plugintransaksi." + TransactionType);
 
             try {
-                //Mendapatkan parameter-parameter dari class plugin yang didaptakan oleh "pluginTransaction"
+                //Mendapatkan Constructor dan parameter-parameter dari Constructor plugin yang didaptakan oleh "pluginTransaction"
                 Constructor constructorList[] = pluginTransaction.getDeclaredConstructors();
                 Constructor pluginConstructor = constructorList[0];
 
@@ -55,12 +55,12 @@ public class TransactionProcessor {
                     System.out.println("param #" + j + " " + parameterConstructor[j]);
 
                 try {
-                    //Memanggil Konstruktor plugin dengan reflection
+                    //Memanggil Konstruktor plugin dengan refelction
                     Object plugin = pluginConstructor.newInstance(parameterConstructor);
 
                     try {
                         //Mendapatkan method run yang ada pada plugin
-                        Method pluginMethodRun = pluginTransaction.getDeclaredMethod("run", new Class[]{});
+                        Method pluginMethodRun = pluginTransaction.getDeclaredMethod("start", new Class[]{});
                         try{
                             //Menjalankan method run pada plugin yang didapat
                             pluginMethodRun.invoke(plugin,new Object[]{});
@@ -90,20 +90,27 @@ public class TransactionProcessor {
 
     public void startAll(){
         for (int i = 0; i < pendingTrans.size() -1; i++ ){
-            pendingTrans.remove().run();
+            runningTrans.add(pendingTrans.remove());
+            runningTrans.get(runningTrans.size()).start();
         }
     }
 
+	/*
     public void start(int pendingTransID){
         pendingTrans.remove().run();
-    }
+    }*/
 
+	//Menghilangkan Transaction daru runningTrans
     public void stop(int runningTransID){
-        runningTrans.get(runningTransID);
+        runningTrans.remove(runningTransID);
     }
 
-    public void addTranstoAccount(){
-
+    public void addTranstoAccount(Transaction transaction){
+        acc.addSuccesfulTransaction(transaction);
     }
+    
+    public void addTranstoQueue(Transaction transaction){
+		pendingTrans.add(transaction);
+	}
 
 }
