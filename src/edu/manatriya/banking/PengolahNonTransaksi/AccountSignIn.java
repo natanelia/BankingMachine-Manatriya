@@ -21,27 +21,27 @@ public class AccountSignIn implements Command {
     /**
      * atribut-atribut
      */
-    private Account acc;
+    private Account account;
 
 
     public AccountSignIn() {
-        acc = new Account();
+        account = new Account();
     }
 
-    public AccountSignIn(Account _acc) {
-        acc = _acc;
+    public AccountSignIn(Account _account) {
+        account = _account;
     }
 
 
     /**
      * Getter and setter
      */
-    public Account getAcc(){
-        return acc;
+    public Account getAccount(){
+        return account;
     }
 
-    public void setAcc(Account A2){
-        acc = A2;
+    public void setAccount(Account A2){
+        account = A2;
     }
 
 
@@ -54,7 +54,7 @@ public class AccountSignIn implements Command {
      * jika acc bernilai Null, artinya belum dilakukan login, dan harus melakukan login
      */
 
-    private void checkAccValidity(){
+ /*   private void checkAccValidity(){
         boolean found = false;
         Scanner inputreader = new Scanner(System.in);
         String input = inputreader.nextLine();
@@ -94,12 +94,12 @@ public class AccountSignIn implements Command {
         else {
             System.out.println("account not found");
         }
-    }
+    }*/
 
 
 
-    private void checkLoginStatus    {
-        while (acc == null) {
+    private void checkLoginStatus(){
+        while (account == null) {
             checkAccValidity();
             // Acount sudah berisis (login telah berhasil)
         }

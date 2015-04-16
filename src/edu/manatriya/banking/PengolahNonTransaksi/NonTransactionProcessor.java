@@ -1,5 +1,7 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
+import edu.manatriya.banking.akunbanking.Account;
+
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
@@ -11,8 +13,8 @@ public class NonTransactionProcessor {
     /**
      * Artribut
      */
-    private Command cmd;
-    private Account acc;
+    private Command command;
+    private Account account;
 
 
     /**
@@ -20,24 +22,24 @@ public class NonTransactionProcessor {
      */
 
 
-    public NonTransactionProcessor(String  _cmd, Account _acc){
-        acc = _acc;
-        if (_cmd.equals("AccountSignIn")) {
-            cmd = new AccountSignIn(acc);
-        } else if (_cmd.equals("AccountSignOut")){
-            cmd = new AccountSignIn(acc);
-        } else if (_cmd.equals("CheckBalance")){
-            cmd = new CheckBalance(acc);
-        } else if (_cmd.equals("ShowTransactionHistory")){
-            cmd = new ShowTransactionHistory(acc);
+    public NonTransactionProcessor(String  _command, Account _account){
+        account = _account;
+        if (_command.equals("AccountSignIn")) {
+            command = new AccountSignIn(account);
+        } else if (_command.equals("AccountSignOut")){
+            command = new AccountSignIn(account);
+        } else if (_command.equals("CheckBalance")){
+            command = new CheckBalance(account);
+        } else if (_command.equals("ShowTransactionHistory")){
+            command = new ShowTransactionHistory(account);
         } else {
             throw InvalidParameterException();
         }
     }
 
     public NonTransactionProcessor( NonTransactionProcessor N2){
-        cmd = N2.cmd;
-        acc = N2.acc;
+        command = N2.getCommand();
+        account = N2.getAccount();
     }
 
 
@@ -45,20 +47,20 @@ public class NonTransactionProcessor {
     /**
      * Getter and Setter
      */
-    public Command Getcmd(){
-        return cmd;
+    public Command getCommand(){
+        return command;
     }
 
-    public Account Getacc(){
-        return acc;
+    public Account getAccount(){
+        return account;
     }
 
-    public void setCmd(Command cmd2){
-        cmd= cmd2;
+    public void setCommand(Command command2){
+        command= command2;
     }
 
-    public  void setAcc (Account acc2){
-        acc = acc2;
+    public  void setAccount (Account account2){
+        account = account2;
     }
 
 
@@ -72,7 +74,7 @@ public class NonTransactionProcessor {
      */
     public void process(){
         //menghidupkan command-command yang ada untuk
-        cmd.Execute();
+        command.Execute();
     }
 }
 

@@ -1,5 +1,7 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
+import edu.manatriya.banking.akunbanking.Account;
+
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
@@ -13,27 +15,27 @@ public class AccountSignOut implements Command {
     /**
      *artribut-artribut
      */
-    private Account acc;
+    private Account account;
 
 
     /**
      * 4 sekawan
      */
 
-    public AccountSignOut(Account _acc){
-        acc= _acc;
+    public AccountSignOut(Account _account){
+        account= _account;
     }
 
 
     /**
      * Getter and setter
      */
-    public Account getAcc(){
-        return acc;
+    public Account getAccount(){
+        return account;
     }
 
-    public void setAcc(Account A2){
-        acc = A2;
+    public void setAccount(Account A2){
+        account = A2;
     }
 
 
@@ -46,7 +48,7 @@ public class AccountSignOut implements Command {
      * Mengeset nilai acc menjadi Null, artinya account telah dilogout dan tidak dapat diolah lagi
       */
     public void signOut(){
-        acc= null;
+        account= null;
     }
 
     @Override
