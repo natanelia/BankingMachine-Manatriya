@@ -1,5 +1,7 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
+import edu.manatriya.banking.akunbanking.Account;
+
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
@@ -24,8 +26,10 @@ public class NonTransactionProcessor {
         acc = _acc;
         if (_cmd.equals("AccountSignIn")) {
             cmd = new AccountSignIn(acc);
+            acc = ((AccountSignIn)cmd).getAccount();
         } else if (_cmd.equals("AccountSignOut")){
-            cmd = new AccountSignIn(acc);
+            cmd = new AccountSignOut(acc);
+            acc = ((AccountSignOut)cmd).getAccount();
         } else if (_cmd.equals("CheckBalance")){
             cmd = new CheckBalance(acc);
         } else if (_cmd.equals("ShowTransactionHistory")){
@@ -33,6 +37,9 @@ public class NonTransactionProcessor {
         } else {
             throw InvalidParameterException();
         }
+    }
+
+    private Exception InvalidParameterException() {
     }
 
     public NonTransactionProcessor( NonTransactionProcessor N2){
@@ -45,19 +52,19 @@ public class NonTransactionProcessor {
     /**
      * Getter and Setter
      */
-    public Command Getcmd(){
+    public Command getCommand(){
         return cmd;
     }
 
-    public Account Getacc(){
+    public Account getAccount(){
         return acc;
     }
 
-    public void setCmd(Command cmd2){
+    public void setCommand(Command cmd2){
         cmd= cmd2;
     }
 
-    public  void setAcc (Account acc2){
+    public  void setAccount (Account acc2){
         acc = acc2;
     }
 

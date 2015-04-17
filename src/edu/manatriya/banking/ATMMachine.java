@@ -1,5 +1,8 @@
 package edu.manatriya.banking;
 
+import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
+import edu.manatriya.banking.PengolahNonTransaksi.AccountSignOut;
+import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionProcessor;
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.CreditAccount;
 import edu.manatriya.banking.akunbanking.DebitAccount;
@@ -17,11 +20,18 @@ public class ATMMachine {
     Account acc;
 
     public void run(){
-        try {
+        doCommand("AccountSignIn", inputanuser);
+        while (acc != null) {
+            doCommand(inputanuser);
+        }
+    }
 
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    private void doCommand(String cmd) {
+        (new NonTransactionProcessor(cmd, acc)).process();
+    }
+
+    private void doCommand(String cmd, String accID) {
+        NonTransactionProcessor NTP = (new NonTransactionProcessor(cmd, acc).process());
+        acc = NTP.getAccount();
     }
 }

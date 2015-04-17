@@ -5,6 +5,7 @@ import edu.manatriya.banking.akunbanking.CreditAccount;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,18 +30,19 @@ public class AccountSignIn implements Command {
     }
 
     public AccountSignIn(Account _acc) {
-        acc = _acc;
+        if (_acc == null)
+            acc = new Account();
     }
 
 
     /**
      * Getter and setter
      */
-    public Account getAcc(){
+    public Account getAccount(){
         return acc;
     }
 
-    public void setAcc(Account A2){
+    public void setAccount(Account A2){
         acc = A2;
     }
 
@@ -54,7 +56,7 @@ public class AccountSignIn implements Command {
      * jika acc bernilai Null, artinya belum dilakukan login, dan harus melakukan login
      */
 
-    private void checkAccValidity(){
+    private void checkAccValidity() throws FileNotFoundException {
         boolean found = false;
         Scanner inputreader = new Scanner(System.in);
         String input = inputreader.nextLine();
@@ -98,9 +100,13 @@ public class AccountSignIn implements Command {
 
 
 
-    private void checkLoginStatus    {
+    private void checkLoginStatus()    {
         while (acc == null) {
-            checkAccValidity();
+            try {
+                checkAccValidity();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             // Acount sudah berisis (login telah berhasil)
         }
     }
@@ -109,6 +115,8 @@ public class AccountSignIn implements Command {
         public void Execute () {
             checkLoginStatus();
     }
+
+
 
 
 }

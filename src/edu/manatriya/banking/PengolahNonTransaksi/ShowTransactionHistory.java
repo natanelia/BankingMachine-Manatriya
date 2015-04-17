@@ -1,5 +1,7 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
+import edu.manatriya.banking.akunbanking.Account;
+
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -30,11 +32,11 @@ public class ShowTransactionHistory implements Command {
     /**
      * Getter and setter
      */
-    public Account getAcc(){
+    public Account getAccount(){
         return acc;
     }
 
-    public void setAcc(Account A2){
+    public void setAccount(Account A2){
         acc = A2;
     }
 

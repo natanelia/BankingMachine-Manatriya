@@ -1,5 +1,7 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
+import edu.manatriya.banking.akunbanking.Account;
+
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
@@ -28,11 +30,11 @@ public class CheckBalance implements  Command {
     /**
      * Getter and setter
      */
-    public Account getAcc(){
+    public Account getAccount(){
         return acc;
     }
 
-    public void setAcc(Account A2){
+    public void setAccount(Account A2){
         acc = A2;
     }
 
