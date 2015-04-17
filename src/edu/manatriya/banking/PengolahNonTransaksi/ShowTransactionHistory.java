@@ -2,8 +2,12 @@ package edu.manatriya.banking.PengolahNonTransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 
+<<<<<<< HEAD
 import java.lang.reflect.Method;
 import java.util.List;
+=======
+import java.util.ArrayList;
+>>>>>>> origin/master
 
 /**
  * Created by Marco Orlando on 4/11/2015.
@@ -18,14 +22,14 @@ public class ShowTransactionHistory implements Command {
     /**
      *artribut-artribut
      */
-    private Account acc;
+    private Account account;
 
 
     /**
      * 4 sekawan
      */
-    public ShowTransactionHistory(Account _acc){
-        acc= _acc;
+    public ShowTransactionHistory(Account _account){
+        account= _account;
     }
 
 
@@ -33,11 +37,19 @@ public class ShowTransactionHistory implements Command {
      * Getter and setter
      */
     public Account getAccount(){
+<<<<<<< HEAD
         return acc;
     }
 
     public void setAccount(Account A2){
         acc = A2;
+=======
+        return account;
+    }
+
+    public void setAccount(Account A2){
+        account = A2;
+>>>>>>> origin/master
     }
 
 
@@ -49,25 +61,22 @@ public class ShowTransactionHistory implements Command {
     /**
      * Print out semua history transaksi
      */
-    public void printAllTransactionHistory(){
-        int nbTransaction = acc.getList.size();
-
-        for (int i = 0; i<=nbTransaction;i++ ){
-            Class myObjectClass = acc.getList[i].class;
-            Method method = myObjectClass.getMethod("printTransaksi", null);
-            Object returnValue = method.invoke(acc.getList[i]);
+    public void printAllTransactionHistory() {
+        for (ArrayList<String> transaksi account.getTransactionHistory()){
+            for (String unit transaksi){
+                System.out.print(unit);
+                System.out.print("||");
+            }
+            System.out.println();
         }
     }
 
 
-
-
-
-
     @Override
-    public void execute(){
+    public void Execute(){
         printAllTransactionHistory();
     }
+
 
 
 }

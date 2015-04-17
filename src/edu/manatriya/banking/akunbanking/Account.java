@@ -2,7 +2,10 @@ package edu.manatriya.banking.akunbanking;/*Account.java
 * Class yang merepresentasikan sebuah account pada banking
  */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 import java.util.ArrayList;
 
 public class Account{

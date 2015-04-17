@@ -15,15 +15,15 @@ public class AccountSignOut implements Command {
     /**
      *artribut-artribut
      */
-    private Account acc;
+    private Account account;
 
 
     /**
      * 4 sekawan
      */
 
-    public AccountSignOut(Account _acc){
-        acc= _acc;
+    public AccountSignOut(Account _account){
+        account= _account;
     }
 
 
@@ -31,11 +31,19 @@ public class AccountSignOut implements Command {
      * Getter and setter
      */
     public Account getAccount(){
+<<<<<<< HEAD
         return acc;
     }
 
     public void setAccount(Account A2){
         acc = A2;
+=======
+        return account;
+    }
+
+    public void setAccount(Account A2){
+        account = A2;
+>>>>>>> origin/master
     }
 
 
@@ -48,7 +56,7 @@ public class AccountSignOut implements Command {
      * Mengeset nilai acc menjadi Null, artinya account telah dilogout dan tidak dapat diolah lagi
       */
     public void signOut(){
-        acc= null;
+        account= null;
     }
 
     @Override

@@ -22,16 +22,21 @@ public class AccountSignIn implements Command {
     /**
      * atribut-atribut
      */
-    private Account acc;
+    private Account account;
 
 
     public AccountSignIn() {
-        acc = new Account();
+        account = new Account();
     }
 
+<<<<<<< HEAD
     public AccountSignIn(Account _acc) {
         if (_acc == null)
             acc = new Account();
+=======
+    public AccountSignIn(Account _account) {
+        account = _account;
+>>>>>>> origin/master
     }
 
 
@@ -39,11 +44,19 @@ public class AccountSignIn implements Command {
      * Getter and setter
      */
     public Account getAccount(){
+<<<<<<< HEAD
         return acc;
     }
 
     public void setAccount(Account A2){
         acc = A2;
+=======
+        return account;
+    }
+
+    public void setAccount(Account A2){
+        account = A2;
+>>>>>>> origin/master
     }
 
 
@@ -56,7 +69,11 @@ public class AccountSignIn implements Command {
      * jika acc bernilai Null, artinya belum dilakukan login, dan harus melakukan login
      */
 
+<<<<<<< HEAD
     private void checkAccValidity() throws FileNotFoundException {
+=======
+ /*   private void checkAccValidity(){
+>>>>>>> origin/master
         boolean found = false;
         Scanner inputreader = new Scanner(System.in);
         String input = inputreader.nextLine();
@@ -96,10 +113,11 @@ public class AccountSignIn implements Command {
         else {
             System.out.println("account not found");
         }
-    }
+    }*/
 
 
 
+<<<<<<< HEAD
     private void checkLoginStatus()    {
         while (acc == null) {
             try {
@@ -107,6 +125,11 @@ public class AccountSignIn implements Command {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+=======
+    private void checkLoginStatus(){
+        while (account == null) {
+            checkAccValidity();
+>>>>>>> origin/master
             // Acount sudah berisis (login telah berhasil)
         }
     }

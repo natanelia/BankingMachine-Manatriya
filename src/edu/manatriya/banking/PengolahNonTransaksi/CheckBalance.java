@@ -15,14 +15,14 @@ public class CheckBalance implements  Command {
     /**
      *artribut-artribut
      */
-    private Account acc;
+    private Account account;
 
 
     /**
      * 4 sekawan
      */
-    public CheckBalance(Account _acc){
-        acc= _acc;
+    public CheckBalance(Account _account){
+        account= _account;
     }
 
 
@@ -31,11 +31,19 @@ public class CheckBalance implements  Command {
      * Getter and setter
      */
     public Account getAccount(){
+<<<<<<< HEAD
         return acc;
     }
 
     public void setAccount(Account A2){
         acc = A2;
+=======
+        return account;
+    }
+
+    public void setAccount(Account A2){
+        account = A2;
+>>>>>>> origin/master
     }
 
 
@@ -44,7 +52,7 @@ public class CheckBalance implements  Command {
      */
     public  void showBalance(){
         System.out.print("Saldo anda adalah sebesar Rp ");
-        System.out.print(acc.getSaldo());
+        System.out.print(account.getSaldo());
         System.out.println(",00");
     }
 

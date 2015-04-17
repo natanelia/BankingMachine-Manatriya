@@ -1,5 +1,7 @@
 package edu.manatriya.banking.PluginTransaksi;
 
+import edu.manatriya.banking.akunbanking.Account;
+
 /**
  * Created by Natan Elia on 4/12/2015.
  */
@@ -7,7 +9,7 @@ public class PayElectricity extends Transaction {
     private String elecID;
 
     public PayElectricity(Account _acc, String _elecID, int _amount) {
-        super(_acc, _amount);
+        super( _acc, _amount);
         elecID = _elecID;
         transactionName = this.getName();
     }

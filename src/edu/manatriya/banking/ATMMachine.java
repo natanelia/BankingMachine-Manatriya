@@ -1,5 +1,6 @@
 package edu.manatriya.banking;
 
+<<<<<<< HEAD
 import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
 import edu.manatriya.banking.PengolahNonTransaksi.AccountSignOut;
 import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionProcessor;
@@ -13,10 +14,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+=======
+>>>>>>> origin/master
 /**
  * Created by KEVIN on 14/04/2015.
  */
 public class ATMMachine {
+<<<<<<< HEAD
     Account acc;
 
     public void run(){
@@ -34,4 +38,7 @@ public class ATMMachine {
         NonTransactionProcessor NTP = (new NonTransactionProcessor(cmd, acc).process());
         acc = NTP.getAccount();
     }
+=======
+
+>>>>>>> origin/master
 }
