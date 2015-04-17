@@ -8,7 +8,7 @@ public class DebitAccount extends Account {
     public DebitAccount(String accID, String accName, long accSaldo){
         super(accID,accName,accSaldo);
     }
-
+    public DebitAccount(String filename,String filedir) {super(filename,filedir);};
     @Override
     public void updateSaldo(int amount) {
         long   tempSaldo = getSaldo() + amount;

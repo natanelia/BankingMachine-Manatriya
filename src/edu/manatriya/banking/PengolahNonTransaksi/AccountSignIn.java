@@ -26,17 +26,14 @@ public class AccountSignIn implements Command {
 
 
     public AccountSignIn() {
-        account = new Account();
     }
 
-<<<<<<< HEAD
-    public AccountSignIn(Account _acc) {
-        if (_acc == null)
-            acc = new Account();
-=======
-    public AccountSignIn(Account _account) {
-        account = _account;
->>>>>>> origin/master
+    public AccountSignIn(String inputanUser) {
+        try {
+            checkAccValidity(inputanUser);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -44,19 +41,11 @@ public class AccountSignIn implements Command {
      * Getter and setter
      */
     public Account getAccount(){
-<<<<<<< HEAD
-        return acc;
-    }
-
-    public void setAccount(Account A2){
-        acc = A2;
-=======
         return account;
     }
 
     public void setAccount(Account A2){
         account = A2;
->>>>>>> origin/master
     }
 
 
@@ -69,11 +58,28 @@ public class AccountSignIn implements Command {
      * jika acc bernilai Null, artinya belum dilakukan login, dan harus melakukan login
      */
 
-<<<<<<< HEAD
-    private void checkAccValidity() throws FileNotFoundException {
-=======
+
+    private void checkAccValidity(String inputanUser) throws FileNotFoundException {
+        String accountDir = "";
+        accountDir = (new Account().getClass().getProtectionDomain().getCodeSource().getLocation().getPath() + accountDir).replace("%20", " ").substring(1);
+        File available = new File(accountDir);
+        String availableAccount[] = available.list();
+        int i=0;
+        boolean found = false;
+        do{
+            if (availableAccount[i].contains(inputanUser)) {
+                found =true;
+                if (inputanUser.contains("cr"))
+                    account = new CreditAccount(availableAccount[i], accountDir);
+                else
+                    account = new DebitAccount(availableAccount[i], accountDir);
+            } else i++;
+        } while ((i < availableAccount.length) && (!found));
+        if (found = false);
+        setAccount(null);
+    }
  /*   private void checkAccValidity(){
->>>>>>> origin/master
+
         boolean found = false;
         Scanner inputreader = new Scanner(System.in);
         String input = inputreader.nextLine();
@@ -117,19 +123,9 @@ public class AccountSignIn implements Command {
 
 
 
-<<<<<<< HEAD
-    private void checkLoginStatus()    {
-        while (acc == null) {
-            try {
-                checkAccValidity();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-=======
+
     private void checkLoginStatus(){
         while (account == null) {
-            checkAccValidity();
->>>>>>> origin/master
             // Acount sudah berisis (login telah berhasil)
         }
     }

@@ -17,7 +17,7 @@ public class TransactionProcessor {
     private Account acc;
 
     //Constructor
-    TransactionProcessor(){}
+    public TransactionProcessor(){}
 
     //Gettter and Setter
     public Account getAcc(){

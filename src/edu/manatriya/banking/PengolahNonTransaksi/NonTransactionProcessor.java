@@ -21,38 +21,21 @@ public class NonTransactionProcessor {
      * 4 sekawan
      */
 
-
-<<<<<<< HEAD
-    public NonTransactionProcessor(String  _cmd, Account _acc){
-        acc = _acc;
-        if (_cmd.equals("AccountSignIn")) {
-            cmd = new AccountSignIn(acc);
-            acc = ((AccountSignIn)cmd).getAccount();
-        } else if (_cmd.equals("AccountSignOut")){
-            cmd = new AccountSignOut(acc);
-            acc = ((AccountSignOut)cmd).getAccount();
-        } else if (_cmd.equals("CheckBalance")){
-            cmd = new CheckBalance(acc);
-        } else if (_cmd.equals("ShowTransactionHistory")){
-            cmd = new ShowTransactionHistory(acc);
-=======
-    public NonTransactionProcessor(String  _command, Account _account){
+    public NonTransactionProcessor(String  _command, Account _account) throws Exception {
         account = _account;
-        if (_command.equals("AccountSignIn")) {
-            command = new AccountSignIn(account);
-        } else if (_command.equals("AccountSignOut")){
-            command = new AccountSignIn(account);
+
+        if (_command.equals("AccountSignOut")){
         } else if (_command.equals("CheckBalance")){
             command = new CheckBalance(account);
         } else if (_command.equals("ShowTransactionHistory")){
             command = new ShowTransactionHistory(account);
->>>>>>> origin/master
         } else {
             throw InvalidParameterException();
         }
     }
 
     private Exception InvalidParameterException() {
+        return null;
     }
 
     public NonTransactionProcessor( NonTransactionProcessor N2){
@@ -66,38 +49,21 @@ public class NonTransactionProcessor {
      * Getter and Setter
      */
     public Command getCommand(){
-<<<<<<< HEAD
-        return cmd;
-    }
 
-    public Account getAccount(){
-        return acc;
+        return command;
     }
 
     public void setCommand(Command cmd2){
-        cmd= cmd2;
+        command = cmd2;
     }
 
     public  void setAccount (Account acc2){
-        acc = acc2;
-=======
-        return command;
+        account = acc2;
     }
 
     public Account getAccount(){
         return account;
     }
-
-    public void setCommand(Command command2){
-        command= command2;
-    }
-
-    public  void setAccount (Account account2){
-        account = account2;
->>>>>>> origin/master
-    }
-
-
 
 
     /**

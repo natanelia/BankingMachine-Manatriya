@@ -7,5 +7,6 @@ public class CreditAccount extends Account {
         public CreditAccount(String accID, String accName, long accSaldo){
             super(accID,accName,accSaldo);
     }
+        public CreditAccount(String filename,String filedir) {super(filename,filedir);};
 }
 
