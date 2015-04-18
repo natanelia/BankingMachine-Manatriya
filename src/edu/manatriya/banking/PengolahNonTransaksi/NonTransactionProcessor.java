@@ -2,6 +2,8 @@ package edu.manatriya.banking.PengolahNonTransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 
+import java.security.InvalidParameterException;
+
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
@@ -25,17 +27,14 @@ public class NonTransactionProcessor {
         account = _account;
 
         if (_command.equals("AccountSignOut")){
+            command = new AccountSignOut(account);
         } else if (_command.equals("CheckBalance")){
             command = new CheckBalance(account);
         } else if (_command.equals("ShowTransactionHistory")){
             command = new ShowTransactionHistory(account);
         } else {
-            throw InvalidParameterException();
+            throw new InvalidParameterException();
         }
-    }
-
-    private Exception InvalidParameterException() {
-        return null;
     }
 
     public NonTransactionProcessor( NonTransactionProcessor N2){
@@ -74,7 +73,7 @@ public class NonTransactionProcessor {
      */
     public void process(){
         //menghidupkan command-command yang ada untuk
-        command.Execute();
+        command.execute();
     }
 }
 

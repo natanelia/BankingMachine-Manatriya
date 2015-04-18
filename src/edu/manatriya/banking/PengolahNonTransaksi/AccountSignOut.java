@@ -31,22 +31,12 @@ public class AccountSignOut implements Command {
      * Getter and setter
      */
     public Account getAccount(){
-<<<<<<< HEAD
-        return acc;
-    }
-
-    public void setAccount(Account A2){
-        acc = A2;
-=======
         return account;
     }
 
     public void setAccount(Account A2){
         account = A2;
->>>>>>> origin/master
     }
-
-
 
     /**
      * Method-method
@@ -60,7 +50,7 @@ public class AccountSignOut implements Command {
     }
 
     @Override
-    public void Execute() {
+    public void execute() {
         signOut();
     }
 

@@ -1,41 +1,20 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
-import edu.manatriya.banking.akunbanking.CreditAccount;
 import edu.manatriya.banking.akunbanking.DebitAccount;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
 public class AccountSignIn implements Command {
-    /**
-     * adalah salah satu kelas NonTransaksi
-     *
-     */
-
-
-    /**
-     * atribut-atribut
-     */
+    private String accountID;
     private Account account;
 
-
-    public AccountSignIn() {
+    public AccountSignIn(String _accountID) {
+        accountID = _accountID;
+        account = null;
     }
-
-    public AccountSignIn(String inputanUser) {
-        try {
-            checkAccValidity(inputanUser);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     /**
      * Getter and setter
@@ -48,8 +27,6 @@ public class AccountSignIn implements Command {
         account = A2;
     }
 
-
-
     /**
      * Method-method
      */
@@ -58,11 +35,24 @@ public class AccountSignIn implements Command {
      * jika acc bernilai Null, artinya belum dilakukan login, dan harus melakukan login
      */
 
+    private void checkAccountValidityAndAssign(String accountID) {
+        String filename = "out/Accounts/CR" + accountID + ".acc";
+        File f = new File(filename);
+        if (!f.exists()) {
+            filename = "out/Accounts/DE" + accountID + ".acc";
+            f = new File(filename);
+            if (f.exists())
+                setAccount(new DebitAccount(filename));
+        } else {
+            setAccount(new Account(filename));
+        }
+        if (!f.exists()) {
+            setAccount(null);
+        }
 
-    private void checkAccValidity(String inputanUser) throws FileNotFoundException {
-        String accountDir = "";
-        accountDir = (new Account().getClass().getProtectionDomain().getCodeSource().getLocation().getPath() + accountDir).replace("%20", " ").substring(1);
-        File available = new File(accountDir);
+        //String accountDir = "/Accounts";
+        //accountDir = (new Account().getClass().getProtectionDomain().getCodeSource().getLocation().getPath() + accountDir).replace("%20", " ").substring(1);
+        /*File available = new File(accountDir);
         String availableAccount[] = available.list();
         int i=0;
         boolean found = false;
@@ -74,68 +64,17 @@ public class AccountSignIn implements Command {
                 else
                     account = new DebitAccount(availableAccount[i], accountDir);
             } else i++;
-        } while ((i < availableAccount.length) && (!found));
-        if (found = false);
-        setAccount(null);
+        } while ((i < availableAccount.length) && (!found));*/
     }
- /*   private void checkAccValidity(){
 
-        boolean found = false;
-        Scanner inputreader = new Scanner(System.in);
-        String input = inputreader.nextLine();
-        Scanner filescan = null;
-        filescan = new Scanner(new File("out/Accounts/account.txt"));
-
-        System.out.println("Masukkan Account ID anda:");
-        while (filescan.hasNextLine() && (!found)) {
-            String line = filescan.nextLine();
-            if (line.contains(input))
-                found = true;
-        }
-        if (found) {
-            String accID= input;
-            input.concat(".acc");
-            File transactionHistory = new File(input);
-            Scanner transactionHistoryScan = new Scanner(transactionHistory);
-            String line = transactionHistoryScan.nextLine();
-            String accName = line;
-            long accSaldo = transactionHistoryScan.nextLong();
-
-            if (input.contains("cr")){
-                acc = new CreditAccount(accID,accName,accSaldo);
-            }
-            else {
-                acc = new DebitAccount(accID, accName, accSaldo);
-            }
-            while (transactionHistoryScan.hasNextLine()){
-                String[] history = transactionHistoryScan.nextLine().split("||");
-                ArrayList<String> temp = null;
-                for (int i = 0; i < history.length; ++i){
-                    temp.add(history[i]);
-                }
-                acc.addSuccessfulTransaction(temp);
-            }
-        }
-        else {
-            System.out.println("account not found");
-        }
-    }*/
-
-
-
-
-    private void checkLoginStatus(){
+    /*private void checkLoginStatus(){
         while (account == null) {
             // Acount sudah berisis (login telah berhasil)
         }
+    }*/
+
+    @Override
+    public void execute () {
+        checkAccountValidityAndAssign(accountID);
     }
-
-        @Override
-        public void Execute () {
-            checkLoginStatus();
-    }
-
-
-
-
 }

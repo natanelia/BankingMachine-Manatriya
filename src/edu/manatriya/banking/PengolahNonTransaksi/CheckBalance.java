@@ -5,7 +5,7 @@ import edu.manatriya.banking.akunbanking.Account;
 /**
  * Created by Marco Orlando on 4/11/2015.
  */
-public class CheckBalance implements  Command {
+public class CheckBalance implements Command {
     /**
      * adalah salah satu kelas NonTransaksi
      *
@@ -31,26 +31,18 @@ public class CheckBalance implements  Command {
      * Getter and setter
      */
     public Account getAccount(){
-<<<<<<< HEAD
-        return acc;
-    }
-
-    public void setAccount(Account A2){
-        acc = A2;
-=======
         return account;
     }
 
     public void setAccount(Account A2){
         account = A2;
->>>>>>> origin/master
     }
 
 
     /**
      * Method-method
      */
-    public  void showBalance(){
+    private void showBalance(){
         System.out.print("Saldo anda adalah sebesar Rp ");
         System.out.print(account.getSaldo());
         System.out.println(",00");
@@ -58,7 +50,7 @@ public class CheckBalance implements  Command {
 
 
     @Override
-    public void Execute(){
+    public void execute(){
         showBalance();
     }
 

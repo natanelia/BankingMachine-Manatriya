@@ -1,4 +1,6 @@
-package edu.manatriya.banking.PluginTransaksi;
+package edu.manatriya.banking.plugintransaksi;
+
+import edu.manatriya.banking.akunbanking.Account;
 
 /**
  * Created by Natan Elia on 4/12/2015.
@@ -36,7 +38,7 @@ public class Transfer extends Transaction {
     @Override
     public synchronized void run() {
         try {
-            Thread.sleep(getDuration());
+            sleep(getDuration());
             acc.updateSaldo(-amount);
 
         } catch (InterruptedException e) {

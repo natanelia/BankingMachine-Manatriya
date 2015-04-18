@@ -5,5 +5,5 @@ package edu.manatriya.banking.PengolahNonTransaksi;
  */
 
 public interface Command {
-    void Execute();
+    void execute();
 }

@@ -1,4 +1,6 @@
-package edu.manatriya.banking.PluginTransaksi;
+package edu.manatriya.banking.plugintransaksi;
+
+import edu.manatriya.banking.akunbanking.Account;
 
 import java.util.Date;
 
@@ -47,6 +49,10 @@ public abstract class Transaction extends Thread {
 
     @Override
     public String toString() {
-        return (new Date()).toString() + "||" + transactionName + "||" + getDescription() + "||" + getAmount();
+        return (new Date()).toString() + "\\|\\|" + transactionName + "\\|\\|" + getDescription() + "\\|\\|" + getAmount();
+    }
+
+    private void addToAccount(Transaction transaction){
+        acc.addSuccessfulTransaction(transaction.toString());
     }
 }

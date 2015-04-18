@@ -1,4 +1,4 @@
-package edu.manatriya.banking.PluginTransaksi;
+package edu.manatriya.banking.plugintransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 

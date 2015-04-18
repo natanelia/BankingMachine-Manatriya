@@ -1,4 +1,6 @@
-package edu.manatriya.banking.PluginTransaksi;
+package edu.manatriya.banking.plugintransaksi;
+
+import edu.manatriya.banking.akunbanking.Account;
 
 /**
  * Created by Natan Elia on 4/12/2015.
