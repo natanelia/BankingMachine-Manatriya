@@ -24,6 +24,6 @@ public class DebitAccount extends Account {
             throw new RangeException(RangeException.BAD_BOUNDARYPOINTS_ERR,
                     "Your balance is not sufficient for the transaction!");
         }
-        setSaldo(amount);
+        setSaldo(tempSaldo);
     }
 }
