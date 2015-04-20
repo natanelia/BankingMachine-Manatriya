@@ -92,4 +92,8 @@ public class Account{
         transactionHistory.add(transactionElement.split("\\|\\|"));
     }
 
+    public void saveAccount() {
+
+    }
+
 }

@@ -16,7 +16,6 @@ public class ATMMachine {
 
     public ATMMachine() {
         acc = null;
-        transactionProcessor = new TransactionProcessor();
     }
 
     public void run(){
@@ -25,6 +24,7 @@ public class ATMMachine {
             String accountID = inputScanner.nextLine();
             doCommand("AccountSignIn", accountID);
         }
+        transactionProcessor = new TransactionProcessor(acc);
         while (acc != null) {
             doCommand(inputScanner.nextLine());
         }

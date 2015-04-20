@@ -15,7 +15,7 @@ public class Transfer extends Transaction {
         bankName = _bankName;
         accountID = _accountID;
         duration = _duration;
-        transactionName = this.getName();
+        transactionName = this.getClass().getSimpleName();
         setDescription("TO: " + getBankName() + "|" + "ID: " + getAccountID());
     }
 
@@ -38,9 +38,10 @@ public class Transfer extends Transaction {
     @Override
     public synchronized void run() {
         try {
-            sleep(getDuration());
+            sleep(getDuration() * 1000);
             acc.updateSaldo(-amount);
-
+            addToAccount();
+            System.out.println("Transfer succeeded");
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }

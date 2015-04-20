@@ -16,7 +16,7 @@ public abstract class Transaction extends Thread {
     public Transaction(Account _acc, long _amount) {
         acc = _acc;
         amount = _amount;
-        transactionName = this.getName();
+        transactionName = this.getClass().getSimpleName();
         description = "";
     }
 
@@ -49,10 +49,10 @@ public abstract class Transaction extends Thread {
 
     @Override
     public String toString() {
-        return (new Date()).toString() + "\\|\\|" + transactionName + "\\|\\|" + getDescription() + "\\|\\|" + getAmount();
+        return (new Date()).toString() + "||" + transactionName + "||" + getDescription() + "||" + getAmount();
     }
 
-    private void addToAccount(Transaction transaction){
-        acc.addSuccessfulTransaction(transaction.toString());
+    protected void addToAccount(){
+        acc.addSuccessfulTransaction(this.toString());
     }
 }

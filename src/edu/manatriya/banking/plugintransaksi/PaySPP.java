@@ -13,7 +13,7 @@ public class PaySPP extends Transaction {
         super(_acc, _amount);
         idSekolah = _idSekolah;
         idSiswa = _idSiswa;
-        transactionName = this.getName();
+        transactionName = this.getClass().getSimpleName();
     }
 
     public String getIdSekolah() {
@@ -27,5 +27,6 @@ public class PaySPP extends Transaction {
     @Override
     public synchronized void run() {
         acc.updateSaldo(-amount);
+        addToAccount();
     }
 }

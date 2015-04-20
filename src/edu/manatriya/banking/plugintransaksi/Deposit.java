@@ -10,11 +10,12 @@ public class Deposit extends Transaction {
 
     public Deposit(Account _acc, long _amount) {
         super(_acc, _amount);
-        transactionName = this.getName();
+        transactionName = this.getClass().getSimpleName();
     }
 
     @Override
     public synchronized void run() {
-        acc.updateSaldo(amount);
+        acc.updateSaldo(getAmount());
+        addToAccount();
     }
 }

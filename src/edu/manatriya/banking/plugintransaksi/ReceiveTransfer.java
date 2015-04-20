@@ -13,7 +13,7 @@ public class ReceiveTransfer extends Transaction {
         super(_acc, _amount);
         bankName = _bankName;
         accountID = _accountID;
-        transactionName = this.getName();
+        transactionName = this.getClass().getSimpleName();
         setDescription("FROM: " + getBankName() + "|" + "ID: " + getAccountID());
     }
 
@@ -28,6 +28,7 @@ public class ReceiveTransfer extends Transaction {
     @Override
     public synchronized void run() {
         acc.updateSaldo(amount);
+        addToAccount();
     }
 
 

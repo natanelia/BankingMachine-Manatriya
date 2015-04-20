@@ -11,23 +11,25 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.lang.*;
-import java.util.Scanner;
 
 /**
  * Created by Alberttriadrian on 4/12/2015.
  */
 
 public class TransactionProcessor {
-    private Queue<Object> pendingTrans;
-    private List<Object> runningTrans;
+    private Queue<Transaction> pendingTrans;
+    private List<Transaction> runningTrans;
     private Account acc;
 
     //Constructor
-    public TransactionProcessor(){}
+    public TransactionProcessor(Account _acc){
+        acc = _acc;
+        pendingTrans = new LinkedList<>();
+        runningTrans = new LinkedList<>();
+
+    }
 
     //Gettter and Setter
     public Account getAccount(){
@@ -59,21 +61,22 @@ public class TransactionProcessor {
             int i = 0;
             for (Parameter param : parameterTransaction) {
                 if (param.getType().getSimpleName().equalsIgnoreCase("Account"))
-                    paramContent[i++] = this.getAccount();
+                    paramContent[i++] = acc;
                 else {
                     System.out.print(parameterNames.get(i) + " : ");
-                    if (param.getType().getSimpleName().equalsIgnoreCase("long")) {
-                        String a = scanner.nextLine();
-                        paramContent[i++] = Long.parseLong(a);
+                    String in = scanner.nextLine();
+                    if (param.getType().getSimpleName().equals("long")) {
+                        paramContent[i++] = Long.parseLong(in);
+                    } else if (param.getType().getSimpleName().equals("int")) {
+                        paramContent[i++] = Integer.parseInt(in);
                     } else {
-                        paramContent[i++] = scanner.nextLine();
+                        paramContent[i++] = in;
                     }
                 }
             }
             //ERROR NOT RESOLVED//
             Transaction tr = (Transaction)constructorTransaction.newInstance(paramContent);
             pendingTrans.add(tr);
-            scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
@@ -136,68 +139,12 @@ public class TransactionProcessor {
         return null;
     }
 
-    /*public void generateForms(String TransactionType){
-        try {
-            //Mendapatkan class plugin yang ingin dipakai misalnya : deposit, Transfer, PayElectricity, dan lain- lain
-            Class pluginTransaction = Class.forName("plugintransaksi." + TransactionType);
-
-            try {
-                //Mendapatkan Constructor dan parameter-parameter dari Constructor plugin yang didapatkan oleh "pluginTransaction"
-                Constructor constructorList[] = pluginTransaction.getDeclaredConstructors();
-                Constructor pluginConstructor = constructorList[0];
-
-                System.out.println("name = " + pluginConstructor.getName());
-                System.out.println("decl class = " + pluginConstructor.getDeclaringClass());
-
-                Class parameterConstructor[] = pluginConstructor.getParameterTypes();
-                for (int j = 0; j < parameterConstructor.length; j++)
-                    System.out.println("param #" + j + " " + parameterConstructor[j]);
-
-                try {
-                    //Memanggil Konstruktor plugin dengan reflection
-                    Object plugin = pluginConstructor.newInstance(parameterConstructor);
-
-                    try {
-                        //Mendapatkan method run yang ada pada plugin
-                        Method pluginMethodRun = pluginTransaction.getDeclaredMethod("start", new Class[]{});
-                        try{
-                            //Menjalankan method run pada plugin yang didapat
-                            pluginMethodRun.invoke(plugin,new Object[]{});
-                        }
-                        catch(InvocationTargetException e){
-                            System.out.println("Invocation is failed");
-                        }
-                    }
-                    catch (NoSuchMethodException e) {
-                        System.out.println("Method tidak ditemukan.");
-                    }
-
-                } catch (IllegalAccessException e) {
-                    System.out.println("Error 1 saat menghidupkan plugin");
-                } catch (InstantiationException e) {
-                    System.out.println("Error 2 saat menghidupkan plugin");
-                }
-            }
-            catch(Throwable e){
-                System.out.println("Gagal mendapatkan parameter Constructor");
-            }
-        }
-        catch(ClassNotFoundException e){
-            System.out.println("Plugin tidak ditemukan.");
-        }
-    }*/
-
     public void startAll() throws Exception {
         for (int i = 0; i < pendingTrans.size(); i++ ) {
             runningTrans.add(pendingTrans.remove());
-            runningTrans.get(runningTrans.size() - 1).getClass().getMethod("start").invoke(new Thread(), null);
+            runningTrans.get(runningTrans.size() - 1).start();
         }
     }
-
-	/*
-    public void start(int pendingTransID){
-        pendingTrans.remove().run();
-    }*/
 
 	//Menghilangkan Transaction dari runningTrans
     public void stop(int runningTransID){

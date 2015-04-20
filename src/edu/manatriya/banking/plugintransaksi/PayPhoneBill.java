@@ -13,7 +13,7 @@ public class PayPhoneBill extends Transaction {
         super(_acc, _amount);
         phoneNumber = _phoneNumber;
         provider = _provider;
-        transactionName = this.getName();
+        transactionName = this.getClass().getSimpleName();
     }
 
     public String getPhoneNumber() {
@@ -28,5 +28,6 @@ public class PayPhoneBill extends Transaction {
     @Override
     public synchronized void run() {
         acc.updateSaldo(-amount);
+        addToAccount();
     }
 }

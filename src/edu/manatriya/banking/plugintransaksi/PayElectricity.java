@@ -11,7 +11,7 @@ public class PayElectricity extends Transaction {
     public PayElectricity(Account _acc, String _elecID, int _amount) {
         super( _acc, _amount);
         elecID = _elecID;
-        transactionName = this.getName();
+        transactionName = this.getClass().getSimpleName();
     }
 
     public String getElecID() {
@@ -22,5 +22,6 @@ public class PayElectricity extends Transaction {
     @Override
     public synchronized void run() {
         acc.updateSaldo(-amount);
+        addToAccount();
     }
 }
