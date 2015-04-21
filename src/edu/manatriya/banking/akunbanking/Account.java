@@ -24,7 +24,7 @@ public class Account{
 */
 
     public Account(String _accountFileName) {
-        transactionHistory = new ArrayList<>();
+        transactionHistory = new ArrayList<String[]>();
         String filename = _accountFileName;
         File fileTransaction = new File(filename);
         try {

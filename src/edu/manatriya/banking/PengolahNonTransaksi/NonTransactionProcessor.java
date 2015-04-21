@@ -23,6 +23,15 @@ public class NonTransactionProcessor {
      * 4 sekawan
      */
 
+
+    /**
+     * Melakukan pengecekan pada input _command;
+     * Jika ditemukan command yang sesuai akan dilakukan penghidupan command
+     * Jika tidak ditemukan, maka akan menghasilkan InvalidParameterException
+     * @param _command
+     * @param _account
+     * @throws Exception
+     */
     public NonTransactionProcessor(String  _command, Account _account) throws Exception {
         account = _account;
 
@@ -37,6 +46,10 @@ public class NonTransactionProcessor {
         }
     }
 
+    /**
+     * CCtor
+     * @param N2
+     */
     public NonTransactionProcessor( NonTransactionProcessor N2){
         command = N2.getCommand();
         account = N2.getAccount();

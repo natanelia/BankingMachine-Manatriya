@@ -43,12 +43,12 @@ public class AccountSignOut implements Command {
      */
 
     /**
-     * Mengeset nilai acc menjadi Null, artinya account telah dilogout dan tidak dapat diolah lagi
-      */
+     * Mengeset nilai account menjadi null, artinya account tidak lagi diolah sistem (dilepaskan)
+     */
     public void signOut(){
         account= null;
     }
-
+    
     @Override
     public void execute() {
         signOut();

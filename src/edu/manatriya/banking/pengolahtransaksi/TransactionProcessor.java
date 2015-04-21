@@ -2,17 +2,16 @@ package edu.manatriya.banking.pengolahtransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.plugintransaksi.Transaction;
-import jdk.internal.org.objectweb.asm.*;
+import jdk.internal.org.objectweb.asm.ClassReader;
 import jdk.internal.org.objectweb.asm.tree.ClassNode;
 import jdk.internal.org.objectweb.asm.tree.LocalVariableNode;
 import jdk.internal.org.objectweb.asm.tree.MethodNode;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.*;
-import java.lang.reflect.Type;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Parameter;
 import java.util.*;
-import java.lang.*;
 
 /**
  * Created by Alberttriadrian on 4/12/2015.
@@ -26,8 +25,8 @@ public class TransactionProcessor {
     //Constructor
     public TransactionProcessor(Account _acc){
         acc = _acc;
-        pendingTrans = new LinkedList<>();
-        runningTrans = new LinkedList<>();
+        pendingTrans = new LinkedList<Transaction>();
+        runningTrans = new LinkedList<Transaction>();
 
     }
 
