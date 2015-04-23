@@ -56,12 +56,16 @@ public class TransactionProcessor {
             Constructor constructorTransaction = classTransaction.getConstructors()[0];
             Parameter[] parameterTransaction = constructorTransaction.getParameters();
             List<String> parameterNames = getParameterNames(constructorTransaction);
+            List<String> paramFriendlyNames = new ArrayList<String>();
+            for (String p : parameterNames) {
+                paramFriendlyNames.add(p.replace("_", " ").toUpperCase());
+            }
             Type[] parameterTypes = constructorTransaction.getGenericParameterTypes();
             Object[] paramContent = new Object[parameterTransaction.length];
             int i = 0;
             paramContent[i++] = acc;
 
-            TransactionForm transactionForm = new TransactionForm(TransactionType, parameterNames);
+            TransactionForm transactionForm = new TransactionForm(TransactionType, paramFriendlyNames);
             synchronized (transactionForm) {
                 try {
                     transactionForm.wait();
