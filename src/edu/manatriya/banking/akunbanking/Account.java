@@ -19,6 +19,25 @@ public abstract class Account{
     protected double saldo;
     protected ArrayList<String[]> transactionHistory;
 
+    public Account() {
+        accountID = "";
+        accountFileName = "";
+        password = "";
+        currency = "";
+        saldo = 0;
+        transactionHistory = new ArrayList<String[]>();
+    }
+
+    public Account(String accountID, String currency, double saldo) {
+        this.accountID = accountID;
+        this.accountFileName = "";
+        this.password = "";
+        this.name = "";
+        this.currency = "";
+        this.saldo = saldo;
+        transactionHistory = new ArrayList<String[]>();
+    }
+
     public Account(String _accountFileName) {
         transactionHistory = new ArrayList<String[]>();
         accountFileName = _accountFileName;
@@ -62,6 +81,12 @@ public abstract class Account{
         this.saldo = saldo;
     }
 
+    public String getAccountFileName() { return accountFileName; }
+    public String getName() { return name; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    public String getCurrency() { return currency; }
+
     public ArrayList<String[]> getTransactionHistory() {
         return transactionHistory;
     }
@@ -69,13 +94,15 @@ public abstract class Account{
     public String[] getTransactionHistoryAt(int i) { return transactionHistory.get(i); }
 
     public void setAccount(Account a) {
-        accountFileName = a.accountFileName;
-        accountID = a.accountID;
-        password = a.password;
-        currency = a.currency;
-        saldo = a.saldo;
-        transactionHistory = new ArrayList<String[]>(a.transactionHistory.size());
-        transactionHistory.addAll(a.transactionHistory);
+        if (a != null) {
+            accountFileName = a.accountFileName;
+            accountID = a.accountID;
+            password = a.password;
+            currency = a.currency;
+            saldo = a.saldo;
+            transactionHistory = new ArrayList<String[]>(a.transactionHistory.size());
+            transactionHistory.addAll(a.transactionHistory);
+        }
     }
 
     public void changeCurrency(String newCurrency) {

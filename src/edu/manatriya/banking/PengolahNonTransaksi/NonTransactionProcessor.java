@@ -18,12 +18,6 @@ public class NonTransactionProcessor {
     private Command command;
     private Account account;
 
-
-    /**
-     * 4 sekawan
-     */
-
-
     /**
      * Melakukan pengecekan pada input _command;
      * Jika ditemukan command yang sesuai akan dilakukan penghidupan command
@@ -61,7 +55,6 @@ public class NonTransactionProcessor {
      * Getter and Setter
      */
     public Command getCommand(){
-
         return command;
     }
 

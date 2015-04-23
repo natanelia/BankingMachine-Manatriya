@@ -14,6 +14,10 @@ public class CreditAccount extends Account {
         super(c);
     }
 
+    public CreditAccount(String accountID, String currency, double saldo) {
+        super(accountID, currency, saldo);
+    }
+
     public void updateSaldo(double amount){
         double tempSaldo = getSaldo() + amount;
         setSaldo(tempSaldo);
