@@ -8,7 +8,7 @@ import edu.manatriya.banking.akunbanking.Account;
 public class ReceiveTransfer extends Transaction {
     private String sourceAccountID;
 
-    public ReceiveTransfer(Account account, String bank_name, String source_account_id, int amount) {
+    public ReceiveTransfer(Account account, String bank_name, String source_account_id, double amount) {
         super(account, amount);
         sourceAccountID = sourceAccountID;
         transactionName = this.getClass().getSimpleName();

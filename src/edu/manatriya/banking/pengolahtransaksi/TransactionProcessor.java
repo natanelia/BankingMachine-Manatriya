@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
+import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -55,25 +56,31 @@ public class TransactionProcessor {
             Constructor constructorTransaction = classTransaction.getConstructors()[0];
             Parameter[] parameterTransaction = constructorTransaction.getParameters();
             List<String> parameterNames = getParameterNames(constructorTransaction);
-            //Type[] parameterTypes = constructorTransaction.getGenericParameterTypes();
+            Type[] parameterTypes = constructorTransaction.getGenericParameterTypes();
             Object[] paramContent = new Object[parameterTransaction.length];
             int i = 0;
-            for (Parameter param : parameterTransaction) {
-                if (param.getType().getSimpleName().equalsIgnoreCase("Account"))
-                    paramContent[i++] = acc;
-                else {
-                    System.out.print(parameterNames.get(i) + " : ");
-                    String in = scanner.nextLine();
-                    if (param.getType().getSimpleName().equals("long")) {
-                        paramContent[i++] = Long.parseLong(in);
-                    } else if (param.getType().getSimpleName().equals("int")) {
-                        paramContent[i++] = Integer.parseInt(in);
+            paramContent[i++] = acc;
+
+            TransactionForm transactionForm = new TransactionForm(TransactionType, parameterNames);
+            synchronized (transactionForm) {
+                try {
+                    transactionForm.wait();
+                } catch (InterruptedException e) {
+                    /* do nothing */
+                }
+                String[] arrParam = transactionForm.getUserInputs();
+                for (String strParam : arrParam) {
+                    if (parameterTypes[i].getTypeName().equals("double")) {
+                        paramContent[i++] = Double.parseDouble(strParam);
+                    } else if (parameterTypes[i].getTypeName().equals("int")) {
+                        paramContent[i++] = Integer.parseInt(strParam);
                     } else {
-                        paramContent[i++] = in;
+                        paramContent[i++] = strParam;
                     }
                 }
             }
-            //ERROR NOT RESOLVED//
+            transactionForm.dispose();
+
             Transaction tr = (Transaction)constructorTransaction.newInstance(paramContent);
             pendingTrans.add(tr);
         } catch (Exception e) {

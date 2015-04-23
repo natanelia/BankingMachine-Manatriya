@@ -21,7 +21,7 @@ public class CheckBalance implements Command {
      */
     private void showBalance(){
        JFrame frame = new JFrame("SALDO REKENING");
-        frame.add(new JLabel("Rp" + account.getAccountID()));
+        frame.add(new JLabel(account.getCurrency() + " " + String.format("%.2f",account.getSaldo())));
         frame.setSize(300, 150);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setVisible(true);

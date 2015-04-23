@@ -9,7 +9,7 @@ public class PaySPP extends Transaction {
     private String schoolID;
     private String studentID;
 
-    public PaySPP(Account account, String school_id, String student_id, int amount) {
+    public PaySPP(Account account, String school_id, String student_id, double amount) {
         super(account, amount);
         schoolID = school_id;
         studentID = student_id;

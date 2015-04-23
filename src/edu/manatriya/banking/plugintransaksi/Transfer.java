@@ -9,7 +9,7 @@ public class Transfer extends Transaction {
     private String destinationAccountID;
     private int transferDelay;
 
-    public Transfer(Account account, String to_account_id, int transfer_delay, int amount) {
+    public Transfer(Account account, String to_account_id, int transfer_delay, double amount) {
         super(account, amount);
         destinationAccountID = to_account_id;
         transferDelay = transfer_delay;

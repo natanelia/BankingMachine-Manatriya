@@ -8,7 +8,7 @@ import edu.manatriya.banking.akunbanking.Account;
 public class PayElectricity extends Transaction {
     private String electricityID;
 
-    public PayElectricity(Account account, String electricity_id, int amount) {
+    public PayElectricity(Account account, String electricity_id, double amount) {
         super( account, amount);
         electricityID = electricity_id;
         transactionName = this.getClass().getSimpleName();

@@ -9,7 +9,7 @@ public class PayPhoneBill extends Transaction {
     private String phoneNumber;
     private String provider;
 
-    public PayPhoneBill(Account account, String phone_number, String provider, int amount) {
+    public PayPhoneBill(Account account, String phone_number, String provider, double amount) {
         super(account, amount);
         this.phoneNumber = phone_number;
         this.provider = provider;

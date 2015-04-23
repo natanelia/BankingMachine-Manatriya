@@ -1,5 +1,7 @@
 package edu.manatriya.banking;
 
+import edu.manatriya.banking.PengolahNonTransaksi.Command;
+import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionFactory;
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
 import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionProcessor;
@@ -34,7 +36,7 @@ public class ATMMachine {
                 try {
                     mainform.wait();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    /* do nothing */
                 }
                 mainform.setSubmitted(false);
                 String accountID = mainform.getAccountID();
@@ -55,20 +57,19 @@ public class ATMMachine {
             synchronized (mainmenuform){
                 mainmenuform.wait();
                 String command = mainmenuform.getCommand().replace(" ","");
-                System.out.println(command.replace(" ",""));
                 doCommand(command);
             }
-            //doCommand(inputScanner.nextLine());
         }
     }
 
     private void doCommand(String cmd) {
         try {
-            NonTransactionProcessor cmdProcessor = new NonTransactionProcessor(cmd,acc);
-            cmdProcessor.process();
-            acc = cmdProcessor.getAccount();
-        }
-        catch (Exception e) {
+            NonTransactionFactory nonTransactionFactory = new NonTransactionFactory();
+            Command command = nonTransactionFactory.getCommand(cmd, acc);
+            command.execute();
+            if (cmd.equalsIgnoreCase("AccountSignIn"))
+                acc = ((AccountSignIn)command).getAccount();
+        } catch (Exception e) {
             try {
                 transactionProcessor.generateForm(cmd);
                 transactionProcessor.startAll();

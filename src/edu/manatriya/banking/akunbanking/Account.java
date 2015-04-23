@@ -25,7 +25,7 @@ public abstract class Account{
         this.password = password;
         this.name = "";
         this.currency = "";
-        this.saldo = saldo;
+        this.saldo = 0;
         transactionHistory = new ArrayList<String[]>();
     }
 
@@ -33,12 +33,13 @@ public abstract class Account{
         transactionHistory = new ArrayList<String[]>();
         accountFileName = _accountFileName;
         File fileTransaction = new File(accountFileName);
+        accountID = fileTransaction.getName().replace(".acc","");
         try {
             Scanner accountScanner = new Scanner(fileTransaction);
             password = accountScanner.nextLine();
             name = accountScanner.nextLine();
             currency = accountScanner.nextLine();
-            saldo = Long.parseLong(accountScanner.nextLine());
+            saldo = Double.parseDouble(accountScanner.nextLine());
 
             while (accountScanner.hasNextLine()) {
                 String[] rowTransaction = accountScanner.nextLine().split("\\|\\|");

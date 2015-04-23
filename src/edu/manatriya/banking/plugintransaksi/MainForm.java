@@ -1,9 +1,6 @@
 package edu.manatriya.banking.plugintransaksi;
-import com.intellij.uiDesigner.core.GridLayoutManager;
-import edu.manatriya.banking.ATMMachine;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Created by KEVIN on 21/04/2015.
@@ -15,15 +12,14 @@ public class MainForm extends JFrame {
     private int numLabel = labels.length;
     private JLabel label;
     private char[] password;
-    private JTextField textbox;
+    private JTextField textBox;
     private JButton submitButton;
     private JPanel pane;
 
     private boolean submitted = false;
     private boolean accepted = true;
     private JPasswordField passwordField;
-    private JLabel passwordlabel;
-
+    private JLabel passwordLabel;
 
     public MainForm() {
         super("MainForm");
@@ -32,32 +28,17 @@ public class MainForm extends JFrame {
         this.setSize(500,this.getHeight());
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
-
-  /*      pane.setLayout(new GridLayout(3, 1, 10, 10));
-
-
-        label.setLabelFor(textbox);
-        setContentPane(pane);
-
-        passwordlabel.setLabelFor(passwordField);
-
-        pane.add(textbox);
-        pane.add(label);
-        pane.add(passwordField);
-        pane.add(passwordlabel);
-        pane.add(submitButton);*/
         submitButton.addActionListener (new java.awt.event.ActionListener() {
                                          public void actionPerformed(java.awt.event.ActionEvent evt) {
                                              submitButton_Click();
                                          }
-                                     }
-        );
+                                     });
         pack();
         setVisible(true);
     }
 
     private synchronized void submitButton_Click(){
-        setAccountID(textbox.getText());
+        setAccountID(textBox.getText());
         setPassword(passwordField.getPassword());
         notify();
         setSubmitted(true);
@@ -66,7 +47,7 @@ public class MainForm extends JFrame {
     public void setAccepted(boolean acc){
         this.accepted =  acc;
         if (accepted)
-            JOptionPane.showMessageDialog(null, "Login berhasil");
+            JOptionPane.showMessageDialog(null, "Login success!");
         else
             JOptionPane.showMessageDialog(null, "Username not valid");
     }

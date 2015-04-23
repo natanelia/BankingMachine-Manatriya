@@ -7,7 +7,9 @@ import edu.manatriya.banking.akunbanking.Account;
  */
 public class NonTransactionFactory {
     public Command getCommand(String cmd, Account acc) {
-        if (cmd.equals("AccountSignOut")){
+        if (cmd.equals("AccountSignIn")) {
+            return new AccountSignIn(acc);
+        } else if (cmd.equals("AccountSignOut")){
             return new AccountSignOut(acc);
         } else if (cmd.equals("CheckBalance")){
             return new CheckBalance(acc);

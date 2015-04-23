@@ -21,19 +21,24 @@ public class AccountSignIn implements Command {
      * Mengecek apakah accountID yang ingin melakukan sign in sudah ada dalam database (file eksternal)
      *
      * @param accountID
+     * @param password
      */
     private Account getValidAccount(String accountID, String password) {
-        String filename = "out/Accounts/CR" + accountID + ".acc";
+        String filename = "out\\Accounts\\CR" + accountID + ".acc";
         File f = new File(filename);
         if (!f.exists()) {
-            filename = "out/Accounts/DE" + accountID + ".acc";
+            filename = "out\\Accounts\\DE" + accountID + ".acc";
             f = new File(filename);
         }
         try {
             Scanner s = new Scanner(f);
-            if (s.nextLine().equals(password))
-                return (f.getName().startsWith("DE")) ? new DebitAccount(filename) : new CreditAccount(filename);
-            else
+            if (s.nextLine().equals(password)) {
+                s.close();
+                if (f.getName().startsWith("DE"))
+                    return new DebitAccount(filename);
+                else
+                    return new CreditAccount(filename);
+            } else
                 return null;
         } catch (FileNotFoundException e) {
             return null;
