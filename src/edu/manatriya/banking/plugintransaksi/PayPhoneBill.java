@@ -9,11 +9,11 @@ public class PayPhoneBill extends Transaction {
     private String phoneNumber;
     private String provider;
 
-    public PayPhoneBill(Account _acc, String _phoneNumber, String _provider, int _amount) {
-        super(_acc, _amount);
-        phoneNumber = _phoneNumber;
-        provider = _provider;
-        transactionName = this.getClass().getSimpleName();
+    public PayPhoneBill(Account account, String phone_number, String provider, int amount) {
+        super(account, amount);
+        this.phoneNumber = phone_number;
+        this.provider = provider;
+        this.transactionName = this.getClass().getSimpleName();
     }
 
     public String getPhoneNumber() {

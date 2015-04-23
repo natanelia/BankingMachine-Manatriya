@@ -6,18 +6,17 @@ import edu.manatriya.banking.akunbanking.Account;
  * Created by Natan Elia on 4/12/2015.
  */
 public class PayElectricity extends Transaction {
-    private String elecID;
+    private String electricityID;
 
-    public PayElectricity(Account _acc, String _elecID, int _amount) {
-        super( _acc, _amount);
-        elecID = _elecID;
+    public PayElectricity(Account account, String electricity_id, int amount) {
+        super( account, amount);
+        electricityID = electricity_id;
         transactionName = this.getClass().getSimpleName();
     }
 
-    public String getElecID() {
-        return elecID;
+    public String getElectricityID() {
+        return electricityID;
     }
-
 
     @Override
     public synchronized void run() {

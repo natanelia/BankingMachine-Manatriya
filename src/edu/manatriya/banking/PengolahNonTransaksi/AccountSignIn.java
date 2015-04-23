@@ -40,9 +40,11 @@ public class AccountSignIn implements Command {
         }
     }
 
+    public Account getAccount() { return account; }
 
     @Override
     public void execute(){
-        account.setAccount(getValidAccount(account.getAccountID(), account.getPassword()));
+        account = getValidAccount(account.getAccountID(), account.getPassword());
+        //account.setAccount(getValidAccount(account.getAccountID(), account.getPassword()));
     }
 }

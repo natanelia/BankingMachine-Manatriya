@@ -10,10 +10,10 @@ import java.util.Date;
 public abstract class Transaction extends Thread {
     protected Account acc;
     protected String transactionName;
-    protected long amount;
+    protected double amount;
     protected String description;
 
-    public Transaction(Account _acc, long _amount) {
+    public Transaction(Account _acc, double _amount) {
         acc = _acc;
         amount = _amount;
         transactionName = this.getClass().getSimpleName();
@@ -28,11 +28,11 @@ public abstract class Transaction extends Thread {
         acc = _account;
     }
 
-    public long getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(long _amount) {
+    public void setAmount(double _amount) {
         amount = _amount;
     }
 
@@ -53,6 +53,6 @@ public abstract class Transaction extends Thread {
     }
 
     protected void addToAccount(){
-        acc.addSuccessfulTransaction(this.toString());
+        acc.addTransactionToHistory(this.toString());
     }
 }

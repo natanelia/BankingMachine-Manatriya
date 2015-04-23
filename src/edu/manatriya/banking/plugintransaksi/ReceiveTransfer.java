@@ -6,23 +6,17 @@ import edu.manatriya.banking.akunbanking.Account;
  * Created by Natan Elia on 4/12/2015.
  */
 public class ReceiveTransfer extends Transaction {
-    private String bankName;
-    private String accountID;
+    private String sourceAccountID;
 
-    public ReceiveTransfer(Account _acc, String _bankName, String _accountID, int _amount) {
-        super(_acc, _amount);
-        bankName = _bankName;
-        accountID = _accountID;
+    public ReceiveTransfer(Account account, String bank_name, String source_account_id, int amount) {
+        super(account, amount);
+        sourceAccountID = sourceAccountID;
         transactionName = this.getClass().getSimpleName();
-        setDescription("FROM: " + getBankName() + "|" + "ID: " + getAccountID());
+        setDescription("FROM ID: " + sourceAccountID);
     }
 
-    public String getBankName() {
-        return bankName;
-    }
-
-    public String getAccountID() {
-        return accountID;
+    public String getSourceAccountID() {
+        return sourceAccountID;
     }
 
     @Override

@@ -6,22 +6,22 @@ import edu.manatriya.banking.akunbanking.Account;
  * Created by Natan Elia on 4/12/2015.
  */
 public class PaySPP extends Transaction {
-    private String idSekolah;
-    private String idSiswa;
+    private String schoolID;
+    private String studentID;
 
-    public PaySPP(Account _acc, String _idSekolah, String _idSiswa, int _amount) {
-        super(_acc, _amount);
-        idSekolah = _idSekolah;
-        idSiswa = _idSiswa;
+    public PaySPP(Account account, String school_id, String student_id, int amount) {
+        super(account, amount);
+        schoolID = school_id;
+        studentID = student_id;
         transactionName = this.getClass().getSimpleName();
     }
 
-    public String getIdSekolah() {
-        return idSekolah;
+    public String getSchoolID() {
+        return schoolID;
     }
 
-    public String getIdSiswa() {
-        return idSiswa;
+    public String getStudentID() {
+        return studentID;
     }
 
     @Override

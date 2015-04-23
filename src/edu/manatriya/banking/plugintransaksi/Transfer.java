@@ -6,41 +6,42 @@ import edu.manatriya.banking.akunbanking.Account;
  * Created by Natan Elia on 4/12/2015.
  */
 public class Transfer extends Transaction {
-    private String bankName;
-    private String accountID;
-    private int duration;
+    private String destinationAccountID;
+    private int transferDelay;
 
-    public Transfer(Account _acc, String _bankName, String _accountID, int _duration, int _amount) {
-        super(_acc, _amount);
-        bankName = _bankName;
-        accountID = _accountID;
-        duration = _duration;
+    public Transfer(Account account, String to_account_id, int transfer_delay, int amount) {
+        super(account, amount);
+        destinationAccountID = to_account_id;
+        transferDelay = transfer_delay;
         transactionName = this.getClass().getSimpleName();
-        setDescription("TO: " + getBankName() + "|" + "ID: " + getAccountID());
+        setDescription("TO ID: " + getDestinationAccountID());
     }
 
-    public String getBankName() {
-        return bankName;
+    public String getDestinationAccountID() {
+        return destinationAccountID;
     }
 
-    public String getAccountID() {
-        return accountID;
+    public void setDestinationAccountID(String destinationAccountID) {
+        this.destinationAccountID = destinationAccountID;
     }
 
-    public int getDuration() {
-        return duration;
+    public int getTransferDelay() {
+        return transferDelay;
     }
 
-    public void setDuration(int _duration) {
-        duration = _duration;
+    public void setTransferDelay(int transferDelay) {
+        this.transferDelay = transferDelay;
     }
 
     @Override
     public synchronized void run() {
         try {
-            sleep(getDuration() * 1000);
+            sleep(getTransferDelay() * 1000);
             acc.updateSaldo(-amount);
             addToAccount();
+
+
+
             System.out.println("Transfer succeeded");
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
