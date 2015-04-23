@@ -49,7 +49,7 @@ public class MainForm extends JFrame {
         if (accepted)
             JOptionPane.showMessageDialog(null, "Login success!");
         else
-            JOptionPane.showMessageDialog(null, "Username not valid");
+            JOptionPane.showMessageDialog(null, "Invalid account ID or password");
     }
 
     public char[] getPassword() {

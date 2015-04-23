@@ -18,6 +18,7 @@ public class mainMenuForm extends JFrame implements ActionListener{
     private JButton signOutButton;
     private JButton convertAccountCurrencyButton;
     private JPanel Panel;
+    private JButton createNewAccountButton;
     private String command;
 
     public String getCommand() {
@@ -32,14 +33,14 @@ public class mainMenuForm extends JFrame implements ActionListener{
         super("Main Menu Form");
         setSize(500, 500);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        Panel.setLayout(new GridLayout(4,2));
-        Panel.add(checkBalanceButton);
-        Panel.add(paymentButton);
-        Panel.add(transferButton);
-        Panel.add(openSavingAccountButton);
-        Panel.add(showTransactionHistoryButton);
-        Panel.add(signOutButton);
-        Panel.add(convertAccountCurrencyButton);
+//        Panel.setLayout(new GridLayout(4,2));
+//        Panel.add(checkBalanceButton);
+//        Panel.add(paymentButton);
+//        Panel.add(transferButton);
+//        Panel.add(openSavingAccountButton);
+//        Panel.add(showTransactionHistoryButton);
+//        Panel.add(signOutButton);
+//        Panel.add(convertAccountCurrencyButton);
         setContentPane(Panel);
         checkBalanceButton.addActionListener(this);
         paymentButton.addActionListener(this);
