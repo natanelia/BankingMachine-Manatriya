@@ -37,7 +37,9 @@ public class ShowTransactionHistory implements Command {
             int k = i-1;
             String[] transaction = acc.getTransactionHistoryAt(i);
             for (int j = 0; j < transaction.length;j++){
-                rowData[k][j] = transaction[j];
+                String transaksi  = transaction[j];
+                transaksi.replaceAll("|","\n");
+                rowData[k][j] = transaksi;
             }
         }
 

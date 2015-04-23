@@ -20,7 +20,7 @@ public class CheckBalance implements Command {
      * Menampilkan saldo dari account
      */
     private void showBalance(){
-       JFrame frame = new JFrame("SALDO REKENING")
+       JFrame frame = new JFrame("SALDO REKENING");
         frame.add(new JLabel("Rp" + account.getAccountID()));
         frame.setSize(300, 150);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
