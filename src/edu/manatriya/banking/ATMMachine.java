@@ -4,6 +4,9 @@ import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
 import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionProcessor;
 import edu.manatriya.banking.pengolahtransaksi.TransactionProcessor;
+import edu.manatriya.banking.plugintransaksi.MainForm;
+import edu.manatriya.banking.plugintransaksi.mainMenuForm;
+
 import java.security.InvalidParameterException;
 import java.util.Scanner;
 
@@ -18,15 +21,39 @@ public class ATMMachine {
         acc = null;
     }
 
-    public void run(){
+    public void run() throws InterruptedException {
         Scanner inputScanner = new Scanner(System.in);
-        while(acc==null) {
-            String accountID = inputScanner.nextLine();
-            doCommand("AccountSignIn", accountID);
-        }
+        MainForm mainform = new MainForm();
+
+        do {
+            //String accountID = inputScanner.nextLine();
+            synchronized (mainform) {
+                try {
+                    mainform.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                mainform.setSubmitted(false);
+                String accountID = mainform.getAccountID();
+                doCommand("AccountSignIn", accountID);
+                if (acc == null) {
+                    mainform.setAccepted(false);
+                }
+            }
+        } while (acc==null);
+        mainform.setAccepted(true);
+        mainform.dispose();
+
+        mainMenuForm mainmenuform = new mainMenuForm();
         transactionProcessor = new TransactionProcessor(acc);
         while (acc != null) {
-            doCommand(inputScanner.nextLine());
+            synchronized (mainmenuform){
+                mainmenuform.wait();
+                String command = mainmenuform.getCommand().replace(" ","");
+                System.out.println(command.replace(" ",""));
+                doCommand(command);
+            }
+            //doCommand(inputScanner.nextLine());
         }
     }
 
