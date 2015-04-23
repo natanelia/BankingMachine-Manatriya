@@ -4,6 +4,8 @@ import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.CreditAccount;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  * Created by Marco Orlando on 4/11/2015.
@@ -26,13 +28,16 @@ public class AccountSignIn implements Command {
         if (!f.exists()) {
             filename = "out/Accounts/DE" + accountID + ".acc";
             f = new File(filename);
-            if (f.exists())
-                return (new DebitAccount(filename));
-        } else {
-            return (new CreditAccount(filename));
         }
-
-        return null;
+        try {
+            Scanner s = new Scanner(f);
+            if (s.nextLine().equals(password))
+                return (f.getName().startsWith("DE")) ? new DebitAccount(filename) : new CreditAccount(filename);
+            else
+                return null;
+        } catch (FileNotFoundException e) {
+            return null;
+        }
     }
 
 

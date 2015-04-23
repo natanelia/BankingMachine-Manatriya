@@ -6,9 +6,6 @@ import org.w3c.dom.ranges.RangeException;
  * Created by KEVIN on 14/04/2015.
  */
 public class DebitAccount extends Account {
-    public DebitAccount() {
-        super();
-    }
 
     public DebitAccount(String accountFileName) {
         super(accountFileName);
@@ -18,8 +15,8 @@ public class DebitAccount extends Account {
         super(c);
     }
 
-    public DebitAccount(String accountID, String currency, double saldo) {
-        super(accountID, currency, saldo);
+    public DebitAccount(String accountID, String password) {
+        super(accountID, password);
     }
 
     public void updateSaldo(double amount) {

@@ -19,19 +19,10 @@ public abstract class Account{
     protected double saldo;
     protected ArrayList<String[]> transactionHistory;
 
-    public Account() {
-        accountID = "";
-        accountFileName = "";
-        password = "";
-        currency = "";
-        saldo = 0;
-        transactionHistory = new ArrayList<String[]>();
-    }
-
-    public Account(String accountID, String currency, double saldo) {
+    public Account(String accountID, String password) {
         this.accountID = accountID;
         this.accountFileName = "";
-        this.password = "";
+        this.password = password;
         this.name = "";
         this.currency = "";
         this.saldo = saldo;
@@ -44,8 +35,8 @@ public abstract class Account{
         File fileTransaction = new File(accountFileName);
         try {
             Scanner accountScanner = new Scanner(fileTransaction);
-            name = accountScanner.nextLine();
             password = accountScanner.nextLine();
+            name = accountScanner.nextLine();
             currency = accountScanner.nextLine();
             saldo = Long.parseLong(accountScanner.nextLine());
 
@@ -102,6 +93,13 @@ public abstract class Account{
             saldo = a.saldo;
             transactionHistory = new ArrayList<String[]>(a.transactionHistory.size());
             transactionHistory.addAll(a.transactionHistory);
+        } else {
+            accountID = null;
+            accountFileName = null;
+            password = null;
+            currency = null;
+            saldo = 0;
+            transactionHistory = null;
         }
     }
 

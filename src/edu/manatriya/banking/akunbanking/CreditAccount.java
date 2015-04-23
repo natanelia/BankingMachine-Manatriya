@@ -14,8 +14,8 @@ public class CreditAccount extends Account {
         super(c);
     }
 
-    public CreditAccount(String accountID, String currency, double saldo) {
-        super(accountID, currency, saldo);
+    public CreditAccount(String accountID, String password) {
+        super(accountID, password);
     }
 
     public void updateSaldo(double amount){

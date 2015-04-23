@@ -23,7 +23,7 @@ public class AccountSignOut implements Command {
      */
     @Override
     public void execute() {
-        account.setAccount(new DebitAccount());
+        account.setAccount(null);
     }
 
 

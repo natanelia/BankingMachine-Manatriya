@@ -25,6 +25,8 @@ public class ATMMachine {
         Scanner inputScanner = new Scanner(System.in);
         MainForm mainform = new MainForm();
 
+        String accID;
+        String password;
         do {
             //String accountID = inputScanner.nextLine();
             synchronized (mainform) {
@@ -71,11 +73,5 @@ public class ATMMachine {
                 System.err.println("Command not found!");
             }
         }
-    }
-
-    private void doCommand(String cmd, String accID) {
-        AccountSignIn NTP = new AccountSignIn(accID);
-        NTP.execute();
-        acc = NTP.getAccount();
     }
 }
