@@ -147,6 +147,7 @@ public class TransactionProcessor {
 
 	//Menghilangkan Transaction dari runningTrans
     public void stop(int runningTransID){
+        runningTrans.get(runningTransID).interrupt();
         runningTrans.remove(runningTransID);
     }
 

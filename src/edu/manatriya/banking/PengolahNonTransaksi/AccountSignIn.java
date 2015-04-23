@@ -1,6 +1,7 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
+import edu.manatriya.banking.akunbanking.CreditAccount;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import java.io.File;
 
@@ -45,7 +46,7 @@ public class AccountSignIn implements Command {
             if (f.exists())
                 setAccount(new DebitAccount(filename));
         } else {
-            setAccount(new Account(filename));
+            setAccount(new CreditAccount(filename));
         }
         if (!f.exists()) {
             setAccount(null);

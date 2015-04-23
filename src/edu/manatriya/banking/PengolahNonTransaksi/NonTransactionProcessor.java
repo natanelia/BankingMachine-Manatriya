@@ -79,9 +79,6 @@ public class NonTransactionProcessor {
 
 
     /**
-     * Method-method
-     */
-    /**
      * Memroses command dengan menghidupkan dan mengeksekusi kelas yang sesuai
      */
     public void process(){

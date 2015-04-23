@@ -1,16 +1,21 @@
-/*
 package edu.manatriya.banking.akunbanking;
 
-*/
 /**
  * Created by KEVIN on 14/04/2015.
- *//*
+ */
 
 public class CreditAccount extends Account {
-        public CreditAccount(String accID, String accName, long accSaldo){
-            super(accID,accName,accSaldo);
-    }
-        public CreditAccount(String filename,String filedir) {super(filename,filedir);};
-}
 
-*/
+    public CreditAccount(String accountFileName) {
+        super(accountFileName);
+    }
+
+    public CreditAccount(CreditAccount c) {
+        super(c);
+    }
+
+    public void updateSaldo(double amount){
+        double tempSaldo = getSaldo() + amount;
+        setSaldo(tempSaldo);
+    }
+}
