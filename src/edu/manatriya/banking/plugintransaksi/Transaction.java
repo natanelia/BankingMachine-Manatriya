@@ -53,6 +53,6 @@ public abstract class Transaction extends Thread {
     }
 
     protected void addToAccount(){
-        acc.addSuccessfulTransaction(this.toString());
+        //acc.addSuccessfulTransaction(this.toString());
     }
 }

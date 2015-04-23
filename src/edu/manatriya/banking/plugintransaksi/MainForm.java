@@ -1,4 +1,5 @@
 package edu.manatriya.banking.plugintransaksi;
+import com.intellij.uiDesigner.core.GridLayoutManager;
 import edu.manatriya.banking.ATMMachine;
 
 import javax.swing.*;
@@ -12,32 +13,39 @@ public class MainForm extends JFrame {
     private String accountID=null;
     private String[] labels = {"AccountID"};
     private int numLabel = labels.length;
-    private final JLabel label;
+    private JLabel label;
+    private char[] password;
     private JTextField textbox;
     private JButton submitButton;
     private JPanel pane;
 
     private boolean submitted = false;
     private boolean accepted = true;
+    private JPasswordField passwordField;
+    private JLabel passwordlabel;
 
 
     public MainForm() {
         super("MainForm");
-        setSize(100, 100);
-        pane = new JPanel(new BorderLayout());
-        pane.setLayout(new GridLayout(1, 1));
-        label = new JLabel(labels[0]);
-        pane.add(label);
 
+        setContentPane(pane);
+        this.setSize(500,this.getHeight());
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        textbox = new JTextField(20);
+
+
+  /*      pane.setLayout(new GridLayout(3, 1, 10, 10));
+
 
         label.setLabelFor(textbox);
-        pane.add(textbox);
         setContentPane(pane);
 
-        submitButton = new JButton("SignIn");
-        pane.add(submitButton);
+        passwordlabel.setLabelFor(passwordField);
+
+        pane.add(textbox);
+        pane.add(label);
+        pane.add(passwordField);
+        pane.add(passwordlabel);
+        pane.add(submitButton);*/
         submitButton.addActionListener (new java.awt.event.ActionListener() {
                                          public void actionPerformed(java.awt.event.ActionEvent evt) {
                                              submitButton_Click();
@@ -50,6 +58,7 @@ public class MainForm extends JFrame {
 
     private synchronized void submitButton_Click(){
         setAccountID(textbox.getText());
+        setPassword(passwordField.getPassword());
         notify();
         setSubmitted(true);
     }
@@ -60,6 +69,14 @@ public class MainForm extends JFrame {
             JOptionPane.showMessageDialog(null, "Login berhasil");
         else
             JOptionPane.showMessageDialog(null, "Username not valid");
+    }
+
+    public char[] getPassword() {
+        return password;
+    }
+
+    public void setPassword(char[] password) {
+        this.password = password;
     }
 
     public void setAccountID(String accountID) {

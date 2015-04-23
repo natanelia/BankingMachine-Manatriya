@@ -3,6 +3,7 @@ package edu.manatriya.banking;
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
 import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionProcessor;
+import edu.manatriya.banking.akunbanking.DebitAccount;
 import edu.manatriya.banking.pengolahtransaksi.TransactionProcessor;
 import edu.manatriya.banking.plugintransaksi.MainForm;
 import edu.manatriya.banking.plugintransaksi.mainMenuForm;
@@ -37,7 +38,9 @@ public class ATMMachine {
                 }
                 mainform.setSubmitted(false);
                 String accountID = mainform.getAccountID();
-                doCommand("AccountSignIn", accountID);
+                String accountPassword = new String(mainform.getPassword());
+                acc = new DebitAccount(accountID,accountPassword);
+                doCommand("AccountSignIn");
                 if (acc == null) {
                     mainform.setAccepted(false);
                 }
