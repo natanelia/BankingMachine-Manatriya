@@ -1,6 +1,7 @@
 package edu.manatriya.banking.plugintransaksi;
 
 import javax.swing.*;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 /**
  * Created by KEVIN on 21/04/2015.
@@ -24,8 +25,15 @@ public class MainForm extends JFrame {
     public MainForm() {
         super("MainForm");
 
+        try {
+            UIManager.setLookAndFeel(new NimbusLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         setContentPane(pane);
-        this.setSize(500,this.getHeight());
+        this.setSize(500, this.getHeight());
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         submitButton.addActionListener (new java.awt.event.ActionListener() {

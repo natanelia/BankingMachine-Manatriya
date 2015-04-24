@@ -1,6 +1,9 @@
 package edu.manatriya.banking.plugintransaksi;
 
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
+
 import javax.swing.*;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +21,6 @@ public class mainMenuForm extends JFrame implements ActionListener{
     private JButton signOutButton;
     private JButton convertAccountCurrencyButton;
     private JPanel Panel;
-    private JButton createNewAccountButton;
     private String command;
 
     public String getCommand() {
@@ -31,16 +33,15 @@ public class mainMenuForm extends JFrame implements ActionListener{
 
     public mainMenuForm(){
         super("Main Menu Form");
+
+        try {
+            UIManager.setLookAndFeel(new NimbusLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         setSize(500, 500);
+        this.setLocationRelativeTo(null);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-//        Panel.setLayout(new GridLayout(4,2));
-//        Panel.add(checkBalanceButton);
-//        Panel.add(paymentButton);
-//        Panel.add(transferButton);
-//        Panel.add(openSavingAccountButton);
-//        Panel.add(showTransactionHistoryButton);
-//        Panel.add(signOutButton);
-//        Panel.add(convertAccountCurrencyButton);
         setContentPane(Panel);
         checkBalanceButton.addActionListener(this);
         paymentButton.addActionListener(this);

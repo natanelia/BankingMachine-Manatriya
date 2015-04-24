@@ -4,7 +4,6 @@ import edu.manatriya.banking.PengolahNonTransaksi.Command;
 import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionFactory;
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
-import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionProcessor;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import edu.manatriya.banking.pengolahtransaksi.TransactionProcessor;
 import edu.manatriya.banking.plugintransaksi.MainForm;
