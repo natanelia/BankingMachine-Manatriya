@@ -1,6 +1,7 @@
 package edu.manatriya.banking.pengolahtransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
+import edu.manatriya.banking.plugintransaksi.Payment;
 import edu.manatriya.banking.plugintransaksi.Transaction;
 import jdk.internal.org.objectweb.asm.ClassReader;
 import jdk.internal.org.objectweb.asm.tree.ClassNode;
@@ -50,7 +51,15 @@ public class TransactionProcessor {
 
     public void generateForm(String TransactionType) throws Exception {
         try {
-            Scanner scanner = new Scanner(System.in);
+            //Scanner scanner = new Scanner(System.in);
+            if (TransactionType.equalsIgnoreCase("Payment")){
+                Payment paymentForm = new Payment(TransactionType);
+                synchronized (paymentForm){
+                    paymentForm.wait();
+                }
+                TransactionType = paymentForm.getKindOfPayment();
+                paymentForm.dispose();
+            }
             Class classTransaction = Class.forName("edu.manatriya.banking.plugintransaksi." + TransactionType).asSubclass(Transaction.class);
             @SuppressWarnings("unchecked")
             Constructor constructorTransaction = classTransaction.getConstructors()[0];
