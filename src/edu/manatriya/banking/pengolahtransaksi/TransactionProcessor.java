@@ -40,7 +40,7 @@ public class TransactionProcessor {
     public Transaction getRunningTrans(int runningTransID ){
         return (Transaction)runningTrans.get(runningTransID);
     }
-	
+
     public Transaction getPendingTrans(){
         return (Transaction)pendingTrans.element();
     }
@@ -52,7 +52,6 @@ public class TransactionProcessor {
     public void generateForm(String TransactionType) throws Exception {
         try {
             //Scanner scanner = new Scanner(System.in);
-
             if (TransactionType.equalsIgnoreCase("Payment")){
                 Payment paymentForm = new Payment(TransactionType);
                 synchronized (paymentForm){
@@ -74,6 +73,7 @@ public class TransactionProcessor {
             Object[] paramContent = new Object[parameterTransaction.length];
             int i = 0;
             paramContent[i++] = acc;
+            String[] arrParam;
 
             TransactionForm transactionForm = new TransactionForm(TransactionType, paramFriendlyNames);
             synchronized (transactionForm) {
@@ -82,22 +82,30 @@ public class TransactionProcessor {
                 } catch (InterruptedException e) {
                     /* do nothing */
                 }
-                String[] arrParam = transactionForm.getUserInputs();
-                for (String strParam : arrParam) {
-                    if (parameterTypes[i].getTypeName().equals("double")) {
-                        paramContent[i++] = Double.parseDouble(strParam);
-                    } else if (parameterTypes[i].getTypeName().equals("int")) {
-                        paramContent[i++] = Integer.parseInt(strParam);
-                    } else {
-                        paramContent[i++] = strParam;
+
+                arrParam = transactionForm.getUserInputs();
+                System.out.println(arrParam[0]);
+                if ( !arrParam[0].isEmpty() ){
+                    for (String strParam : arrParam) {
+                        if (parameterTypes[i].getTypeName().equals("double")) {
+                            paramContent[i++] = Double.parseDouble(strParam);
+                        } else if (parameterTypes[i].getTypeName().equals("int")) {
+                            paramContent[i++] = Integer.parseInt(strParam);
+                        } else {
+                            paramContent[i++] = strParam;
+                        }
                     }
                 }
             }
             transactionForm.dispose();
 
-            Transaction tr = (Transaction)constructorTransaction.newInstance(paramContent);
-            pendingTrans.add(tr);
+            if ( !arrParam[0].isEmpty()){
+                Transaction tr = (Transaction)constructorTransaction.newInstance(paramContent);
+                pendingTrans.add(tr);
+            }
+
         } catch (Exception e) {
+            e.printStackTrace();
             throw e;
         }
     }
@@ -165,15 +173,15 @@ public class TransactionProcessor {
         }
     }
 
-	//Menghilangkan Transaction dari runningTrans
+    //Menghilangkan Transaction dari runningTrans
     public void stop(int runningTransID){
         runningTrans.get(runningTransID).interrupt();
         runningTrans.remove(runningTransID);
     }
 
-    
+
     public void addTranstoQueue(Transaction transaction){
-		pendingTrans.add(transaction);
-	}
+        pendingTrans.add(transaction);
+    }
 
 }
