@@ -3,6 +3,7 @@ package edu.manatriya.banking.PengolahNonTransaksi;
 import edu.manatriya.banking.akunbanking.Account;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -23,7 +24,7 @@ public class CheckBalance implements Command {
      * Menampilkan saldo dari account
      */
     private void showBalance(){
-       JFrame frame = new JFrame("SALDO REKENING");
+       JFrame frame = new JFrame("Saldo Rekening");
 
         DecimalFormat df = new DecimalFormat(
                 "#,##0.00",
@@ -36,9 +37,21 @@ public class CheckBalance implements Command {
         accountID.setHorizontalAlignment(JLabel.CENTER);
         a.add(accountID);
 
+        JLabel accountName = new JLabel(account.getName());
+        accountName.setHorizontalAlignment(JLabel.CENTER);
+        a.add(accountName);
 
-        a.add(new JLabel(account.getName()));
-        a.add(new JLabel("Saldo: " + account.getCurrency() + " " + df.format(value.floatValue())));
+        JLabel accountSaldo = new JLabel(account.getCurrency() + " " + df.format(value.floatValue()));
+        accountSaldo.setHorizontalAlignment(JLabel.CENTER);
+        a.add(accountSaldo);
+
+        TitledBorder accID = new TitledBorder("Account ID");
+        TitledBorder accName = new TitledBorder("Account Name");
+        TitledBorder accSaldo = new TitledBorder("Account Balance");
+        accountID.setBorder(accID);
+        accountName.setBorder(accName);
+        accountSaldo.setBorder(accSaldo);
+
         frame.setContentPane(a);
         frame.setSize(300, 150);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
