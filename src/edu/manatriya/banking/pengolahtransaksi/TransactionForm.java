@@ -14,6 +14,7 @@ public class TransactionForm extends JFrame{
 	public TransactionForm( String title, List<String> formLabels) {
 		super( title );
 		setSize( 500, 300 );
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		
 		// Creates a panel to hold all components
 		JPanel panel = new JPanel( new BorderLayout() );
@@ -32,18 +33,15 @@ public class TransactionForm extends JFrame{
 		panel.add( submitButton);
 		JButton cancelButton = new JButton( "Cancel" );
 		panel.add( cancelButton);
-
-		JButton helpButton = new JButton( "Help" );
-		panel.add( helpButton);
 		
 		//action listener
-		WindowAdapter windowCloser = new WindowAdapter() {
+		/*WindowAdapter windowCloser = new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
 		};
 		
-		addWindowListener( windowCloser );
+		addWindowListener( windowCloser );*/
 		submitButton.addActionListener (new java.awt.event.ActionListener () {
 			public void actionPerformed (java.awt.event.ActionEvent evt) {
 				submitButton_Click ();
@@ -54,12 +52,6 @@ public class TransactionForm extends JFrame{
 			public void actionPerformed (java.awt.event.ActionEvent evt) {
 				cancelButton_Click ();
 			} 
-		});
- 
-		helpButton.addActionListener (new java.awt.event.ActionListener () {
-			public void actionPerformed (java.awt.event.ActionEvent evt) {
-				helpButton_Click ();
-			}
 		});
  
 		setContentPane(panel);
@@ -81,11 +73,7 @@ public class TransactionForm extends JFrame{
 	};
  
 	private void cancelButton_Click(){
-		JOptionPane.showMessageDialog(null, "Cancel Click","Cancel Title", 0);
-	}
- 
-	private void helpButton_Click(){
-		JOptionPane.showMessageDialog(null, "Help Click","Help Title",0);
+		this.dispose();
 	}
 
 

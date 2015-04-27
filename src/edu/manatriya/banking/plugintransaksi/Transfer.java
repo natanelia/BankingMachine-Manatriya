@@ -1,6 +1,7 @@
 package edu.manatriya.banking.plugintransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
+import edu.manatriya.banking.akunbanking.DebitAccount;
 
 /**
  * Created by Natan Elia on 4/12/2015.
@@ -40,7 +41,7 @@ public class Transfer extends Transaction {
             acc.updateSaldo(-amount);
             addToAccount();
 
-
+            Account destAccount;
 
             System.out.println("Transfer succeeded");
         } catch (InterruptedException e) {

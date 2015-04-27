@@ -1,8 +1,11 @@
 package edu.manatriya.banking.PengolahNonTransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
+import edu.manatriya.banking.akunbanking.AccountFactory;
 import edu.manatriya.banking.akunbanking.CreditAccount;
 import edu.manatriya.banking.akunbanking.DebitAccount;
+
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -23,33 +26,24 @@ public class AccountSignIn implements Command {
      * @param accountID
      * @param password
      */
-    private Account getValidAccount(String accountID, String password) {
-        String filename = "out\\Accounts\\CR" + accountID + ".acc";
+    private Account getValidAccount(String accountID, String password) throws Exception {
+        String filename = "out\\Accounts\\" + accountID + ".acc";
         File f = new File(filename);
         if (!f.exists()) {
-            filename = "out\\Accounts\\DE" + accountID + ".acc";
-            f = new File(filename);
-        }
-        try {
-            Scanner s = new Scanner(f);
-            if (s.nextLine().equals(password)) {
-                s.close();
-                if (f.getName().startsWith("DE"))
-                    return new DebitAccount(filename);
-                else
-                    return new CreditAccount(filename);
-            } else
-                return null;
-        } catch (FileNotFoundException e) {
+            AccountFactory accountFactory = new AccountFactory();
+            return accountFactory.getAccount(filename);
+        } else
             return null;
-        }
     }
 
     public Account getAccount() { return account; }
 
     @Override
-    public void execute(){
-        account = getValidAccount(account.getAccountID(), account.getPassword());
-        //account.setAccount(getValidAccount(account.getAccountID(), account.getPassword()));
+    public void execute() {
+        try {
+            account = getValidAccount(account.getAccountID(), account.getPassword());
+        } catch (Exception e) {
+            account = null;
+        }
     }
 }
