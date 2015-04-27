@@ -32,7 +32,6 @@ public class PaymentForm extends JFrame implements ActionListener{
 
     public PaymentForm(){
         super("Payment");
-        System.out.println("test3");
 
         try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
@@ -47,20 +46,18 @@ public class PaymentForm extends JFrame implements ActionListener{
         setContentPane(Panel);
 
         File f = new File("out/production/BankingMachine-Manatriya/edu/manatriya/banking/plugintransaksi");
-        System.out.println("test10");
         String[] plugin = f.list();
         ArrayList<String> payPlugin = new ArrayList<String>();
 
         for (int i = 0 ; i < plugin.length; i++){
-            if (plugin[i].contains("Pay")){
+            if (plugin[i].contains("Pay") && !plugin[i].contains("Payment")){
                 payPlugin.add(plugin[i]);
             }
         }
 
         payPluginButton = new JButton[payPlugin.size()];
-        System.out.println("test5");
         for (int i = 0 ; i < payPluginButton.length ; i++){
-            payPluginButton[i] = new JButton(payPlugin.get(i));
+            payPluginButton[i] = new JButton(payPlugin.get(i).replace(".class",""));
             payPluginButton[i].addActionListener(this);
             Panel.add(payPluginButton[i]);
         }

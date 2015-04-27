@@ -52,9 +52,7 @@ public class TransactionProcessor {
     public void generateForm(String TransactionType) throws Exception {
         try {
             //Scanner scanner = new Scanner(System.in);
-            System.out.println("test1");
             if (TransactionType.equalsIgnoreCase("Payment")){
-                System.out.println("test2");
                 PaymentForm paymentForm = new PaymentForm();
                 synchronized (paymentForm){
                     paymentForm.wait();
