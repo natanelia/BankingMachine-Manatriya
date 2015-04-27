@@ -47,13 +47,14 @@ public class ATMMachine {
                 }
             }
         } while (acc==null);
-        AccountAutoSaver accAutoSaver = new AccountAutoSaver(acc, 5);
-        accAutoSaver.run();
+
         mainform.setAccepted(true);
         mainform.dispose();
 
         mainMenuForm mainmenuform = new mainMenuForm();
         transactionProcessor = new TransactionProcessor(acc);
+        AccountAutoSaver accAutoSaver = new AccountAutoSaver(acc, 5);
+        accAutoSaver.start();
         while (acc != null) {
             synchronized (mainmenuform){
                 try {
