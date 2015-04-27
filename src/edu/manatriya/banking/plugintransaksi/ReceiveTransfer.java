@@ -10,7 +10,7 @@ public class ReceiveTransfer extends Transaction {
 
     public ReceiveTransfer(Account account, String source_account_id, double amount) {
         super(account, amount);
-        this.sourceAccountID = sourceAccountID;
+        this.sourceAccountID = source_account_id;
         transactionName = this.getClass().getSimpleName();
         setDescription("FROM ID: " + sourceAccountID);
     }

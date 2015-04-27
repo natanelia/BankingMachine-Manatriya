@@ -1,6 +1,7 @@
 package edu.manatriya.banking.plugintransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
+import edu.manatriya.banking.akunbanking.AccountFactory;
 
 import java.io.*;
 
@@ -61,12 +62,20 @@ public class OpenSavingAccount extends  Transaction{
                     pw.println(currency);
                     pw.println(amount);
                     pw.println("DATE||TYPE||DESCRIPTION||AMOUNT");
+                    try {
+                        AccountFactory accountFactory = new AccountFactory();
+                        Account destAccount = accountFactory.getAccount("out\\Accounts\\" + getNewAccountID() + ".acc");
+                        ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
+                        receiveTransfer.start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                     pw.flush();
                     pw.close();
                 }
             } catch (FileNotFoundException e) {
-                System.err.println("");
+                /* do nothing */
             } catch (IOException e) {
                 System.err.println("Account can't be saved.");
             }
