@@ -11,6 +11,7 @@ public class ConvertAccountCurrency extends  Transaction {
     public ConvertAccountCurrency(Account account, String new_currency) {
         super(account, 0);
         newCurrency = new_currency;
+        description = "CONVERTED TO: " + newCurrency;
         transactionName = this.getClass().getSimpleName();
     }
 
@@ -25,5 +26,6 @@ public class ConvertAccountCurrency extends  Transaction {
     @Override
     public synchronized void run() {
         acc.changeCurrency(newCurrency);
+        addToAccount();
     }
 }

@@ -41,21 +41,28 @@ public class Transfer extends Transaction {
     @Override
     public synchronized void run() {
         try {
+            AccountFactory accountFactory = new AccountFactory();
+            Account destAccount = accountFactory.getAccount("out\\Accounts\\" + destinationAccountID + ".acc");
+            String destCurrency = destAccount.getCurrency();
+            destAccount.changeCurrency(acc.getCurrency());
+            ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
+
             sleep(getTransferDelay() * 1000);
+
+
+            receiveTransfer.start();
+            receiveTransfer.join();
+            destAccount.changeCurrency(destCurrency);
+            destAccount.saveAccount();
             acc.updateSaldo(-amount);
             addToAccount();
 
-            AccountFactory accountFactory = new AccountFactory();
-            try {
-                Account destAccount = accountFactory.getAccount("out\\Accounts\\" + destinationAccountID + ".acc");
-                ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
-                receiveTransfer.start();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Destination account is not found.", "", JOptionPane.ERROR_MESSAGE);
-            }
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Destination account is not found.", "", JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
 

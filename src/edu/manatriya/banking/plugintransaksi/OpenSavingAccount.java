@@ -2,7 +2,9 @@ package edu.manatriya.banking.plugintransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.AccountFactory;
+import org.w3c.dom.ranges.RangeException;
 
+import javax.swing.*;
 import java.io.*;
 
 /**
@@ -16,7 +18,7 @@ public class OpenSavingAccount extends  Transaction{
 
     public OpenSavingAccount(Account account, String new_account_id, String password, String currency, double amount, String name){
         super(account, amount);
-        this.newAccountID = new_account_id;
+        this.newAccountID = "DE" + new_account_id;
         this.password = password;
         this.currency = currency;
         this.name = name;
@@ -49,39 +51,55 @@ public class OpenSavingAccount extends  Transaction{
 
     @Override
     public synchronized void run() {
-        String filename = "out/Accounts/DE" + newAccountID + ".acc";
+        String filename = "out/Accounts/" + newAccountID + ".acc";
         File f = new File(filename);
+
+        String oldCurrency = acc.getCurrency();
         if (!f.exists()) {
             //file created
             try {
+                acc.changeCurrency(this.getCurrency());
+                acc.updateSaldo(-amount);
                 if (f.createNewFile()) {
                     PrintWriter pw = new PrintWriter(f);
 
                     //mengisi data akun
+                    pw.println(password);
                     pw.println(name);
                     pw.println(currency);
                     pw.println(amount);
                     pw.println("DATE||TYPE||DESCRIPTION||AMOUNT");
-                    try {
-                        AccountFactory accountFactory = new AccountFactory();
-                        Account destAccount = accountFactory.getAccount("out\\Accounts\\" + getNewAccountID() + ".acc");
-                        ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
-                        receiveTransfer.start();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
 
                     pw.flush();
                     pw.close();
+                    try {
+                        AccountFactory accountFactory = new AccountFactory();
+                        Account destAccount = accountFactory.getAccount("out/Accounts/" + getNewAccountID() + ".acc");
+                        ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
+                        receiveTransfer.start();
+                        receiveTransfer.join();
+                        destAccount.saveAccount();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    addToAccount();
                 }
             } catch (FileNotFoundException e) {
                 /* do nothing */
             } catch (IOException e) {
-                System.err.println("Account can't be saved.");
+                final String errMsg = "Account can't be saved.";
+                System.err.println(errMsg);
+                JOptionPane.showMessageDialog(null,errMsg,"",JOptionPane.ERROR_MESSAGE);
+            } catch (RangeException e) {
+                System.err.println(e.getMessage());
+                JOptionPane.showMessageDialog(null,e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                acc.changeCurrency(oldCurrency);
             }
-
         } else {
-            System.out.println("Account is already registered.");
+            final String errMsg = "Account is already registered.";
+            System.err.println(errMsg);
+            JOptionPane.showMessageDialog(null,errMsg,"",JOptionPane.ERROR_MESSAGE);
         }
     }
 }
