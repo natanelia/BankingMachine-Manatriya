@@ -141,8 +141,8 @@ public abstract class Account{
         File fileTransaction = new File(accountFileName);
         try {
             PrintWriter accWriter = new PrintWriter(fileTransaction);
-            accWriter.println(name);
             accWriter.println(password);
+            accWriter.println(name);
             accWriter.println(currency);
             accWriter.println(saldo);
             for (String[] lineArrayTransaction : transactionHistory) {
