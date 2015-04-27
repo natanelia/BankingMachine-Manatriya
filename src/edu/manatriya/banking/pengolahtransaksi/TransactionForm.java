@@ -1,16 +1,15 @@
 package edu.manatriya.banking.pengolahtransaksi;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
 import java.lang.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class TransactionForm extends JFrame{
 	private JTextField[] allLabelsTextField;
-
+	private JLabel[] allLabels;
 	public TransactionForm( String title, List<String> formLabels) {
 		super( title );
 		setSize( 500, 300 );
@@ -20,7 +19,7 @@ public class TransactionForm extends JFrame{
 		JPanel panel = new JPanel( new BorderLayout() );
 		panel.setLayout( new GridLayout(10,2) );
 
-		JLabel[] allLabels = new JLabel[formLabels.size() - 1];
+		allLabels = new JLabel[formLabels.size() - 1];
 		allLabelsTextField = new JTextField[formLabels.size() - 1];
 		for (int i = 0 ; i < formLabels.size() - 1 ; i++){
 			allLabels[i] = new JLabel(formLabels.get(i + 1));
@@ -45,13 +44,13 @@ public class TransactionForm extends JFrame{
 
 		cancelButton.addActionListener (new java.awt.event.ActionListener () {
 			public void actionPerformed (java.awt.event.ActionEvent evt) {
-				cancelButton_Click ();
+				cancelButton_Click();
 			}
 		});
 
 		helpButton.addActionListener (new java.awt.event.ActionListener () {
 			public void actionPerformed (java.awt.event.ActionEvent evt) {
-				helpButton_Click ();
+				helpButton_Click();
 			}
 		});
 
@@ -71,6 +70,7 @@ public class TransactionForm extends JFrame{
 
 	//penangan event
 	private synchronized void submitButton_Click(){
+		this.showResult();
 		notify();
 	};
 
@@ -85,4 +85,26 @@ public class TransactionForm extends JFrame{
 	private void helpButton_Click(){
 		JOptionPane.showMessageDialog(null, "Help Click","Help Title",0);
 	}
+
+	private void showResult(){
+		JFrame frame = new JFrame("Success");
+
+		JPanel Panel = new JPanel(new GridLayout(3,1));
+		JLabel[] resultLabel = new JLabel[allLabelsTextField.length];
+		TitledBorder[] resultTitledBorder = new TitledBorder[allLabelsTextField.length];
+
+		for (int i = 0 ; i < allLabelsTextField.length ; i++){
+			resultLabel[i] = new JLabel(allLabelsTextField[i].getText());
+			resultLabel[i].setHorizontalAlignment(JLabel.CENTER);
+			Panel.add(resultLabel[i]);
+			resultTitledBorder[i] = new TitledBorder(allLabels[i].getText());
+			resultLabel[i].setBorder(resultTitledBorder[i]);
+		}
+
+		frame.setContentPane(Panel);
+		frame.setSize(300, 150);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setVisible(true);
+	}
+
 }
