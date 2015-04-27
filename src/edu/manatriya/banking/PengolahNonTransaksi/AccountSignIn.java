@@ -29,7 +29,7 @@ public class AccountSignIn implements Command {
     private Account getValidAccount(String accountID, String password) throws Exception {
         String filename = "out\\Accounts\\" + accountID + ".acc";
         File f = new File(filename);
-        if (!f.exists()) {
+        if (f.exists()) {
             AccountFactory accountFactory = new AccountFactory();
             return accountFactory.getAccount(filename);
         } else

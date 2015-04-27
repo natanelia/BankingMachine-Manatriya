@@ -23,7 +23,7 @@ public class ATMMachine {
         acc = null;
     }
 
-    public void run() throws InterruptedException {
+    public void run() {
         Scanner inputScanner = new Scanner(System.in);
         MainForm mainform = new MainForm();
 
@@ -54,7 +54,11 @@ public class ATMMachine {
         transactionProcessor = new TransactionProcessor(acc);
         while (acc != null) {
             synchronized (mainmenuform){
-                mainmenuform.wait();
+                try {
+                    mainmenuform.wait();
+                } catch (InterruptedException e) {
+                    /* do nothing */
+                }
                 String command = mainmenuform.getCommand().replace(" ","");
                 doCommand(command);
             }

@@ -23,7 +23,7 @@ public class MainForm extends JFrame {
     private JLabel passwordLabel;
 
     public MainForm() {
-        super("MainForm");
+        super("Account Authentication");
 
         try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());

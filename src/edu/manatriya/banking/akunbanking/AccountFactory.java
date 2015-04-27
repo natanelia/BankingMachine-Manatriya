@@ -7,8 +7,10 @@ public class AccountFactory {
     public Account getAccount(String accountFileName) throws Exception {
         String filename;
         String dirs[];
-        if (accountFileName.contains("\\")) dirs = accountFileName.split("\\\\");
-        else dirs = accountFileName.split("/");
+        if (accountFileName.contains("\\"))
+            dirs = accountFileName.split("\\\\");
+        else
+            dirs = accountFileName.split("/");
 
         filename = dirs[dirs.length-1];
         if (filename.startsWith("DE")) {
