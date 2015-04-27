@@ -8,7 +8,7 @@ public class AccountAutoSaver extends Thread {
     private Account accCurrent;
     private int interval;
 
-    AccountAutoSaver(Account account, int intervalInSecond) {
+    public AccountAutoSaver(Account account, int intervalInSecond) {
         this.interval = intervalInSecond;
         assignOldAccount(account);
         accCurrent = account;

@@ -1,15 +1,15 @@
 package edu.manatriya.banking;
 
+import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
 import edu.manatriya.banking.PengolahNonTransaksi.Command;
 import edu.manatriya.banking.PengolahNonTransaksi.NonTransactionFactory;
 import edu.manatriya.banking.akunbanking.Account;
-import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
+import edu.manatriya.banking.akunbanking.AccountAutoSaver;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import edu.manatriya.banking.pengolahtransaksi.TransactionProcessor;
 import edu.manatriya.banking.plugintransaksi.MainForm;
 import edu.manatriya.banking.plugintransaksi.mainMenuForm;
 
-import java.security.InvalidParameterException;
 import java.util.Scanner;
 
 /**
@@ -47,6 +47,8 @@ public class ATMMachine {
                 }
             }
         } while (acc==null);
+        AccountAutoSaver accAutoSaver = new AccountAutoSaver(acc, 5);
+        accAutoSaver.run();
         mainform.setAccepted(true);
         mainform.dispose();
 
