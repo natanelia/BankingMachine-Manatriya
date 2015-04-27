@@ -7,6 +7,7 @@ import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.AccountAutoSaver;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import edu.manatriya.banking.pengolahtransaksi.TransactionProcessor;
+import edu.manatriya.banking.pengolahtransaksi.TransactionsAutoStarter;
 import edu.manatriya.banking.plugintransaksi.MainForm;
 import edu.manatriya.banking.plugintransaksi.mainMenuForm;
 
@@ -54,6 +55,7 @@ public class ATMMachine {
 
         mainMenuForm mainmenuform = new mainMenuForm();
         transactionProcessor = new TransactionProcessor(acc);
+        TransactionsAutoStarter transactionsAutoStarter = new TransactionsAutoStarter(transactionProcessor,1);
         while (acc != null) {
             synchronized (mainmenuform){
                 try {

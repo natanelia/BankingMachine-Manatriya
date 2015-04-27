@@ -1,7 +1,11 @@
 package edu.manatriya.banking.plugintransaksi;
 
+import com.sun.webkit.dom.RectImpl;
 import edu.manatriya.banking.akunbanking.Account;
+import edu.manatriya.banking.akunbanking.AccountFactory;
 import edu.manatriya.banking.akunbanking.DebitAccount;
+
+import javax.swing.*;
 
 /**
  * Created by Natan Elia on 4/12/2015.
@@ -41,9 +45,14 @@ public class Transfer extends Transaction {
             acc.updateSaldo(-amount);
             addToAccount();
 
-            Account destAccount;
-
-            System.out.println("Transfer succeeded");
+            AccountFactory accountFactory = new AccountFactory();
+            try {
+                Account destAccount = accountFactory.getAccount("out\\Accounts\\" + destinationAccountID + ".acc");
+                ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
+                receiveTransfer.start();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Destination account is not found.", "", JOptionPane.ERROR_MESSAGE);
+            }
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }
