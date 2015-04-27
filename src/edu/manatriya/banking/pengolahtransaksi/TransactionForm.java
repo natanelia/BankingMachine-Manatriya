@@ -75,8 +75,6 @@ public class TransactionForm extends JFrame{
 	private void cancelButton_Click(){
 		this.dispose();
 	}
-
-
  
 	/*public static void main( String[] args ) {
 		ArrayList<String> a = new ArrayList<String>();

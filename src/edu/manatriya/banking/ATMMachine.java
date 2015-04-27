@@ -49,7 +49,7 @@ public class ATMMachine {
             }
         } while (acc==null);
         AccountAutoSaver accAutoSaver = new AccountAutoSaver(acc, 5);
-        accAutoSaver.run();
+        accAutoSaver.start();
         mainform.setAccepted(true);
         mainform.dispose();
 
