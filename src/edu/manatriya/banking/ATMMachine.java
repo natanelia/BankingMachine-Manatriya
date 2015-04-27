@@ -25,48 +25,50 @@ public class ATMMachine {
     }
 
     public void run() {
-        Scanner inputScanner = new Scanner(System.in);
-        MainForm mainform = new MainForm();
+        while (true) {
+            MainForm mainform = new MainForm();
 
-        String accID;
-        String password;
-        do {
-            //String accountID = inputScanner.nextLine();
-            synchronized (mainform) {
-                try {
-                    mainform.wait();
-                } catch (InterruptedException e) {
+            String accID;
+            String password;
+            do {
+                //String accountID = inputScanner.nextLine();
+                synchronized (mainform) {
+                    try {
+                        mainform.wait();
+                    } catch (InterruptedException e) {
                     /* do nothing */
+                    }
+                    mainform.setSubmitted(false);
+                    String accountID = mainform.getAccountID();
+                    String accountPassword = new String(mainform.getPassword());
+                    acc = new DebitAccount(accountID, accountPassword);
+                    doCommand("AccountSignIn");
+                    if (acc == null) {
+                        mainform.setAccepted(false);
+                    }
                 }
-                mainform.setSubmitted(false);
-                String accountID = mainform.getAccountID();
-                String accountPassword = new String(mainform.getPassword());
-                acc = new DebitAccount(accountID,accountPassword);
-                doCommand("AccountSignIn");
-                if (acc == null) {
-                    mainform.setAccepted(false);
+            } while (acc == null);
+            AccountAutoSaver accAutoSaver = new AccountAutoSaver(acc, 5);
+            accAutoSaver.start();
+            mainform.setAccepted(true);
+            mainform.dispose();
+
+            mainMenuForm mainmenuform = new mainMenuForm();
+            transactionProcessor = new TransactionProcessor(acc);
+            TransactionsAutoStarter transactionsAutoStarter = new TransactionsAutoStarter(transactionProcessor, 1);
+            transactionsAutoStarter.start();
+            while (acc.getAccountID() != null) {
+                synchronized (mainmenuform) {
+                    try {
+                        mainmenuform.wait();
+                    } catch (InterruptedException e) {
+                    /* do nothing */
+                    }
+                    String command = mainmenuform.getCommand().replace(" ", "");
+                    doCommand(command);
                 }
             }
-        } while (acc==null);
-        AccountAutoSaver accAutoSaver = new AccountAutoSaver(acc, 5);
-        accAutoSaver.start();
-        mainform.setAccepted(true);
-        mainform.dispose();
-
-        mainMenuForm mainmenuform = new mainMenuForm();
-        transactionProcessor = new TransactionProcessor(acc);
-        TransactionsAutoStarter transactionsAutoStarter = new TransactionsAutoStarter(transactionProcessor,1);
-        transactionsAutoStarter.start();
-        while (acc != null) {
-            synchronized (mainmenuform){
-                try {
-                    mainmenuform.wait();
-                } catch (InterruptedException e) {
-                    /* do nothing */
-                }
-                String command = mainmenuform.getCommand().replace(" ","");
-                doCommand(command);
-            }
+            mainmenuform.dispose();
         }
     }
 

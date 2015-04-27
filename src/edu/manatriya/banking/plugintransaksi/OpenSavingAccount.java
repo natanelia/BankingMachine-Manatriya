@@ -67,7 +67,7 @@ public class OpenSavingAccount extends  Transaction{
                     pw.println(password);
                     pw.println(name);
                     pw.println(currency);
-                    pw.println(amount);
+                    pw.println(0);
                     pw.println("DATE||TYPE||DESCRIPTION||AMOUNT");
 
                     pw.flush();

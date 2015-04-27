@@ -1,25 +1,15 @@
 012345
 Kevin Yauris
 IDR
-1013446.4720704722
-DATE||TYPE||DESCRIPTION||AMOUNT|
-14/04/2015||Transfer||TO: Bank Central Asia (BCA)|ID: 790111||-3000000|
-Mon Apr 27 21:06:56 ICT 2015||Transfer||TO ID: CR790112||100.0||
-Mon Apr 27 21:07:39 ICT 2015||Transfer||TO ID: CR790112||100.0||
+7229838.38492021
+DATE||TYPE||DESCRIPTION||AMOUNT||
+14/04/2015||Transfer||TO: Bank Central Asia (BCA)|ID: 790111||-3000000||
+Mon Apr 27 21:06:56 ICT 2015||Transfer||TO ID: CR790112||100.0|
+Mon Apr 27 21:07:39 ICT 2015||Transfer||TO ID: CR790112||100.0|
 Mon Apr 27 21:11:17 ICT 2015||Transfer||TO ID: DE99999||USD 10.0|
-Mon Apr 27 21:21:02 ICT 2015||Transfer||TO ID: DE99999||USD 1.0||
-Mon Apr 27 21:23:08 ICT 2015||Transfer||TO ID: DE99999||USD 1.0|
-Mon Apr 27 21:24:53 ICT 2015||ConvertAccountCurrency||||EUR 0.0||
-Mon Apr 27 21:26:07 ICT 2015||ConvertAccountCurrency||||IDR 0.0||
-Mon Apr 27 21:27:23 ICT 2015||Transfer||TO ID: DE99999||IDR 10000.0||
-Mon Apr 27 21:30:00 ICT 2015||OpenSavingAccount||||IDR 1000.0||
-Mon Apr 27 21:32:15 ICT 2015||OpenSavingAccount||||IDR 1000.0|
-Mon Apr 27 21:36:10 ICT 2015||OpenSavingAccount||||IDR 1000.0||
-Mon Apr 27 21:38:27 ICT 2015||OpenSavingAccount||||IDR 1000.0||
-Mon Apr 27 21:53:51 ICT 2015||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0||
-Mon Apr 27 21:54:42 ICT 2015||OpenSavingAccount||||EUR 100.0||
-Mon Apr 27 21:58:42 ICT 2015||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0|
-Mon Apr 27 21:59:00 ICT 2015||OpenSavingAccount||||EUR 100.0|
-Mon Apr 27 22:00:16 ICT 2015||OpenSavingAccount||||EUR 100.0||
-Mon Apr 27 22:01:27 ICT 2015||OpenSavingAccount||||EUR 100.0||
-Mon Apr 27 22:02:28 ICT 2015||OpenSavingAccount||||EUR 50.0|
+Mon Apr 27 21:21:02 ICT 2015||Transfer||TO ID: DE99999||USD 1.0|
+Mon Apr 27 21:23:08 ICT 2015||Transfer||TO ID: DE99999||USD 1.0||
+Mon Apr 27 21:24:53 ICT 2015||ConvertAccountCurrency||||EUR 0.0|
+Mon Apr 27 21:26:07 ICT 2015||ConvertAccountCurrency||||IDR 0.0|
+27-04-2015 22:10||OpenSavingAccount||||EUR 100.0|
+27-04-2015 22:12||OpenSavingAccount||||EUR 100.0|
