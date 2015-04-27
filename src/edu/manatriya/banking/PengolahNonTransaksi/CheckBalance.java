@@ -32,9 +32,13 @@ public class CheckBalance implements Command {
         BigDecimal value = new BigDecimal(String.format("%.2f",account.getSaldo()));
 
         JPanel a = new JPanel(new GridLayout(3,1));
-        a.add(new JLabel(account.getAccountID()));
+        JLabel accountID =new JLabel(account.getAccountID());
+        accountID.setHorizontalAlignment(JLabel.CENTER);
+        a.add(accountID);
+
+
         a.add(new JLabel(account.getName()));
-        a.add(new JLabel("Saldo: "+account.getCurrency() + " " + df.format(value.floatValue())));
+        a.add(new JLabel("Saldo: " + account.getCurrency() + " " + df.format(value.floatValue())));
         frame.setContentPane(a);
         frame.setSize(300, 150);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
