@@ -14,6 +14,7 @@ public class TransactionForm extends JFrame{
 	public TransactionForm( String title, List<String> formLabels) {
 		super( title );
 		setSize( 500, 300 );
+		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 		// Creates a panel to hold all components
 		JPanel panel = new JPanel( new BorderLayout() );
@@ -36,14 +37,6 @@ public class TransactionForm extends JFrame{
 		JButton helpButton = new JButton( "Help" );
 		panel.add( helpButton);
 
-		//action listener
-		WindowAdapter windowCloser = new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		};
-
-		addWindowListener(windowCloser);
 		submitButton.addActionListener (new java.awt.event.ActionListener () {
 			public void actionPerformed (java.awt.event.ActionEvent evt) {
 				submitButton_Click ();
@@ -82,19 +75,14 @@ public class TransactionForm extends JFrame{
 	};
 
 	private synchronized void cancelButton_Click(){
-
+		for (JTextField field : allLabelsTextField) {
+			field.setText("");
+		}
+		notify();
 		this.dispose();
 	}
 
 	private void helpButton_Click(){
 		JOptionPane.showMessageDialog(null, "Help Click","Help Title",0);
-	}
-
-	@Override
-	public void dispose() {
-		for (JTextField field : allLabelsTextField) {
-			field.setText("");
-		}
-		notifyAll();
 	}
 }
