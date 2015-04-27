@@ -56,6 +56,7 @@ public class ATMMachine {
         mainMenuForm mainmenuform = new mainMenuForm();
         transactionProcessor = new TransactionProcessor(acc);
         TransactionsAutoStarter transactionsAutoStarter = new TransactionsAutoStarter(transactionProcessor,1);
+        transactionsAutoStarter.start();
         while (acc != null) {
             synchronized (mainmenuform){
                 try {
