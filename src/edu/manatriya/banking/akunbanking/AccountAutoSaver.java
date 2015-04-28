@@ -34,6 +34,8 @@ public class AccountAutoSaver extends Thread {
             }
         } catch (InterruptedException e) {
             /* do nothing */
+        } catch (NullPointerException e) {
+            /* do nothing */
         }
     }
 }

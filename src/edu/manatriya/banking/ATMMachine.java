@@ -68,6 +68,11 @@ public class ATMMachine {
                     doCommand(command);
                 }
             }
+            try {
+                transactionProcessor.startAll();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             mainmenuform.dispose();
         }
     }
