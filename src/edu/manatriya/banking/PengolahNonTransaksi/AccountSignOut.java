@@ -16,7 +16,8 @@ public class AccountSignOut implements Command {
      * Mengeset account menjadi akun dummy
      */
     @Override
-    public void execute() {
+    public synchronized void execute() {
+        account.saveAccount();
         account.setAccount(null);
     }
 
