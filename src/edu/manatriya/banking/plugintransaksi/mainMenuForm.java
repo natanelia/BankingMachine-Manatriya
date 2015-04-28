@@ -31,7 +31,7 @@ public class mainMenuForm extends JFrame implements ActionListener{
     }
 
     public mainMenuForm(){
-        super("Main Menu Form");
+        super("What do you want to do?");
 
         try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());

@@ -58,7 +58,7 @@ public class Transfer extends Transaction {
             addToAccount();
 
         } catch (InterruptedException e) {
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Destination account is not found.", "", JOptionPane.ERROR_MESSAGE);
         }

@@ -150,7 +150,7 @@ public abstract class Account{
                 for (String transactionElement : lineArrayTransaction) {
                     lineTransaction.append(transactionElement.concat("||"));
                 }
-                lineTransaction.delete(lineTransaction.length()-2,lineTransaction.length()-1);
+                lineTransaction.delete(lineTransaction.length()-3,lineTransaction.length()-1);
                 accWriter.println(lineTransaction.toString());
             }
             accWriter.close();
