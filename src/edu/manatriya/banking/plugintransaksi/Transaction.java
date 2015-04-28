@@ -2,6 +2,7 @@ package edu.manatriya.banking.plugintransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -53,7 +54,7 @@ public abstract class Transaction extends Thread {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         return df.format(new Date()) + "||" + transactionName + "||" + getDescription() + "||" + acc.getCurrency() + " " + getAmount();
     }
-    
+
     protected void addToAccount(){
         acc.addTransactionToHistory(this.toString());
     }
