@@ -22,7 +22,6 @@ public class mainMenuForm extends JFrame implements ActionListener{
     private JButton convertAccountCurrencyButton;
     private JPanel Panel;
     private String command;
-
     public String getCommand() {
         return command;
     }

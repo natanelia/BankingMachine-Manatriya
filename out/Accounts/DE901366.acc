@@ -1,7 +1,7 @@
-012345
 Kevin Yauris
+012345
 IDR
-7229838.38492021
+7141028.38492021
 DATE||TYPE||DESCRIPTION||AMOUNT||
 14/04/2015||Transfer||TO: Bank Central Asia (BCA)|ID: 790111||-3000000||
 Mon Apr 27 21:06:56 ICT 2015||Transfer||TO ID: CR790112||100.0|
@@ -13,3 +13,5 @@ Mon Apr 27 21:24:53 ICT 2015||ConvertAccountCurrency||||EUR 0.0|
 Mon Apr 27 21:26:07 ICT 2015||ConvertAccountCurrency||||IDR 0.0|
 27-04-2015 22:10||OpenSavingAccount||||EUR 100.0|
 27-04-2015 22:12||OpenSavingAccount||||EUR 100.0|
+Tue Apr 28 00:37:18 ICT 2015||PaySPP||||38810.0||
+28-04-2015 01:07||PayPhoneBill||||IDR 50000.0|
