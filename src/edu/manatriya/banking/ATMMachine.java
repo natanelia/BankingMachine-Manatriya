@@ -1,3 +1,6 @@
+/**
+ * Kelas utama untk menjalank
+ */
 package edu.manatriya.banking;
 
 import edu.manatriya.banking.PengolahNonTransaksi.AccountSignIn;
@@ -11,25 +14,34 @@ import edu.manatriya.banking.pengolahtransaksi.TransactionsAutoStarter;
 import edu.manatriya.banking.plugintransaksi.MainForm;
 import edu.manatriya.banking.plugintransaksi.mainMenuForm;
 
-import java.util.Scanner;
-
 /**
  * Created by KEVIN on 14/04/2015.
  */
+
 public class ATMMachine {
     Account acc;
     TransactionProcessor transactionProcessor;
 
+    /**
+     * Konstruktor kelas ATMMachine
+     */
     public ATMMachine() {
         acc = null;
     }
 
+    /**
+     * Menciptkan MainForm untuk login, apabila username dan password yang diberikan tidak valid, akan diminta kembali username dan password
+     * AccountAutoSaver diaktifkan untuk menyimpan perubahan informasi terhadap account dalam file eksternal secara otomatis
+     * TransactionAutoStarter diaktifkan untuk dapat mengeksekusi transaksi secara berkala, apabila transaction queue memiliki isi
+     * Apabila login berhasil, maka akan dibuat mainmenuform untuk mendapatkan apa yang ingin dilakukan user
+     * Jika user mengklik salah satu menu yang disediakan maka docommand akan dipanggil dan mengeksekusi perintah yang diberikan pengguna
+     * Mainmenuform akan terus terbuka sampai user memutuskan untuk signout
+     */
     public void run() {
         while (true) {
             MainForm mainform = new MainForm();
 
             do {
-                //String accountID = inputScanner.nextLine();
                 synchronized (mainform) {
                     try {
                         mainform.wait();
@@ -77,6 +89,11 @@ public class ATMMachine {
         }
     }
 
+    /**
+     * Mencoba mengeksekusi perintah "cmd" sebagai perintah non-transaksi. Bila "cmd" bukan perintah non-transaksi, akan
+     * dijalankan sebagai perintah transaksi. Bila bukan keduanya, mengeluarkan pesan error bahwa perintah tidak terdaftar.
+     * @param cmd , sebuah string yang akan digunakan untuk menentukan perintah apa yang akan dieksekusi
+     */
     private void doCommand(String cmd) {
         try {
             NonTransactionFactory nonTransactionFactory = new NonTransactionFactory();
