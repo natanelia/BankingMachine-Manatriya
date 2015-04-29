@@ -2,19 +2,22 @@ package edu.manatriya.banking.plugintransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.AccountFactory;
-import org.w3c.dom.ranges.RangeException;
 
 import javax.swing.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
- * Created by Marco Orlando on 4/23/2015.
+ * Created by Natan on 4/23/2015.
  */
 public class OpenSavingAccount extends  Transaction{
     private String newAccountID;
     private String password;
     private String currency;
     private String name;
+
 
     public OpenSavingAccount(Account account, String new_account_id, String password, String currency, double amount, String name){
         super(account, amount);

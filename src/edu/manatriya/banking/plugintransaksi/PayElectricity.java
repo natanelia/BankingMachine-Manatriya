@@ -10,17 +10,31 @@ import javax.swing.*;
 public class PayElectricity extends Transaction {
     private String electricityID;
 
+    /**
+     * Konstruktor transaksi PayElectricity
+     * @param account Akun untuk membayar listrik
+     * @param electricity_id Nomor rekening listrik
+     * @param amount Banyak uang yang dibayarkan
+     */
     public PayElectricity(Account account, String electricity_id, double amount) {
         super( account, amount);
         electricityID = electricity_id;
         transactionName = this.getClass().getSimpleName();
     }
 
+    /**
+     * Getter nomor rekening listrik
+     * @return Nomor rekening listrik
+     */
     public String getElectricityID() {
         return electricityID;
     }
 
+
     @Override
+    /**
+     * Melakukan pembayaran listrik dengan nominal yang telah didefinisikan di konstruktor
+     */
     public synchronized void run() {
         acc.updateSaldo(-amount);
         addToAccount();

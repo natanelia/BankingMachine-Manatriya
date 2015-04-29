@@ -1,18 +1,11 @@
 package edu.manatriya.banking.plugintransaksi;
 
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
-
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import java.awt.*;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.io.File;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Parameter;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Created by KEVIN on 22/04/2015.
@@ -22,14 +15,25 @@ public class PaymentForm extends JFrame implements ActionListener{
     private JButton[] payPluginButton;
     private String kindOfPayment;
 
+    /**
+     * Getter untuk tipe pembayaran
+     * @return Tipe pembayaran
+     */
     public String getKindOfPayment() {
         return kindOfPayment;
     }
 
+    /**
+     * Setter untuk tipe pembayaran
+     * @param command Tipe pembayaran sesuai nama kelas di plugin transaksi
+     */
     public void setKindOfPayment(String command) {
         kindOfPayment = command;
     }
 
+    /**
+     * Konstruktor PaymentForm. Membentuk dan menampilkan form untuk memilih tipe pembayaran
+     */
     public PaymentForm(){
         super("Payment");
 
@@ -66,9 +70,13 @@ public class PaymentForm extends JFrame implements ActionListener{
         setVisible(true);
     }
 
+    /**
+     * Mengubah tipe pembayaran dengan tipe yang dipilih pengguna.
+     * @param e ActionEvent yang mentrigger
+     */
     public synchronized void actionPerformed(ActionEvent e) {
-        notify();
         setKindOfPayment(e.getActionCommand());
+        notify();
     }
 
 }

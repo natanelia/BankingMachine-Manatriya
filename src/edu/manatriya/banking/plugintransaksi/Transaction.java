@@ -14,6 +14,11 @@ public abstract class Transaction extends Thread {
     protected double amount;
     protected String description;
 
+    /**
+     * Konstruktor Transaction, ancestor dari semua transaksi
+     * @param _acc Akun yang dikenai transaksi
+     * @param _amount Banyak uang yang digunakan dalam transaksi
+     */
     public Transaction(Account _acc, double _amount) {
         acc = _acc;
         amount = _amount;
@@ -21,26 +26,50 @@ public abstract class Transaction extends Thread {
         description = "";
     }
 
+    /**
+     * Getter untuk Account, yaitu akun yang dikenai transaksi
+     * @return Akun yang dikenai transaksi
+     */
     public Account getAccount() {
         return acc;
     }
 
+    /**
+     * Setter untuk Account, yaitu akun yang dikenai transaksi
+     * @param _account Objek Account pengganti
+     */
     public void setAccount(Account _account) {
         acc = _account;
     }
 
+    /**
+     * Getter untuk banyak uang yang digunakan transaksi
+     * @return Banyak uang yang digunakan transaksi
+     */
     public double getAmount() {
         return amount;
     }
 
+    /**
+     * Setter untuk banyak uang yang digunakan untuk transaksi
+     * @param _amount Banyak uang yang menggantikan
+     */
     public void setAmount(double _amount) {
         amount = _amount;
     }
 
+    /**
+     * Getter untuk deskripsi dari transaksi
+     * @return Deskripsi dari transaksi
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Setter untuk deskripsi dari transaksi
+     * @param newDescription Deskripsi pengganti
+     */
     public void setDescription(String newDescription) {
         description = newDescription;
     }
@@ -49,11 +78,17 @@ public abstract class Transaction extends Thread {
     public abstract void run();
 
     @Override
+    /**
+     * Melakukan formatting secara khusus untuk pengubahan Transaction ke String
+     */
     public String toString() {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         return df.format(new Date()) + "||" + transactionName + "||" + getDescription() + "||" + acc.getCurrency() + " " + String.format("%.2f", getAmount());
     }
-    
+
+    /**
+     * Melakukan penambahan transaksi ke sejarah transaksi akun
+     */
     protected void addToAccount(){
         acc.addTransactionToHistory(this.toString());
     }

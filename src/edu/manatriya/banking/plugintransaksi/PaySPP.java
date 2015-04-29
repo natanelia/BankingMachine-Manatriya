@@ -11,6 +11,13 @@ public class PaySPP extends Transaction {
     private String schoolID;
     private String studentID;
 
+    /**
+     * Konstruktor transaksi PaySPP, untuk melakukan pembayaran uang sekolah
+     * @param account Akun untuk membayar uang sekolah
+     * @param school_id Nomor identitas rekening sekolah
+     * @param student_id Nomor identitas siswa
+     * @param amount Banyak uang untuk pembayaran uang sekolah
+     */
     public PaySPP(Account account, String school_id, String student_id, double amount) {
         super(account, amount);
         schoolID = school_id;
@@ -18,15 +25,26 @@ public class PaySPP extends Transaction {
         transactionName = this.getClass().getSimpleName();
     }
 
+    /**
+     * Getter nomor identitas rekening sekolah
+     * @return Nomor identitas rekening sekolah
+     */
     public String getSchoolID() {
         return schoolID;
     }
 
+    /**
+     * Getter nomor identitas siswa
+     * @return Nomor identitas siswa
+     */
     public String getStudentID() {
         return studentID;
     }
 
     @Override
+    /**
+     * Melakukan pembayaran uang sekolah dengan nominal yang sudah didefinisikan di konstruktor
+     */
     public synchronized void run() {
         acc.updateSaldo(-amount);
         addToAccount();

@@ -13,6 +13,13 @@ public class Transfer extends Transaction {
     private String destinationAccountID;
     private int transferDelay;
 
+    /**
+     * Transfer constructor using
+     * @param account
+     * @param to_account_id
+     * @param transfer_delay
+     * @param amount
+     */
     public Transfer(Account account, String to_account_id, int transfer_delay, double amount) {
         super(account, amount);
         destinationAccountID = to_account_id;
