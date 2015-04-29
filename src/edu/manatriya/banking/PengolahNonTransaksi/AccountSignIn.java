@@ -27,13 +27,17 @@ public class AccountSignIn implements Command {
      * @param password
      */
     private Account getValidAccount(String accountID, String password) throws Exception {
-        String filename = "out\\Accounts\\" + accountID + ".acc";
+        String filename = "out/Accounts/" + accountID + ".acc";
         File f = new File(filename);
         if (f.exists()) {
-            AccountFactory accountFactory = new AccountFactory();
-            return accountFactory.getAccount(filename);
-        } else
-            return null;
+            Scanner s = new Scanner(f);
+            String realPassword = s.nextLine();
+            if (realPassword.equals(password)) {
+                AccountFactory accountFactory = new AccountFactory();
+                return accountFactory.getAccount(filename);
+            }
+        }
+        return null;
     }
 
     public Account getAccount() { return account; }

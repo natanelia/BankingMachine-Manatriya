@@ -14,11 +14,11 @@ public class AccountAutoSaverTest {
 
     @Test
     public void testRun() throws Exception {
-        Account account = new DebitAccount("out\\Accounts\\DE901366.acc");
+        Account account = new DebitAccount("out/Accounts/DE901366.acc");
         AccountAutoSaver accAutoSaver = new AccountAutoSaver(account, 5);
         accAutoSaver.start();
         account.setSaldo(1000000);
-        File fileTransaction = new File("out\\Accounts\\DE901366.acc");
+        File fileTransaction = new File("out/Accounts/DE901366.acc");
         Scanner accountScanner = new Scanner(fileTransaction);
         String name, password, currency;
         double saldo;

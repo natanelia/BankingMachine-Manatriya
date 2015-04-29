@@ -13,7 +13,7 @@ public class AccountFactoryTest {
     public void testGetAccount() throws Exception {
         AccountFactory accountfactorytest = new AccountFactory();
         Account dummy;
-        dummy = accountfactorytest.getAccount("out\\Accounts\\DE901366.acc");
+        dummy = accountfactorytest.getAccount("out/Accounts/DE901366.acc");
         assertEquals("DE901366", dummy.getAccountID());
     }
 }

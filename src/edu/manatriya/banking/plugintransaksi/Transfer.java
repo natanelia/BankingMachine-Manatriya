@@ -1,9 +1,7 @@
 package edu.manatriya.banking.plugintransaksi;
 
-import com.sun.webkit.dom.RectImpl;
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.AccountFactory;
-import edu.manatriya.banking.akunbanking.DebitAccount;
 
 import javax.swing.*;
 
@@ -42,7 +40,7 @@ public class Transfer extends Transaction {
     public synchronized void run() {
         try {
             AccountFactory accountFactory = new AccountFactory();
-            Account destAccount = accountFactory.getAccount("out\\Accounts\\" + destinationAccountID + ".acc");
+            Account destAccount = accountFactory.getAccount("out/Accounts/" + destinationAccountID + ".acc");
             String destCurrency = destAccount.getCurrency();
             destAccount.changeCurrency(acc.getCurrency());
             ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
@@ -57,6 +55,7 @@ public class Transfer extends Transaction {
             acc.updateSaldo(-amount);
             addToAccount();
 
+            JOptionPane.showMessageDialog(null, "Your transfer has been processed.");
         } catch (InterruptedException e) {
             System.err.println(e.getMessage());
         } catch (Exception e) {

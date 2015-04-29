@@ -2,6 +2,8 @@ package edu.manatriya.banking.plugintransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 
+import javax.swing.*;
+
 /**
  * Created by Marco Orlando on 4/23/2015.
  */
@@ -27,5 +29,6 @@ public class ConvertAccountCurrency extends  Transaction {
     public synchronized void run() {
         acc.changeCurrency(newCurrency);
         addToAccount();
+        JOptionPane.showMessageDialog(null, "Your account currency has been changed.");
     }
 }
