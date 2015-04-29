@@ -100,7 +100,7 @@ public class TransactionForm extends JFrame{
 	}
 
 	private void showResult(){
-		JFrame frame = new JFrame("Success");
+		JFrame frame = new JFrame("Report");
 
 		JPanel Panel = new JPanel(new GridLayout(3,1));
 		JLabel[] resultLabel = new JLabel[allLabelsTextField.length];
