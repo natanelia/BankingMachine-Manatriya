@@ -59,7 +59,6 @@ public class TransactionProcessor {
                     paymentForm.wait();
                 }
                 TransactionType = paymentForm.getKindOfPayment();
-                System.out.println(TransactionType);
                 paymentForm.dispose();
             }
 
@@ -87,7 +86,6 @@ public class TransactionProcessor {
                 }
 
                 arrParam = transactionForm.getUserInputs();
-                System.out.println(arrParam[0]);
                 if ( !arrParam[0].isEmpty() ){
                     for (String strParam : arrParam) {
                         if (parameterTypes[i].getTypeName().equals("double")) {

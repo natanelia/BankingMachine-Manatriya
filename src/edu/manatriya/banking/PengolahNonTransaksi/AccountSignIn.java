@@ -41,7 +41,9 @@ public class AccountSignIn implements Command {
     @Override
     public void execute() {
         try {
-            account = getValidAccount(account.getAccountID(), account.getPassword());
+            Account hasil = getValidAccount(account.getAccountID(), account.getPassword());
+            account.setAccount(hasil);
+            account = hasil;
         } catch (Exception e) {
             account = null;
         }

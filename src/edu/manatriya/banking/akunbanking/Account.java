@@ -51,6 +51,26 @@ public abstract class Account{
         }
     }
 
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAccountFileName(String accountFileName) {
+        this.accountFileName = accountFileName;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setTransactionHistory(ArrayList<String[]> transactionHistory) {
+        this.transactionHistory = transactionHistory;
+    }
+
     public Account(Account a) {
         accountFileName = a.accountFileName;
         accountID = a.accountID;
@@ -150,7 +170,7 @@ public abstract class Account{
                 for (String transactionElement : lineArrayTransaction) {
                     lineTransaction.append(transactionElement.concat("||"));
                 }
-                lineTransaction.delete(lineTransaction.length()-2,lineTransaction.length()-1);
+                lineTransaction.delete(lineTransaction.length()-3,lineTransaction.length()-1);
                 accWriter.println(lineTransaction.toString());
             }
             accWriter.close();

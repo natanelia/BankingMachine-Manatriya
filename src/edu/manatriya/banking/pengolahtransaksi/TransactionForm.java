@@ -40,9 +40,6 @@ public class TransactionForm extends JFrame{
 		JButton cancelButton = new JButton( "Cancel" );
 		panel.add( cancelButton);
 
-		JButton helpButton = new JButton( "Help" );
-		panel.add( helpButton);
-
 		WindowAdapter windowCloser = new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				//System.exit(0);
@@ -62,12 +59,6 @@ public class TransactionForm extends JFrame{
 		cancelButton.addActionListener (new java.awt.event.ActionListener () {
 			public void actionPerformed (java.awt.event.ActionEvent evt) {
 				cancelButton_Click();
-			}
-		});
-
-		helpButton.addActionListener (new java.awt.event.ActionListener () {
-			public void actionPerformed (java.awt.event.ActionEvent evt) {
-				helpButton_Click();
 			}
 		});
 
@@ -98,12 +89,17 @@ public class TransactionForm extends JFrame{
 		this.dispose();
 	}
 
+<<<<<<< HEAD
 	private void helpButton_Click(){
 		JOptionPane.showMessageDialog(null, "Help Click","Help Title",0);
 	}
 
 /*	private void showResult(String[] arrParam){
 		JFrame frame = new JFrame("Report");
+=======
+	private void showResult(){
+		JFrame frame = new JFrame("Success");
+>>>>>>> origin/master
 
 		JPanel Panel = new JPanel(new GridLayout(3,1));
 		JLabel[] resultLabel = new JLabel[arrParam.length];
