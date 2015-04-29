@@ -27,8 +27,13 @@ public class ConvertAccountCurrency extends  Transaction {
 
     @Override
     public synchronized void run() {
-        acc.changeCurrency(newCurrency);
-        addToAccount();
-        JOptionPane.showMessageDialog(null, "Your account currency has been changed.");
+        try {
+            acc.changeCurrency(newCurrency);
+            addToAccount();
+            JOptionPane.showMessageDialog(null, "Your account currency has been changed.");
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

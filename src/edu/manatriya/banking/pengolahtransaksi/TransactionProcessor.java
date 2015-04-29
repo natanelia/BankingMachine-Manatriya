@@ -116,11 +116,6 @@ public class TransactionProcessor {
             }
             transactionForm.dispose();
 
-
-
-
-
-            boolean error = false;
             if (!arrParam[0].isEmpty()) {
                 Transaction tr = (Transaction) constructorTransaction.newInstance(paramContent);
                 pendingTrans.add(tr);

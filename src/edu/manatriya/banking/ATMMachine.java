@@ -28,8 +28,6 @@ public class ATMMachine {
         while (true) {
             MainForm mainform = new MainForm();
 
-            String accID;
-            String password;
             do {
                 //String accountID = inputScanner.nextLine();
                 synchronized (mainform) {
@@ -70,10 +68,13 @@ public class ATMMachine {
             }
             try {
                 transactionProcessor.startAll();
+                acc.saveAccount();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             mainmenuform.dispose();
+            transactionsAutoStarter.interrupt();
+            accAutoSaver.interrupt();
         }
     }
 
