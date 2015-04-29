@@ -8,6 +8,11 @@ import java.awt.*;
  * Created by Alberttriadrian on 4/29/2015.
  */
 public class ResultForm extends  JFrame{
+
+    /**
+     * menampilkan report dari hasil transaksi yang dilakukan
+     * @param arrParam
+     */
    public ResultForm(String[] arrParam){
        JFrame frame = new JFrame("Report");
 
