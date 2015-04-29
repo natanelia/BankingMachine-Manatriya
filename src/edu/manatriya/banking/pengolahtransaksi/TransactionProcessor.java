@@ -27,7 +27,7 @@ public class TransactionProcessor {
 
     /**
      * Constructor Transaction Processor
-     * @param _acc
+     * @param _acc          Account
      */
     public TransactionProcessor(Account _acc){
         acc = _acc;
@@ -38,24 +38,32 @@ public class TransactionProcessor {
 
     /**
      * mengeluarkan Account acc
-     * @return Account acc
+     * @return acc attribute Account
      */
     public Account getAccount(){
         return acc;
     }
 
-
+    /**
+     * Mengembalikan transaksi yang ada di list transaksi runningTrans
+     * @param runningTransID indeks transaksi yang akan dikembalikan
+     * @return Transaction transaki yang ada pada list runningTrans pada indeks ke runningTransID
+     */
     public Transaction getRunningTrans(int runningTransID ){
         return (Transaction)runningTrans.get(runningTransID);
     }
 
+    /**
+     * Mengembalikan transaksi yang ada pada Queue pendingTransaction menurut aturan FIFO
+     * @return Transaction transaksi yang ada pada queue pendingTrans
+     */
     public Transaction getPendingTrans(){
         return (Transaction)pendingTrans.element();
     }
 
     /**
      * Mengeset nilai Account acc dengan Account _acc
-     * @param _acc
+     * @param _acc Account baru yang akan di set
      */
     public void setAccount(Account _acc){
         acc = _acc;
@@ -63,12 +71,11 @@ public class TransactionProcessor {
 
     /**
      * Mengeluarkan form transaksi dengan memanfaatkan refelction untuk mengetahui transaksi apa yang ingin diakses
-     * @param TransactionType
-     * @throws Exception
+     * @param TransactionType jenis transaksi yang ingin dilakukan
+     * @throws Exception mengeluarkan exception jika
      */
     public void generateForm(String TransactionType) throws Exception {
         try {
-            //Scanner scanner = new Scanner(System.in);
             if (TransactionType.equalsIgnoreCase("Payment")){
                 PaymentForm paymentForm = new PaymentForm();
                 synchronized (paymentForm){
@@ -138,9 +145,9 @@ public class TransactionProcessor {
      * This method relies on the constructor's class loader to locate the
      * bytecode resource that defined its class.
      *
-     * @param constructor
-     * @return
-     * @throws IOException
+     * @param constructor konstruktor yang ingin di list parameternya
+     * @return List<String> daftar nama parameter
+     * @throws IOException exception Input/Output
      */
     public static List<String> getParameterNames(Constructor<?> constructor) throws IOException {
         Class<?> declaringClass = constructor.getDeclaringClass();
@@ -186,7 +193,7 @@ public class TransactionProcessor {
 
     /**
      * Menjalankan semua transaksi yang ada pada pendingTrans
-     * @throws Exception
+     * @throws Exception exception jika ada kesalahan saat menjalankan transaksi di runningTrans
      */
     public void startAll() throws Exception {
         for (int i = 0; i < pendingTrans.size(); i++ ) {
@@ -197,7 +204,7 @@ public class TransactionProcessor {
 
     /**
      * Memberhentikan semua transaksi yang sedang berjalan
-     * @param runningTransID
+     * @param runningTransID index transaksi yang akan di stop
      */
     public void stop(int runningTransID){
         runningTrans.get(runningTransID).interrupt();
@@ -206,13 +213,18 @@ public class TransactionProcessor {
 
 
     /**
-     * Menambahakan transaksi ke Queue Transaction
-     * @param transaction
+     * Menambahkan transaksi ke Queue of Transaction pendingTrans
+     * @param transaction transaksi yang akan ditambahkan pada Queue of transaction pendingTrans
      */
     public void addTranstoQueue(Transaction transaction){
         pendingTrans.add(transaction);
     }
 
+
+    /**
+     * Menambahkan transaksi ke List of transaction runningTrans
+     * @param transaction transaksi yang akan ditambahkan pada List of transaction runningTrans
+     */
     public void addTranstoList(Transaction transaction){
         runningTrans.add(transaction);
     }
