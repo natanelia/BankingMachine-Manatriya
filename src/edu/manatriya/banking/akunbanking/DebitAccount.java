@@ -2,12 +2,14 @@ package edu.manatriya.banking.akunbanking;
 
 import org.w3c.dom.ranges.RangeException;
 
+import java.io.FileNotFoundException;
+
 /**
  * Created by KEVIN on 14/04/2015.
  */
 public class DebitAccount extends Account {
 
-    public DebitAccount(String accountFileName) {
+    public DebitAccount(String accountFileName) throws FileNotFoundException {
         super(accountFileName);
     }
 

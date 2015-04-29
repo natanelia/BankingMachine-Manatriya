@@ -12,7 +12,7 @@ public class DebitAccountTest {
 
     @Test
     public void testUpdateSaldo() throws Exception {
-        Account account = new DebitAccount("out\\Accounts\\DE901366.acc");
+        Account account = new DebitAccount("out/Accounts/DEdummy.acc");
         double tempsaldo = account.getSaldo();
         account.updateSaldo(10000);
         assertEquals(tempsaldo+10000,account.getSaldo(),0);
@@ -21,7 +21,7 @@ public class DebitAccountTest {
     @Test
     public void testUpdateSaldo1() throws Exception {
         try {
-            Account account = new DebitAccount("out\\Accounts\\DE901366.acc");
+            Account account = new DebitAccount("out/Accounts/DEdummy.acc");
             double tempsaldo = account.getSaldo();
             account.updateSaldo((tempsaldo + 10000) * -1);
         }

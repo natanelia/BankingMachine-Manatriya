@@ -14,21 +14,21 @@ public class AccountAutoSaverTest {
 
     @Test
     public void testRun() throws Exception {
-        Account account = new DebitAccount("out\\Accounts\\DE901366.acc");
+        Account account = new DebitAccount("out/Accounts/DEdummy.acc");
         AccountAutoSaver accAutoSaver = new AccountAutoSaver(account, 5);
         accAutoSaver.start();
-        account.setSaldo(1000000);
-        File fileTransaction = new File("out\\Accounts\\DE901366.acc");
+        account.setSaldo(10000);
+        File fileTransaction = new File("out/Accounts/DEdummy.acc");
         Scanner accountScanner = new Scanner(fileTransaction);
         String name, password, currency;
         double saldo;
-        name = accountScanner.nextLine();
         password = accountScanner.nextLine();
+        name = accountScanner.nextLine();
         currency = accountScanner.nextLine();
         saldo = Double.parseDouble(accountScanner.nextLine());
-        //assertEquals("012345", password);
-        assertEquals("IDR", currency);
-        assertEquals(1000000, saldo, 0);
+        assertEquals("012345", password);
+        assertEquals("EUR", currency);
+        assertEquals(10000.0, saldo, 0);
 
     }
 }

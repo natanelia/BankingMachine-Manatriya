@@ -40,7 +40,7 @@ public class mainMenuForm extends JFrame implements ActionListener{
         }
         setSize(500, 500);
         this.setLocationRelativeTo(null);
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(Panel);
         checkBalanceButton.addActionListener(this);
         paymentButton.addActionListener(this);

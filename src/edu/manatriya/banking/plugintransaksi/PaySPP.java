@@ -2,6 +2,8 @@ package edu.manatriya.banking.plugintransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 
+import javax.swing.*;
+
 /**
  * Created by Natan Elia on 4/12/2015.
  */
@@ -28,5 +30,6 @@ public class PaySPP extends Transaction {
     public synchronized void run() {
         acc.updateSaldo(-amount);
         addToAccount();
+        JOptionPane.showMessageDialog(null, "Your school tuition fee has been paid.");
     }
 }

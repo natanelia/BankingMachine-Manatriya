@@ -1,11 +1,10 @@
 package edu.manatriya.banking.plugintransaksi;
 
-import com.sun.webkit.dom.RectImpl;
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.AccountFactory;
-import edu.manatriya.banking.akunbanking.DebitAccount;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
 
 /**
  * Created by Natan Elia on 4/12/2015.
@@ -42,25 +41,28 @@ public class Transfer extends Transaction {
     public synchronized void run() {
         try {
             AccountFactory accountFactory = new AccountFactory();
-            Account destAccount = accountFactory.getAccount("out\\Accounts\\" + destinationAccountID + ".acc");
+            Account destAccount = accountFactory.getAccount("out/Accounts/" + destinationAccountID + ".acc");
             String destCurrency = destAccount.getCurrency();
             destAccount.changeCurrency(acc.getCurrency());
             ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
 
+            JOptionPane.showMessageDialog(null, "Your transfer will be processed as soon as possible.");
             sleep(getTransferDelay() * 1000);
 
-
+            acc.updateSaldo(-amount);
             receiveTransfer.start();
             receiveTransfer.join();
             destAccount.changeCurrency(destCurrency);
             destAccount.saveAccount();
-            acc.updateSaldo(-amount);
             addToAccount();
 
+            System.out.printf("Transfer from %s to %s has been processed.", acc.getAccountID(), destAccount.getAccountID());
         } catch (InterruptedException e) {
             System.err.println(e.getMessage());
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Destination account is not found.", "", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+
         }
 
     }

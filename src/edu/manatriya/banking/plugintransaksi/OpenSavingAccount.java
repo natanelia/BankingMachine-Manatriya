@@ -84,6 +84,7 @@ public class OpenSavingAccount extends  Transaction{
                     }
                     addToAccount();
                 }
+                JOptionPane.showMessageDialog(null,"Your new account has been created.");
             } catch (FileNotFoundException e) {
                 /* do nothing */
             } catch (IOException e) {
