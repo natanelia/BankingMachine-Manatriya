@@ -23,6 +23,7 @@ public class PaySPP extends Transaction {
         schoolID = school_id;
         studentID = student_id;
         transactionName = this.getClass().getSimpleName();
+        this.description = "SCHID: " + schoolID + "|" + "STUID: " + studentID;
     }
 
     /**

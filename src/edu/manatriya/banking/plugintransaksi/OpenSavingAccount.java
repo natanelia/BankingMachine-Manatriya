@@ -25,6 +25,7 @@ public class OpenSavingAccount extends  Transaction{
         this.password = password;
         this.currency = currency;
         this.name = name;
+        this.description = "NEWLY OPENED: " + this.newAccountID;
 
     }
 

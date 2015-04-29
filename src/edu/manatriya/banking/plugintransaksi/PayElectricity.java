@@ -20,6 +20,7 @@ public class PayElectricity extends Transaction {
         super( account, amount);
         electricityID = electricity_id;
         transactionName = this.getClass().getSimpleName();
+        description = "ELECID: " + electricity_id;
     }
 
     /**

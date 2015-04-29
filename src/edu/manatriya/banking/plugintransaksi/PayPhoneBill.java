@@ -23,6 +23,7 @@ public class PayPhoneBill extends Transaction {
         this.phoneNumber = phone_number;
         this.provider = provider;
         this.transactionName = this.getClass().getSimpleName();
+        this.description = this.provider + "|" + phone_number;
     }
 
     /**
