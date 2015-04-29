@@ -228,4 +228,8 @@ public class TransactionProcessor {
         pendingTrans.add(transaction);
     }
 
+    public void addTranstoList(Transaction transaction){
+        runningTrans.add(transaction);
+    }
+
 }
