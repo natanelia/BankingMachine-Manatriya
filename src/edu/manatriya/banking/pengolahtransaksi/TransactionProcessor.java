@@ -7,6 +7,7 @@ import jdk.internal.org.objectweb.asm.ClassReader;
 import jdk.internal.org.objectweb.asm.tree.ClassNode;
 import jdk.internal.org.objectweb.asm.tree.LocalVariableNode;
 import jdk.internal.org.objectweb.asm.tree.MethodNode;
+import org.w3c.dom.ranges.RangeException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -101,10 +102,18 @@ public class TransactionProcessor {
             }
             transactionForm.dispose();
 
-            if ( !arrParam[0].isEmpty()){
-                Transaction tr = (Transaction)constructorTransaction.newInstance(paramContent);
+            if (!arrParam[0].isEmpty()) {
+                Transaction tr = (Transaction) constructorTransaction.newInstance(paramContent);
                 pendingTrans.add(tr);
             }
+
+            try {
+                ResultForm resultForm = new ResultForm(arrParam);
+            }
+            catch (RangeException e){
+                /* Transaction Failed */
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();

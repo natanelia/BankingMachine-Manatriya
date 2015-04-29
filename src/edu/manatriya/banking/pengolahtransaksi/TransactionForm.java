@@ -1,10 +1,14 @@
 package edu.manatriya.banking.pengolahtransaksi;
 
+import org.w3c.dom.ranges.RangeException;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.*;
 import java.util.List;
 
@@ -83,7 +87,6 @@ public class TransactionForm extends JFrame{
 
 	//penangan event
 	private synchronized void submitButton_Click(){
-		this.showResult();
 		notify();
 	};
 
@@ -99,18 +102,18 @@ public class TransactionForm extends JFrame{
 		JOptionPane.showMessageDialog(null, "Help Click","Help Title",0);
 	}
 
-	private void showResult(){
+/*	private void showResult(String[] arrParam){
 		JFrame frame = new JFrame("Report");
 
 		JPanel Panel = new JPanel(new GridLayout(3,1));
-		JLabel[] resultLabel = new JLabel[allLabelsTextField.length];
-		TitledBorder[] resultTitledBorder = new TitledBorder[allLabelsTextField.length];
+		JLabel[] resultLabel = new JLabel[arrParam.length];
+		TitledBorder[] resultTitledBorder = new TitledBorder[arrParam.length];
 
-		for (int i = 0 ; i < allLabelsTextField.length ; i++){
-			resultLabel[i] = new JLabel(allLabelsTextField[i].getText());
+		for (int i = 0 ; i < arrParam.length ; i++){
+			resultLabel[i] = new JLabel(arrParam[i]);
 			resultLabel[i].setHorizontalAlignment(JLabel.CENTER);
 			Panel.add(resultLabel[i]);
-			resultTitledBorder[i] = new TitledBorder(allLabels[i].getText());
+			resultTitledBorder[i] = new TitledBorder(arrParam[i]);
 			resultLabel[i].setBorder(resultTitledBorder[i]);
 		}
 
@@ -118,6 +121,6 @@ public class TransactionForm extends JFrame{
 		frame.setSize(300, 150);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.setVisible(true);
-	}
+	}*/
 
 }
