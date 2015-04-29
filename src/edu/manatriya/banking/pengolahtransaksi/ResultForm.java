@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * Created by Alberttriadrian on 4/29/2015.
  */
-public class ResultForm {
+public class ResultForm extends  JFrame{
    public ResultForm(String[] arrParam){
        JFrame frame = new JFrame("Report");
 

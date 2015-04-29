@@ -89,7 +89,7 @@ public class TransactionForm extends JFrame{
 		this.dispose();
 	}
 
-<<<<<<< HEAD
+
 	private void helpButton_Click(){
 		JOptionPane.showMessageDialog(null, "Help Click","Help Title",0);
 	}

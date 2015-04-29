@@ -93,7 +93,7 @@ public class OpenSavingAccount extends  Transaction{
             } catch (RangeException e) {
                 System.err.println(e.getMessage());
                 JOptionPane.showMessageDialog(null,e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
-                throw new RangeException(RangeException.BAD_BOUNDARYPOINTS_ERR, "Your balance is not sufficient for the transaction!");
+
             } finally {
                 acc.changeCurrency(oldCurrency);
             }

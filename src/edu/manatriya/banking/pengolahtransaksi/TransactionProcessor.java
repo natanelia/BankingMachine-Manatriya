@@ -100,16 +100,24 @@ public class TransactionProcessor {
             }
             transactionForm.dispose();
 
-            if (!arrParam[0].isEmpty()) {
-                Transaction tr = (Transaction) constructorTransaction.newInstance(paramContent);
-                pendingTrans.add(tr);
-            }
 
+
+
+
+            boolean error = false;
             try {
-                ResultForm resultForm = new ResultForm(arrParam);
+                if (!arrParam[0].isEmpty()) {
+                    Transaction tr = (Transaction) constructorTransaction.newInstance(paramContent);
+                    pendingTrans.add(tr);
+                }
             }
             catch (RangeException e){
                 /* Transaction Failed */
+                error = true;
+            }
+
+            if (!error){
+                ResultForm resultForm = new ResultForm(arrParam);
             }
 
 
