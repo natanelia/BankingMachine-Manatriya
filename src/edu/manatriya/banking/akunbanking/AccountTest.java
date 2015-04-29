@@ -60,7 +60,7 @@ public class AccountTest {
     @Test
     public void testGetCurrency() throws Exception {
         Account account = new DebitAccount("out/Accounts/DE901366.acc");
-        assertEquals("IDR",account.getCurrency());
+        assertEquals("EUR",account.getCurrency());
     }
 
     @Test
@@ -71,7 +71,7 @@ public class AccountTest {
         for(int i = 0; i< test.get(1).length;i++) {
              temp = temp+test.get(1)[i];
         }
-        assertEquals("14/04/2015TransferTO: Bank Central Asia (BCA)|ID: 790111-3000000|", temp );
+        assertEquals("29-04-2015 14:12ConvertAccountCurrencyCONVERTED TO: EUREUR 0.0", temp );
     }
 
     @Test
@@ -81,7 +81,7 @@ public class AccountTest {
         for(int i = 0; i< account.getTransactionHistoryAt(1).length;i++) {
             temp = temp + account.getTransactionHistoryAt(1)[i];
         }
-        assertEquals("14/04/2015TransferTO: Bank Central Asia (BCA)|ID: 790111-3000000|", temp);
+        assertEquals("29-04-2015 14:12ConvertAccountCurrencyCONVERTED TO: EUREUR 0.0", temp);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class AccountTest {
             currency = accountScanner.nextLine();
             saldo = Double.parseDouble(accountScanner.nextLine());
             //assertEquals("012345", password);
-            assertEquals("IDR",currency);
+            assertEquals("EUR",currency);
             assertEquals(1000000,saldo,0);
     }
 
