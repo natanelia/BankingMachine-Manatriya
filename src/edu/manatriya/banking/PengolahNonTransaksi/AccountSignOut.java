@@ -12,6 +12,10 @@ public class AccountSignOut implements Command {
         account= _account;
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
     /**
      * Mengeset account menjadi akun dummy
      */

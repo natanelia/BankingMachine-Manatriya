@@ -7,6 +7,7 @@ import jdk.internal.org.objectweb.asm.ClassReader;
 import jdk.internal.org.objectweb.asm.tree.ClassNode;
 import jdk.internal.org.objectweb.asm.tree.LocalVariableNode;
 import jdk.internal.org.objectweb.asm.tree.MethodNode;
+import org.w3c.dom.ranges.RangeException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +25,10 @@ public class TransactionProcessor {
     private List<Transaction> runningTrans;
     private Account acc;
 
-    //Constructor
+    /**
+     * Constructor Transaction Processor
+     * @param _acc
+     */
     public TransactionProcessor(Account _acc){
         acc = _acc;
         pendingTrans = new LinkedList<Transaction>();
@@ -32,10 +36,14 @@ public class TransactionProcessor {
 
     }
 
-    //Gettter and Setter
+    /**
+     * mengeluarkan Account acc
+     * @return Account acc
+     */
     public Account getAccount(){
         return acc;
     }
+
 
     public Transaction getRunningTrans(int runningTransID ){
         return (Transaction)runningTrans.get(runningTransID);
@@ -45,10 +53,19 @@ public class TransactionProcessor {
         return (Transaction)pendingTrans.element();
     }
 
+    /**
+     * Mengeset nilai Account acc dengan Account _acc
+     * @param _acc
+     */
     public void setAccount(Account _acc){
         acc = _acc;
     }
 
+    /**
+     * Mengeluarkan form transaksi dengan memanfaatkan refelction untuk mengetahui transaksi apa yang ingin diakses
+     * @param TransactionType
+     * @throws Exception
+     */
     public void generateForm(String TransactionType) throws Exception {
         try {
             //Scanner scanner = new Scanner(System.in);
@@ -99,10 +116,26 @@ public class TransactionProcessor {
             }
             transactionForm.dispose();
 
-            if ( !arrParam[0].isEmpty()){
-                Transaction tr = (Transaction)constructorTransaction.newInstance(paramContent);
-                pendingTrans.add(tr);
+
+
+
+
+            boolean error = false;
+            try {
+                if (!arrParam[0].isEmpty()) {
+                    Transaction tr = (Transaction) constructorTransaction.newInstance(paramContent);
+                    pendingTrans.add(tr);
+                }
             }
+            catch (RangeException e){
+                /* Transaction Failed */
+                error = true;
+            }
+
+            if (!error){
+                ResultForm resultForm = new ResultForm(arrParam);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -166,6 +199,10 @@ public class TransactionProcessor {
         return null;
     }
 
+    /**
+     * Menjalankan semua transaksi yang ada pada pendingTrans
+     * @throws Exception
+     */
     public void startAll() throws Exception {
         for (int i = 0; i < pendingTrans.size(); i++ ) {
             runningTrans.add(pendingTrans.remove());
@@ -173,13 +210,20 @@ public class TransactionProcessor {
         }
     }
 
-    //Menghilangkan Transaction dari runningTrans
+    /**
+     * Memberhentikan semua transaksi yang sedang berjalan
+     * @param runningTransID
+     */
     public void stop(int runningTransID){
         runningTrans.get(runningTransID).interrupt();
         runningTrans.remove(runningTransID);
     }
 
 
+    /**
+     * Menambahakan transaksi ke Queue Transaction
+     * @param transaction
+     */
     public void addTranstoQueue(Transaction transaction){
         pendingTrans.add(transaction);
     }

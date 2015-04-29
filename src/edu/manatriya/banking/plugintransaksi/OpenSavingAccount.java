@@ -93,6 +93,7 @@ public class OpenSavingAccount extends  Transaction{
             } catch (RangeException e) {
                 System.err.println(e.getMessage());
                 JOptionPane.showMessageDialog(null,e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+
             } finally {
                 acc.changeCurrency(oldCurrency);
             }

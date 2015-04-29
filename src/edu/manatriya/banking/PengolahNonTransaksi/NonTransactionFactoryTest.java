@@ -5,8 +5,6 @@ import edu.manatriya.banking.akunbanking.DebitAccount;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class NonTransactionFactoryTest extends TestCase {
 
     @Test
@@ -16,6 +14,4 @@ public class NonTransactionFactoryTest extends TestCase {
         Command a = ntf.getCommand("AccountSignIn",acc);
         assert(acc.getAccountID() != null && acc.getCurrency() != null && acc.getName() != null);
     }
-
-
 }
