@@ -51,7 +51,7 @@ public abstract class Transaction extends Thread {
     @Override
     public String toString() {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        return df.format(new Date()) + "||" + transactionName + "||" + getDescription() + "||" + acc.getCurrency() + " " + getAmount();
+        return df.format(new Date()) + "||" + transactionName + "||" + getDescription() + "||" + acc.getCurrency() + " " + String.format("%.2f", getAmount());
     }
     
     protected void addToAccount(){

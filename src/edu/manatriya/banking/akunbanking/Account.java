@@ -6,6 +6,7 @@ package edu.manatriya.banking.akunbanking;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -123,10 +124,9 @@ public abstract class Account{
         }
     }
 
-    public void changeCurrency(String newCurrency) {
+    public void changeCurrency(String newCurrency) throws FileNotFoundException, Exception {
         if (!currency.equalsIgnoreCase(newCurrency)) {
             String currentCurrency = currency;
-            try {
                 File curFile = new File("out/CurrencyExchange.dat");
                 Scanner curScanner = new Scanner(curFile);
                 double newCurrencyRate = 0;
@@ -142,11 +142,12 @@ public abstract class Account{
                 }
                 curScanner.close();
 
-                saldo = newCurrencyRate / currentCurrencyRate * saldo;
-                currency = newCurrency;
-            } catch (FileNotFoundException e) {
-                System.err.println("Currency exchange database not found.");
-            }
+                if (newCurrencyRate != 0 && currentCurrencyRate != 0) {
+                    saldo = newCurrencyRate / currentCurrencyRate * saldo;
+                    currency = newCurrency;
+                } else {
+                    throw new Exception("Currency is not yet supported in our system: " + newCurrency);
+                }
         }
     }
 
@@ -158,6 +159,13 @@ public abstract class Account{
 
     public void saveAccount() {
         File fileTransaction = new File(accountFileName);
+        if (!fileTransaction.exists()) {
+            try {
+                fileTransaction.createNewFile();
+            } catch (IOException e) {
+                System.err.println("Account file can't be created.");
+            }
+        }
         try {
             PrintWriter accWriter = new PrintWriter(fileTransaction);
             accWriter.println(password);

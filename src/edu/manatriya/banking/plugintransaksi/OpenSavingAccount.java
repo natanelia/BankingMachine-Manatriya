@@ -91,12 +91,16 @@ public class OpenSavingAccount extends  Transaction{
                 final String errMsg = "Account can't be saved.";
                 System.err.println(errMsg);
                 JOptionPane.showMessageDialog(null,errMsg,"",JOptionPane.ERROR_MESSAGE);
-            } catch (RangeException e) {
+            } catch (Exception e) {
                 System.err.println(e.getMessage());
-                JOptionPane.showMessageDialog(null,e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
-
+                JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
             } finally {
-                acc.changeCurrency(oldCurrency);
+                try {
+                    acc.changeCurrency(oldCurrency);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } else {
             final String errMsg = "Account is already registered.";

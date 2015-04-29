@@ -1,10 +1,24 @@
 012345
 Kevin Yauris
-EUR
-6505.04
+USD
+1068688.53
 DATE||TYPE||DESCRIPTION||AMOUNT
 29-04-2015 14:12||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
 29-04-2015 14:13||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0
 29-04-2015 14:15||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
 29-04-2015 14:22||OpenSavingAccount||||IDR 1.0E7
 29-04-2015 14:28||ReceiveTransfer||FROM ID: DE901367||IDR 100000.0
+29-04-2015 14:44||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0
+29-04-2015 14:44||ConvertAccountCurrency||CONVERTED TO: DER||DER 0.0
+29-04-2015 15:10||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
+29-04-2015 15:17||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0
+29-04-2015 15:17||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
+29-04-2015 15:17||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
+29-04-2015 15:18||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0
+29-04-2015 15:18||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
+29-04-2015 15:18||ConvertAccountCurrency||CONVERTED TO: USD||USD 0.0
+29-04-2015 15:20||OpenSavingAccount||||IDR 1.0E7
+29-04-2015 15:26||OpenSavingAccount||||IDR 1.0E7
+29-04-2015 15:34||OpenSavingAccount||||IDR 10000000.00
+29-04-2015 15:49||ReceiveTransfer||FROM ID: DE901332||IDR 3000.00
+29-04-2015 15:51||ReceiveTransfer||FROM ID: DE901332||IDR 3000.00
