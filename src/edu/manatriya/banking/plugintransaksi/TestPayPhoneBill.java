@@ -4,7 +4,7 @@ import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import org.junit.Test;
 
-public class PayPhoneBillTest {
+public class TestPayPhoneBill {
 
     @Test
     public void testGetPhoneNumber() throws Exception {

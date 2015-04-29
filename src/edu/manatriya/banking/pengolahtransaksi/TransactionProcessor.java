@@ -85,49 +85,50 @@ public class TransactionProcessor {
                 paymentForm.dispose();
             }
 
-            Class classTransaction = Class.forName("edu.manatriya.banking.plugintransaksi." + TransactionType).asSubclass(Transaction.class);
-            @SuppressWarnings("unchecked")
-            Constructor constructorTransaction = classTransaction.getConstructors()[0];
-            Parameter[] parameterTransaction = constructorTransaction.getParameters();
-            List<String> parameterNames = getParameterNames(constructorTransaction);
-            List<String> paramFriendlyNames = new ArrayList<String>();
-            for (String p : parameterNames) {
-                paramFriendlyNames.add(p.replace("_", " ").toUpperCase());
-            }
-            Type[] parameterTypes = constructorTransaction.getGenericParameterTypes();
-            Object[] paramContent = new Object[parameterTransaction.length];
-            int i = 0;
-            paramContent[i++] = acc;
-            String[] arrParam;
-
-            TransactionForm transactionForm = new TransactionForm(TransactionType, paramFriendlyNames);
-            synchronized (transactionForm) {
-                try {
-                    transactionForm.wait();
-                } catch (InterruptedException e) {
-                    /* do nothing */
+            if (!TransactionType.isEmpty()){
+                Class classTransaction = Class.forName("edu.manatriya.banking.plugintransaksi." + TransactionType).asSubclass(Transaction.class);
+                @SuppressWarnings("unchecked")
+                Constructor constructorTransaction = classTransaction.getConstructors()[0];
+                Parameter[] parameterTransaction = constructorTransaction.getParameters();
+                List<String> parameterNames = getParameterNames(constructorTransaction);
+                List<String> paramFriendlyNames = new ArrayList<String>();
+                for (String p : parameterNames) {
+                    paramFriendlyNames.add(p.replace("_", " ").toUpperCase());
                 }
+                Type[] parameterTypes = constructorTransaction.getGenericParameterTypes();
+                Object[] paramContent = new Object[parameterTransaction.length];
+                int i = 0;
+                paramContent[i++] = acc;
+                String[] arrParam;
 
-                arrParam = transactionForm.getUserInputs();
-                if ( !arrParam[0].isEmpty() ){
-                    for (String strParam : arrParam) {
-                        if (parameterTypes[i].getTypeName().equals("double")) {
-                            paramContent[i++] = Double.parseDouble(strParam);
-                        } else if (parameterTypes[i].getTypeName().equals("int")) {
-                            paramContent[i++] = Integer.parseInt(strParam);
-                        } else {
-                            paramContent[i++] = strParam;
+                TransactionForm transactionForm = new TransactionForm(TransactionType, paramFriendlyNames);
+                synchronized (transactionForm) {
+                    try {
+                        transactionForm.wait();
+                    } catch (InterruptedException e) {
+                    /* do nothing */
+                    }
+
+                    arrParam = transactionForm.getUserInputs();
+                    if ( !arrParam[0].isEmpty() ){
+                        for (String strParam : arrParam) {
+                            if (parameterTypes[i].getTypeName().equals("double")) {
+                                paramContent[i++] = Double.parseDouble(strParam);
+                            } else if (parameterTypes[i].getTypeName().equals("int")) {
+                                paramContent[i++] = Integer.parseInt(strParam);
+                            } else {
+                                paramContent[i++] = strParam;
+                            }
                         }
                     }
                 }
-            }
-            transactionForm.dispose();
+                transactionForm.dispose();
 
-            if (!arrParam[0].isEmpty()) {
-                Transaction tr = (Transaction) constructorTransaction.newInstance(paramContent);
-                pendingTrans.add(tr);
+                if (!arrParam[0].isEmpty()) {
+                    Transaction tr = (Transaction) constructorTransaction.newInstance(paramContent);
+                    pendingTrans.add(tr);
+                }
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -102,11 +102,4 @@ public class TransactionForm extends JFrame{
 		notify();
 		this.dispose();
 	}
-
-	/**
-	 * Menjalankan event saat tombol help di click
-	 */
-	private void helpButton_Click(){
-		JOptionPane.showMessageDialog(null, "Help Click","Help Title",0);
-	}
 }

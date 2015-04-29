@@ -4,15 +4,10 @@ import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import org.junit.Test;
 
-public class PaySPPTest {
+public class TestPayElectricity {
 
     @Test
-    public void testGetSchoolID() throws Exception {
-        //nothing to be tested
-    }
-
-    @Test
-    public void testGetStudentID() throws Exception {
+    public void testGetElectricityID() throws Exception {
         //nothing to be tested
     }
 
@@ -22,9 +17,8 @@ public class PaySPPTest {
         acc.setSaldo(5000);
         acc.setCurrency("IDR");
 
-        PaySPP PSPP = new PaySPP(acc,"ITB", "13513038", 3000);
-        PSPP.run();
+        PayElectricity PEl = new PayElectricity(acc,"12345", 3000);
+        PEl.run();
         assert (acc.getSaldo() == 2000);
-
     }
 }

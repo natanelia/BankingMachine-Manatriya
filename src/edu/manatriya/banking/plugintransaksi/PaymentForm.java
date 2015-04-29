@@ -52,9 +52,9 @@ public class PaymentForm extends JFrame implements ActionListener{
         setContentPane(Panel);
 
         WindowAdapter windowCloser = new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
+            public synchronized void windowClosing(WindowEvent e) {
                 e.getWindow().setVisible(false);
-                notify();
+                closeForm();
             }
         };
         addWindowListener( windowCloser );
@@ -65,7 +65,7 @@ public class PaymentForm extends JFrame implements ActionListener{
         ArrayList<String> payPlugin = new ArrayList<String>();
 
         for (int i = 0 ; i < plugin.length; i++){
-            if (plugin[i].contains("Pay") && !plugin[i].contains("Payment")){
+            if (plugin[i].startsWith("Pay") && !plugin[i].contains("Payment")){
                 payPlugin.add(plugin[i]);
             }
         }
@@ -90,4 +90,9 @@ public class PaymentForm extends JFrame implements ActionListener{
         notify();
     }
 
+    private synchronized void closeForm() {
+        setKindOfPayment("");
+        this.notify();
+        this.dispose();
+    }
 }
