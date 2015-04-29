@@ -29,26 +29,23 @@ public abstract class Account{
         transactionHistory = new ArrayList<String[]>();
     }
 
-    public Account(String _accountFileName) {
+    public Account(String _accountFileName) throws FileNotFoundException {
         transactionHistory = new ArrayList<String[]>();
         accountFileName = _accountFileName;
         File fileTransaction = new File(accountFileName);
         accountID = fileTransaction.getName().replace(".acc","");
-        try {
-            Scanner accountScanner = new Scanner(fileTransaction);
-            password = accountScanner.nextLine();
-            name = accountScanner.nextLine();
-            currency = accountScanner.nextLine();
-            saldo = Double.parseDouble(accountScanner.nextLine());
 
-            while (accountScanner.hasNextLine()) {
-                String[] rowTransaction = accountScanner.nextLine().split("\\|\\|");
-                transactionHistory.add(rowTransaction.clone());
-            }
-            accountScanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        Scanner accountScanner = new Scanner(fileTransaction);
+        password = accountScanner.nextLine();
+        name = accountScanner.nextLine();
+        currency = accountScanner.nextLine();
+        saldo = Double.parseDouble(accountScanner.nextLine());
+
+        while (accountScanner.hasNextLine()) {
+            String[] rowTransaction = accountScanner.nextLine().split("\\|\\|");
+            transactionHistory.add(rowTransaction.clone());
         }
+        accountScanner.close();
     }
 
     public void setAccountID(String accountID) {
@@ -109,6 +106,7 @@ public abstract class Account{
         if (a != null) {
             accountFileName = a.accountFileName;
             accountID = a.accountID;
+            name = a.name;
             password = a.password;
             currency = a.currency;
             saldo = a.saldo;
@@ -116,6 +114,7 @@ public abstract class Account{
             transactionHistory.addAll(a.transactionHistory);
         } else {
             accountID = null;
+            name = null;
             accountFileName = null;
             password = null;
             currency = null;
@@ -164,7 +163,7 @@ public abstract class Account{
             accWriter.println(password);
             accWriter.println(name);
             accWriter.println(currency);
-            accWriter.println(saldo);
+            accWriter.println(String.format("%.2f",saldo));
             for (String[] lineArrayTransaction : transactionHistory) {
                 StringBuilder lineTransaction = new StringBuilder();
                 for (String transactionElement : lineArrayTransaction) {
