@@ -1,12 +1,14 @@
 package edu.manatriya.banking.akunbanking;
 
+import java.io.FileNotFoundException;
+
 /**
  * Created by KEVIN on 14/04/2015.
  */
 
 public class CreditAccount extends Account {
 
-    public CreditAccount(String accountFileName) {
+    public CreditAccount(String accountFileName) throws FileNotFoundException {
         super(accountFileName);
     }
 

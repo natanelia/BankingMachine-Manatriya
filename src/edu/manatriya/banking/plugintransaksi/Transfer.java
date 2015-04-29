@@ -4,6 +4,7 @@ import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.AccountFactory;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
 
 /**
  * Created by Natan Elia on 4/12/2015.
@@ -45,21 +46,23 @@ public class Transfer extends Transaction {
             destAccount.changeCurrency(acc.getCurrency());
             ReceiveTransfer receiveTransfer = new ReceiveTransfer(destAccount,acc.getAccountID(),amount);
 
+            JOptionPane.showMessageDialog(null, "Your transfer will be processed as soon as possible.");
             sleep(getTransferDelay() * 1000);
 
-
+            acc.updateSaldo(-amount);
             receiveTransfer.start();
             receiveTransfer.join();
             destAccount.changeCurrency(destCurrency);
             destAccount.saveAccount();
-            acc.updateSaldo(-amount);
             addToAccount();
 
-            JOptionPane.showMessageDialog(null, "Your transfer has been processed.");
+            System.out.printf("Transfer from %s to %s has been processed.", acc.getAccountID(), destAccount.getAccountID());
         } catch (InterruptedException e) {
             System.err.println(e.getMessage());
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Destination account is not found.", "", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+
         }
 
     }
