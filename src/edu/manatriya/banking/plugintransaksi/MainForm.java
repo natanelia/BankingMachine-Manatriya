@@ -34,7 +34,7 @@ public class MainForm extends JFrame {
         this.setSize(500, this.getHeight());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         submitButton.addActionListener (new java.awt.event.ActionListener() {
                                          public void actionPerformed(java.awt.event.ActionEvent evt) {
