@@ -16,6 +16,11 @@ import java.awt.*;
 public class ShowTransactionHistory implements Command {
     private Account acc;
 
+
+    /**
+     * adalah constructor berparameter dari kelas ShowTransactionHistory
+     * @param _account adalah parameter yang akan digunakan untuk mengeset atribut account
+     */
     public ShowTransactionHistory(Account _account){
         acc = _account;
     }
@@ -63,7 +68,9 @@ public class ShowTransactionHistory implements Command {
         frame.setVisible(true);
     }
 
-
+    /**
+     * mengeksekusi prosedur generateTransactionHistoryTable
+     */
     @Override
     public void execute(){
         generateTransactionHistoryTable();
@@ -71,13 +78,26 @@ public class ShowTransactionHistory implements Command {
 }
 
 class MultiLineCellRenderer extends JTextArea implements TableCellRenderer {
-
+    /**
+     * prosedur yang digunakan untuk memungkinkan table memiliki lebih dari 1 row
+     */
     public MultiLineCellRenderer() {
         setLineWrap(true);
         setWrapStyleWord(true);
         setOpaque(true);
     }
 
+
+    /**
+     * Fungsi yang digunakkan untuk mengembalikan component-componet pada tablecellrenderer
+     * @param table bertipe JTable
+     * @param value  value adalah objek yang dicek
+     * @param isSelected boolean untuk mengetahui status dari objek, apakah sedang diolah atau tidak
+     * @param hasFocus boolean untuk menentukan apakah object tersebut memiliki fokus
+     * @param row indeks row
+     * @param column indeks column
+     * @return
+     */
     public Component getTableCellRendererComponent(JTable table, Object value,
                                                    boolean isSelected, boolean hasFocus, int row, int column) {
         if (isSelected) {

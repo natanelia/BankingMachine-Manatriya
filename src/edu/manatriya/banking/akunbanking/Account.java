@@ -1,8 +1,10 @@
-package edu.manatriya.banking.akunbanking;
-
-/*Account.java
-* Class yang merepresentasikan sebuah account pada banking
+/**
+ * Class Account
+ * Sebuah kelas abstrak yang merepresentasikan sebuah account dalam mobile banking
+ * menyimpan informasi mengenai account berupa accountID, passwrod, nem, currency, saldo
+ * transactionHistory serta accountFileName
  */
+package edu.manatriya.banking.akunbanking;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,6 +22,11 @@ public abstract class Account{
     protected double saldo;
     protected ArrayList<String[]> transactionHistory;
 
+    /**
+     * Konstruktor dari kelas Account
+     * @param accountID account
+     * @param password
+     */
     public Account(String accountID, String password) {
         this.accountID = accountID;
         this.accountFileName = "";
@@ -30,6 +37,11 @@ public abstract class Account{
         transactionHistory = new ArrayList<String[]>();
     }
 
+    /**
+     * Konstruktor dengan parameter dari kelas account
+     * @param _accountFileName merupakan nama dari file yang berisi informasi dari account yang bersangkutan
+     * @throws FileNotFoundException
+     */
     public Account(String _accountFileName) throws FileNotFoundException {
         transactionHistory = new ArrayList<String[]>();
         accountFileName = _accountFileName;
@@ -49,26 +61,49 @@ public abstract class Account{
         accountScanner.close();
     }
 
-    public void setAccountID(String accountID) {
+    /**
+     * setter AccountID
+     * @param _accountID accountID yang akan diset ke  sebuah account
+     */
+    public void setAccountID(String _accountID) {
         this.accountID = accountID;
     }
 
-    public void setName(String name) {
+    /**
+     * Mengeset name dengan _name
+     * @param _name
+     */
+    public void setName(String _name) {
         this.name = name;
     }
 
-    public void setAccountFileName(String accountFileName) {
+    /**
+     * Mengeset accountfilename dengan _accountFileName
+     * @param _accountFileName
+     */
+    public void setAccountFileName(String _accountFileName) {
         this.accountFileName = accountFileName;
     }
-
-    public void setCurrency(String currency) {
+    /**
+     * Mengeset currency dengan _currency
+     * @param _currency
+     */
+    public void setCurrency(String _currency) {
         this.currency = currency;
     }
 
-    public void setTransactionHistory(ArrayList<String[]> transactionHistory) {
+    /**
+     * Mengeset transactionhistroy dengan _transactionHistory
+     * @param _transactionHistory
+     */
+    public void setTransactionHistory(ArrayList<String[]> _transactionHistory) {
         this.transactionHistory = transactionHistory;
     }
 
+    /**
+     * Membuat sebuah objek baru dengan account yang sebelumnya sudah ada
+     * @param a sebuah account yang sudah terbentuk sebelumnya
+     */
     public Account(Account a) {
         accountFileName = a.accountFileName;
         accountID = a.accountID;
@@ -79,30 +114,75 @@ public abstract class Account{
         transactionHistory.addAll(a.transactionHistory);
     }
 
+    /**
+     * mengembalikan accountID dari account
+     * @return accountID
+     */
     public String getAccountID() {
         return accountID;
     }
-
+    /**
+     *
+     * @return mengembalikan jumlah saldo dari account
+     */
     public double getSaldo() {
         return saldo;
     }
-
-    public void setSaldo(double saldo) {
+    /**
+     * Mengeset saldo dengan _saldo
+     * @param _saldo
+     */
+    public void setSaldo(double _saldo) {
         this.saldo = saldo;
     }
-
+    /**
+     *
+     * @return accountFileName, nama dari file yang berisi informasi mengenai account
+     */
     public String getAccountFileName() { return accountFileName; }
+
+    /**
+     *
+     * @return name, nama dari pemilik account
+     */
     public String getName() { return name; }
+
+    /**
+     *
+     * @return password, password untuk mendapatkan password dari sebuah account
+     */
     public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+
+    /**
+     * mengeset password dari sebuah account dengan _password
+     * @param _password , password baru yang akan diset pada sebuah account
+     */
+    public void setPassword(String _password) { this.password = password; }
+    /**
+     *
+     * @return currency, satuan mata uang yang dimiliki oleh account
+     */
     public String getCurrency() { return currency; }
 
+    /**
+     *
+     * @return transactionHistory, riwayat transaksi dari sebuah account
+     */
     public ArrayList<String[]> getTransactionHistory() {
         return transactionHistory;
     }
 
+    /**
+     *
+     * @param i , indeks yang menunjukkan riwayat transaksi ke berapa yang ingin diambil
+     * @return , riwayat transaksi ke-i
+     */
     public String[] getTransactionHistoryAt(int i) { return transactionHistory.get(i); }
 
+    /**
+     * Mengcopy atribut dari a ke objek
+     * @param a , sebuah account yang akan dicopy nilai atributnya
+     */
     public void setAccount(Account a) {
         if (a != null) {
             accountFileName = a.accountFileName;
@@ -124,6 +204,11 @@ public abstract class Account{
         }
     }
 
+
+    /**
+     * Mengubah curreny menjadi newcurrency apabila newcurrency terdefinisi
+     * @param newCurrency
+     */
     public void changeCurrency(String newCurrency) throws FileNotFoundException, Exception {
         if (!currency.equalsIgnoreCase(newCurrency)) {
             String currentCurrency = currency;
@@ -151,12 +236,25 @@ public abstract class Account{
         }
     }
 
+    /**
+     * Mengupdate saldo, merupakan abstract
+     * @param amount
+     */
     public abstract void updateSaldo(double amount);
 
+    /**
+     * Menambah transactionhistroy dengan transactionElement
+     * @param transactionElement , transactionElement akan ditambahkan ke dalam transactionhistory
+     */
     public void addTransactionToHistory(String transactionElement){
         transactionHistory.add(transactionElement.split("\\|\\|"));
     }
 
+    /**
+     * I.S : Account terdefinisi , memiliki password, name , currency dan saldo
+     * F.S : Informasi mengenai account disimpan dalam <accountfilename>.acc
+     *      jika sebelumnya sudah ada maka file akan dioverride isinya
+     */
     public void saveAccount() {
         File fileTransaction = new File(accountFileName);
         if (!fileTransaction.exists()) {
@@ -186,6 +284,11 @@ public abstract class Account{
         }
     }
 
+    /**
+     * Membandingkan account dengan other apakah objek yang sama atau tidak
+     * @param other , objek yang akan dibandingkan dengan this
+     * @return
+     */
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Account)) {

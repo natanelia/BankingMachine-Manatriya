@@ -8,10 +8,20 @@ import edu.manatriya.banking.akunbanking.Account;
 public class AccountSignOut implements Command {
     private Account account;
 
+
+    /**
+     * constructor berparameter kelas AccountSignOut
+     * @param _account adalah account masukkan yang akan digunakan dalam operasi
+     */
     public AccountSignOut(Account _account){
         account= _account;
     }
 
+
+    /**
+     * fungsi getter untuk mengembalikan atribut account
+     * @return
+     */
     public Account getAccount() {
         return account;
     }

@@ -16,12 +16,17 @@ import java.util.Locale;
 public class CheckBalance implements Command {
     private Account account;
 
+
+    /**
+     * Adalah constructor berparameter kelas CheckBalance
+     * @param _account account akan digunakan untuk set atribut account pada kelas ini
+     */
     public CheckBalance(Account _account){
         account= _account;
     }
 
     /**
-     * Menampilkan saldo dari account
+     * Menampilkan saldo dari account dalam bentuk form
      */
     private void showBalance(){
        JFrame frame = new JFrame("Saldo Rekening");
@@ -59,6 +64,9 @@ public class CheckBalance implements Command {
     }
 
 
+    /**
+     * melakukan eksekusi void showBalance
+     */
     @Override
     public void execute(){
         showBalance();

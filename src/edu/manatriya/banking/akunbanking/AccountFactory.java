@@ -1,9 +1,18 @@
+/**
+ * Kelas yang bertanggung jawab menciptkan sebuah account
+ */
 package edu.manatriya.banking.akunbanking;
 
 /**
  * Created by Natan Elia on 4/27/2015.
  */
 public class AccountFactory {
+    /**
+     *
+     * @param accountFileName , nama file yang menyimpan informasi mengenai sebuah file
+     * @return sebuah DebitAccount atau CreditAccount, sesuai dengan jenis account yang didapatkan dari accountFileName
+     * @throws Exception , mengthrow exception apabila accountFileName tidak ditemukan dalam folder yang menyimpan semua .acc tiap account
+     */
     public Account getAccount(String accountFileName) throws Exception {
         String filename;
         String dirs[];
