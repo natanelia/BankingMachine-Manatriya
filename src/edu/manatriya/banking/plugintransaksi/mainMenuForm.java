@@ -52,7 +52,7 @@ public class mainMenuForm extends JFrame implements ActionListener{
         });
     }
 
-    public  synchronized void actionPerformed(ActionEvent e) {
+    public synchronized void actionPerformed(ActionEvent e) {
         notify();
         if(e.getSource() == checkBalanceButton){
             setCommand(e.getActionCommand());

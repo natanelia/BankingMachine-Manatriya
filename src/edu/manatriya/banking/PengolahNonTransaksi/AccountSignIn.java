@@ -16,6 +16,11 @@ import java.util.Scanner;
 public class AccountSignIn implements Command {
     private Account account;
 
+
+    /**
+     * constructor berparameter kelas AccountSignIn
+     * @param _account adalah account masukkan yang akan digunakan dalam operasi
+     */
     public AccountSignIn(Account _account) {
         account = _account;
     }
@@ -23,8 +28,8 @@ public class AccountSignIn implements Command {
     /**
      * Mengecek apakah accountID yang ingin melakukan sign in sudah ada dalam database (file eksternal)
      *
-     * @param accountID
-     * @param password
+     * @param accountID accountID adalah string yang akan digunakan untuk pengecekan adanya akun tersebut dalam database
+     * @param password password adalah string yang digunakan untuk authentikasi user (password login)
      */
     private Account getValidAccount(String accountID, String password) throws Exception {
         String filename = "out/Accounts/" + accountID + ".acc";
@@ -40,9 +45,23 @@ public class AccountSignIn implements Command {
         return null;
     }
 
+
+    /**
+     * Mengembalikan atribut account
+     * @return kembalian: account bertipe Account
+     */
     public Account getAccount() { return account; }
 
+
+
+
+
+
     @Override
+    /**
+     * akan memanggil function getValidAccount untuk mengecek kevalidan account yang dicek
+     * Jika account tersebut valid (ada dalam databse dan password benar), atribut account akan diaasing dengan account masukkan tersebut
+     */
     public void execute() {
         try {
             Account hasil = getValidAccount(account.getAccountID(), account.getPassword());

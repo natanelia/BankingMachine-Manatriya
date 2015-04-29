@@ -3,6 +3,7 @@ package edu.manatriya.banking.pengolahtransaksi;
 import org.w3c.dom.ranges.RangeException;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -24,12 +25,14 @@ public class TransactionForm extends JFrame{
 	 */
 	public TransactionForm( String title, List<String> formLabels) {
 		super( title );
-		setSize( 500, 300 );
+		setSize( 500, (formLabels.size()+1)*60 );
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 		// Creates a panel to hold all components
 		JPanel panel = new JPanel( new BorderLayout() );
-		panel.setLayout( new GridLayout(10,2) );
+		GridLayout gl = new GridLayout(formLabels.size()*2,1);
+		panel.setLayout( gl);
+		panel.setBorder(new EmptyBorder(5,10,10,10));
 
 		allLabels = new JLabel[formLabels.size() - 1];
 		allLabelsTextField = new JTextField[formLabels.size() - 1];
