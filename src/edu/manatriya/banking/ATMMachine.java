@@ -68,7 +68,6 @@ public class ATMMachine {
             }
             try {
                 transactionProcessor.startAll();
-                acc.saveAccount();
             } catch (Exception e) {
                 e.printStackTrace();
             }

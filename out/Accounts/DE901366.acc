@@ -1,34 +1,12 @@
-Kevin Yauris
-<<<<<<< HEAD
 012345
-IDR
-1000000.0
-DATE||TYPE||DESCRIPTION||AMOUNT|
-14/04/2015||Transfer||TO: Bank Central Asia (BCA)|ID: 790111||-3000000|
-Mon Apr 27 21:06:56 ICT 2015||Transfer||TO ID: CR790112||100.|
-Mon Apr 27 21:07:39 ICT 2015||Transfer||TO ID: CR790112||100.|
-Mon Apr 27 21:11:17 ICT 2015||Transfer||TO ID: DE99999||USD 10.|
-Mon Apr 27 21:21:02 ICT 2015||Transfer||TO ID: DE99999||USD 1.|
-Mon Apr 27 21:23:08 ICT 2015||Transfer||TO ID: DE99999||USD 1.0|
-Mon Apr 27 21:24:53 ICT 2015||ConvertAccountCurrency||||EUR 0.|
-Mon Apr 27 21:26:07 ICT 2015||ConvertAccountCurrency||||IDR 0.|
-27-04-2015 22:10||OpenSavingAccount||||EUR 100.|
-27-04-2015 22:12||OpenSavingAccount||||EUR 100.|
-Tue Apr 28 00:37:18 ICT 2015||PaySPP||||38810.0|
-28-04-2015 01:07||PayPhoneBill||||IDR 50000.|
-28-04-2015 22:05||ReceiveTransfer||FROM ID: DE901332||IDR 3000.|
-29-04-2015 10:27||OpenSavingAccount||||IDR 100000.|
-29-04-2015 14:09||ReceiveTransfer||FROM ID: DE901332||IDR 3000.|
-29-04-2015 15:19||ReceiveTransfer||FROM ID: DE901332||IDR 3000.|
-29-04-2015 15:20||ReceiveTransfer||FROM ID: DE901332||IDR 3000.|
-=======
+Kevin Yauris
 USD
-1068688.53
+1067961.67
 DATE||TYPE||DESCRIPTION||AMOUNT
 29-04-2015 14:12||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
 29-04-2015 14:13||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0
 29-04-2015 14:15||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
-29-04-2015 14:22||OpenSavingAccount||||IDR 1.0E7
+29-04-2015 14:22||OpenSavingAccount||||IDR 10000000.00
 29-04-2015 14:28||ReceiveTransfer||FROM ID: DE901367||IDR 100000.0
 29-04-2015 14:44||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0
 29-04-2015 14:44||ConvertAccountCurrency||CONVERTED TO: DER||DER 0.0
@@ -39,9 +17,11 @@ DATE||TYPE||DESCRIPTION||AMOUNT
 29-04-2015 15:18||ConvertAccountCurrency||CONVERTED TO: IDR||IDR 0.0
 29-04-2015 15:18||ConvertAccountCurrency||CONVERTED TO: EUR||EUR 0.0
 29-04-2015 15:18||ConvertAccountCurrency||CONVERTED TO: USD||USD 0.0
-29-04-2015 15:20||OpenSavingAccount||||IDR 1.0E7
-29-04-2015 15:26||OpenSavingAccount||||IDR 1.0E7
+29-04-2015 15:20||OpenSavingAccount||||IDR 10000000.00
+29-04-2015 15:26||OpenSavingAccount||||IDR 10000000.00
 29-04-2015 15:34||OpenSavingAccount||||IDR 10000000.00
 29-04-2015 15:49||ReceiveTransfer||FROM ID: DE901332||IDR 3000.00
 29-04-2015 15:51||ReceiveTransfer||FROM ID: DE901332||IDR 3000.00
->>>>>>> 23dc7db67398b04c559805a18a956c2e69b68869
+29-04-2015 19:03||OpenSavingAccount||||IDR 10000005.00
+29-04-2015 19:04||ReceiveTransfer||FROM ID: DEN4T||IDR 500000.00
+29-04-2015 19:05||ReceiveTransfer||FROM ID: DEN4T||IDR 100000.00

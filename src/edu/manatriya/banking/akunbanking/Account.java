@@ -193,7 +193,14 @@ public abstract class Account{
         }
         Account a = (Account) other;
 
-        return accountID.equalsIgnoreCase(a.accountID) && password.equalsIgnoreCase(a.password)
-                && currency.equalsIgnoreCase(a.currency) && (saldo == a.saldo) && (transactionHistory.equals(a.transactionHistory));
+        boolean equality = accountID.equals(a.accountID) && name.equals(a.name) && password.equals(a.password)
+                && currency.equals(a.currency) && (saldo == a.saldo);
+
+        for (int i=0;i<transactionHistory.size() && equality;i++) {
+            for (int j=0;j<transactionHistory.get(i).length && equality;j++) {
+                equality &= (transactionHistory.get(i)[j].equals(a.transactionHistory.get(i)[j]));
+            }
+        }
+        return equality;
     }
 }

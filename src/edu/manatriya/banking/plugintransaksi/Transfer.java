@@ -63,7 +63,7 @@ public class Transfer extends Transaction {
             destAccount.saveAccount();
             addToAccount();
 
-            System.out.printf("Transfer from %s to %s has been processed.", acc.getAccountID(), destAccount.getAccountID());
+            System.out.printf("Transfer from %s to %s has been processed.\n", acc.getAccountID(), destAccount.getAccountID());
         } catch (InterruptedException e) {
             System.err.println(e.getMessage());
         } catch (FileNotFoundException e) {
