@@ -19,8 +19,8 @@ public class TransactionForm extends JFrame{
 
 	/**
 	 * menampilkan form untuk pengisian data - data yang dibutuhkan untuk suatu transaksi
-	 * @param title
-	 * @param formLabels
+	 * @param title jenis transaksi sekaligus judul dari form
+	 * @param formLabels parameter-parameter dari transaksi
 	 */
 	public TransactionForm( String title, List<String> formLabels) {
 		super( title );
@@ -73,7 +73,7 @@ public class TransactionForm extends JFrame{
 
 	/**
 	 * Mengembalikan array of String yang berisi nilai nilai yang telah diinputkan user pada form
-	 * @return String[]
+	 * @return String[] nilai dari inputan user
 	 */
 	public String[] getUserInputs() {
 		String[] userInputs = new String[allLabelsTextField.length];

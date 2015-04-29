@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -48,6 +50,15 @@ public class PaymentForm extends JFrame implements ActionListener{
 
         Panel = new JPanel();
         setContentPane(Panel);
+
+        WindowAdapter windowCloser = new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                e.getWindow().setVisible(false);
+                notify();
+            }
+        };
+        addWindowListener( windowCloser );
+
 
         File f = new File("out/production/BankingMachine-Manatriya/edu/manatriya/banking/plugintransaksi");
         String[] plugin = f.list();
