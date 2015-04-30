@@ -66,7 +66,7 @@ public abstract class Account{
      * @param _accountID accountID yang akan diset ke  sebuah account
      */
     public void setAccountID(String _accountID) {
-        this.accountID = accountID;
+        this.accountID = _accountID;
     }
 
     /**
@@ -74,7 +74,7 @@ public abstract class Account{
      * @param _name
      */
     public void setName(String _name) {
-        this.name = name;
+        this.name = _name;
     }
 
     /**
