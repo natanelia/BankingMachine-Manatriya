@@ -133,7 +133,7 @@ public abstract class Account{
      * @param _saldo
      */
     public void setSaldo(double _saldo) {
-        this.saldo = saldo;
+        this.saldo = _saldo;
     }
     /**
      *
