@@ -23,7 +23,8 @@ public class ConvertAccountCurrencyTest {
         acc.setCurrency("IDR");
 
         ConvertAccountCurrency ConAcc = new ConvertAccountCurrency(acc, "USD");
-        ConAcc.run();
+        ConAcc.start();
+        ConAcc.sleep(2000);
         assert (acc.getCurrency().equals("USD") && acc.getSaldo()!=10000); //converted to another currency
     }
 }

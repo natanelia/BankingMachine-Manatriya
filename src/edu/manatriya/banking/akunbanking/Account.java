@@ -82,14 +82,14 @@ public abstract class Account{
      * @param _accountFileName
      */
     public void setAccountFileName(String _accountFileName) {
-        this.accountFileName = accountFileName;
+        this.accountFileName = _accountFileName;
     }
     /**
      * Mengeset currency dengan _currency
      * @param _currency
      */
     public void setCurrency(String _currency) {
-        this.currency = currency;
+        this.currency = _currency;
     }
 
     /**
@@ -157,7 +157,7 @@ public abstract class Account{
      * mengeset password dari sebuah account dengan _password
      * @param _password , password baru yang akan diset pada sebuah account
      */
-    public void setPassword(String _password) { this.password = password; }
+    public void setPassword(String _password) { this.password = _password; }
     /**
      *
      * @return currency, satuan mata uang yang dimiliki oleh account

@@ -69,7 +69,7 @@ public class Transfer extends Transaction {
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Destination account is not found.", "", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-
+            System.err.println(e.getMessage());
         }
 
     }
