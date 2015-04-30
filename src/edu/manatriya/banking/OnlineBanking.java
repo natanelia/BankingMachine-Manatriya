@@ -11,26 +11,24 @@ import edu.manatriya.banking.akunbanking.AccountAutoSaver;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import edu.manatriya.banking.pengolahtransaksi.TransactionProcessor;
 import edu.manatriya.banking.pengolahtransaksi.TransactionsAutoStarter;
-import edu.manatriya.banking.plugintransaksi.MainForm;
-import edu.manatriya.banking.plugintransaksi.mainMenuForm;
 
 /**
  * Created by KEVIN on 14/04/2015.
  */
 
-public class ATMMachine {
+public class OnlineBanking {
     Account acc;
     TransactionProcessor transactionProcessor;
 
     /**
      * Konstruktor kelas ATMMachine
      */
-    public ATMMachine() {
+    public OnlineBanking() {
         acc = null;
     }
 
     /**
-     * Menciptkan MainForm untuk login, apabila username dan password yang diberikan tidak valid, akan diminta kembali username dan password
+     * Menciptakan MainForm untuk login, apabila username dan password yang diberikan tidak valid, akan diminta kembali username dan password
      * AccountAutoSaver diaktifkan untuk menyimpan perubahan informasi terhadap account dalam file eksternal secara otomatis
      * TransactionAutoStarter diaktifkan untuk dapat mengeksekusi transaksi secara berkala, apabila transaction queue memiliki isi
      * Apabila login berhasil, maka akan dibuat mainmenuform untuk mendapatkan apa yang ingin dilakukan user

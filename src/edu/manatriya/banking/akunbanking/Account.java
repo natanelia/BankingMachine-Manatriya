@@ -1,6 +1,6 @@
 /**
  * Class Account
- * Sebuah kelas abstrak yang merepresentasikan sebuah account dalam mobile banking
+ * Sebuah kelas abstrak yang merepresentasikan sebuah account dalam online banking
  * menyimpan informasi mengenai account berupa accountID, passwrod, nem, currency, saldo
  * transactionHistory serta accountFileName
  */
