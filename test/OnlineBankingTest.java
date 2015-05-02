@@ -1,5 +1,4 @@
-package edu.manatriya.banking;
-
+import edu.manatriya.banking.OnlineBanking;
 import org.junit.Test;
 
 /**

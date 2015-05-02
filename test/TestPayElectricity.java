@@ -1,11 +1,9 @@
-package edu.manatriya.banking.plugintransaksi.paymenttest;
-
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.DebitAccount;
 import edu.manatriya.banking.plugintransaksi.PayElectricity;
 import org.junit.Test;
 
-public class PayElectricityTest {
+public class TestPayElectricity {
 
     @Test
     public void testGetElectricityID() throws Exception {

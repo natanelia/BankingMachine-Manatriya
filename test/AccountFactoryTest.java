@@ -1,5 +1,5 @@
-package edu.manatriya.banking.akunbanking;
-
+import edu.manatriya.banking.akunbanking.Account;
+import edu.manatriya.banking.akunbanking.AccountFactory;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

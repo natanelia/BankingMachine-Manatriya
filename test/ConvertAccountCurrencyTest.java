@@ -1,7 +1,6 @@
-package edu.manatriya.banking.plugintransaksi;
-
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.DebitAccount;
+import edu.manatriya.banking.plugintransaksi.ConvertAccountCurrency;
 import org.junit.Test;
 
 public class ConvertAccountCurrencyTest {
