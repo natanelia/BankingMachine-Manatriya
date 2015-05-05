@@ -17,7 +17,7 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 /**
- * Created by Alberttriadrian on 4/12/2015.
+ * Kelas Transaction Processor akan mengelurakan form transaksi sesuai pilihan user dengan meanfaatkan Java reflection.
  */
 
 public class TransactionProcessor {
