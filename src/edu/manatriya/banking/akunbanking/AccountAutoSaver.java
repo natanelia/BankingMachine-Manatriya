@@ -1,7 +1,8 @@
 package edu.manatriya.banking.akunbanking;
 
 /**
- * Created by Natan Elia on 4/23/2015.
+ * Class AccountAutoSaver
+ * Bertugas untuk melakukan penyimpanan informasi akun ke dalam file eksternal apabila terjadi perubahan
  */
 public class AccountAutoSaver extends Thread {
     private Account accOld;

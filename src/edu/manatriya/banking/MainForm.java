@@ -4,9 +4,8 @@ import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 /**
- * Created by KEVIN on 21/04/2015.
+ * Form untuk sign in, meminta masukkan berupa user id dan password
  */
-
 public class MainForm extends JFrame {
     private String accountID=null;
     private String[] labels = {"AccountID"};

@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 
 /**
- * Created by KEVIN on 22/04/2015.
+ * Form untuk menampilkan menu utama
  */
 public class mainMenuForm extends JFrame implements ActionListener{
     private JButton checkBalanceButton;

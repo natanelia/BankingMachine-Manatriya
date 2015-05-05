@@ -1,10 +1,8 @@
-/**
- * Kelas yang bertanggung jawab menciptkan sebuah account
- */
+
 package edu.manatriya.banking.akunbanking;
 
 /**
- * Created by Natan Elia on 4/27/2015.
+ * Kelas yang bertanggung jawab menciptkan sebuah account
  */
 public class AccountFactory {
     /**

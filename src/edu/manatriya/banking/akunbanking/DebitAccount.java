@@ -1,7 +1,4 @@
-/**
- * Kelas yang merepresentasikan sebuah Debit Account
- * tidak memperbolehkan account memiliki saldo yang kurang dari 0
- */
+
 package edu.manatriya.banking.akunbanking;
 
 import org.w3c.dom.ranges.RangeException;
@@ -9,7 +6,8 @@ import org.w3c.dom.ranges.RangeException;
 import java.io.FileNotFoundException;
 
 /**
- * Created by KEVIN on 14/04/2015.
+ * Kelas yang merepresentasikan sebuah Debit Account
+ * tidak memperbolehkan account memiliki saldo yang kurang dari 0
  */
 public class DebitAccount extends Account {
     /**

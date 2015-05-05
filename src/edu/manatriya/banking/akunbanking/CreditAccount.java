@@ -1,15 +1,12 @@
-/**
- * Kelas yang merepresentasikan sebuah Credit Account
- * Memungkinkan saldo bernilai negatif
- */
+
 package edu.manatriya.banking.akunbanking;
 
 import java.io.FileNotFoundException;
 
 /**
- * Created by KEVIN on 14/04/2015.
+ * Kelas yang merepresentasikan sebuah Credit Account
+ * Memungkinkan saldo bernilai negatif
  */
-
 public class CreditAccount extends Account {
     /**
      * Konstruktor CreditAccount
