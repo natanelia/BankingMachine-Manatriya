@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by Natan on 4/23/2015.
+ * Transaksi untuk melakukan pembukaan Account baru.
+ * @author Natan
  */
 public class OpenSavingAccount extends  Transaction{
     private String newAccountID;

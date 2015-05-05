@@ -3,7 +3,8 @@ package edu.manatriya.banking.plugintransaksi;
 import edu.manatriya.banking.akunbanking.Account;
 
 /**
- * Created by Natan Elia on 4/12/2015.
+ * Transaksi untuk menerima uang transfer dari suatu Account.
+ * @author Natan
  */
 public class ReceiveTransfer extends Transaction {
     private String sourceAccountID;
@@ -29,10 +30,10 @@ public class ReceiveTransfer extends Transaction {
         return sourceAccountID;
     }
 
-    @Override
     /**
-     * Melakukan penerimaan uang transfer
+     * Melakukan penerimaan uang transfer dari akun sumber
      */
+    @Override
     public synchronized void run() {
         acc.updateSaldo(amount);
         addToAccount();

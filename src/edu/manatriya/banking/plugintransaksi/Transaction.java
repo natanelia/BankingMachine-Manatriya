@@ -6,7 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Natan Elia on 4/12/2015.
+ * Abstraksi dari semua jenis transaksi.
+ * @author Natan
  */
 public abstract class Transaction extends Thread {
     protected Account acc;
@@ -74,13 +75,16 @@ public abstract class Transaction extends Thread {
         description = newDescription;
     }
 
+    /**
+     * Menjalankan proses transaksi
+     */
     @Override
     public abstract void run();
 
-    @Override
     /**
      * Melakukan formatting secara khusus untuk pengubahan Transaction ke String
      */
+    @Override
     public String toString() {
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         return df.format(new Date()) + "||" + transactionName + "||" + getDescription() + "||" + acc.getCurrency() + " " + String.format("%.2f", getAmount());

@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.io.FileNotFoundException;
 
 /**
- * Created by Natan Elia on 4/12/2015.
+ * Transaksi untuk melakukan transfer ke Account terdaftar lain.
+ * @author Natan
  */
 public class Transfer extends Transaction {
     private String destinationAccountID;
@@ -60,10 +61,10 @@ public class Transfer extends Transaction {
         this.transferDelay = transferDelay;
     }
 
-    @Override
     /**
-     * Melakukan penciptaan akun tujuan transfer dan melakukan proses transfer sejumlah uang yang telah didefinisikan pada konstruktor
+     * Melakukan proses transfer sejumlah uang ke akun tujuan dengan nominal yang telah didefinisikan pada konstruktor
      */
+    @Override
     public synchronized void run() {
         try {
             AccountFactory accountFactory = new AccountFactory();

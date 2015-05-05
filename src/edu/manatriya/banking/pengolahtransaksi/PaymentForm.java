@@ -1,4 +1,4 @@
-package edu.manatriya.banking.plugintransaksi;
+package edu.manatriya.banking.pengolahtransaksi;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;

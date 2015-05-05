@@ -5,7 +5,8 @@ import edu.manatriya.banking.akunbanking.Account;
 import javax.swing.*;
 
 /**
- * Created by Natan Elia on 4/12/2015.
+ * Transaksi untuk melakukan pembayaran listrik.
+ * @author Natan
  */
 public class PayElectricity extends Transaction {
     private String electricityID;
@@ -32,10 +33,10 @@ public class PayElectricity extends Transaction {
     }
 
 
-    @Override
     /**
      * Melakukan pembayaran listrik dengan nominal yang telah didefinisikan di konstruktor
      */
+    @Override
     public synchronized void run() {
         acc.updateSaldo(-amount);
         addToAccount();

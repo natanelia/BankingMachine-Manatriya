@@ -5,7 +5,8 @@ import edu.manatriya.banking.akunbanking.Account;
 import javax.swing.*;
 
 /**
- * Created by Natan on 4/23/2015.
+ * Transaksi untuk melakukan konversi mata uang akun ke mata uang lainnya.
+ * @author Natan
  */
 public class ConvertAccountCurrency extends  Transaction {
     private String newCurrency;
@@ -40,10 +41,10 @@ public class ConvertAccountCurrency extends  Transaction {
         this.newCurrency = newCurrency;
     }
 
-    @Override
     /**
-     * Menjalankan proses pengubahan mata uang lama ke mata uang pengganti
+     * Menjalankan proses konversi mata uang lama ke mata uang pengganti pada akun
      */
+    @Override
     public synchronized void run() {
         try {
             acc.changeCurrency(newCurrency);

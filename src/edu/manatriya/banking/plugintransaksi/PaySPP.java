@@ -5,7 +5,8 @@ import edu.manatriya.banking.akunbanking.Account;
 import javax.swing.*;
 
 /**
- * Created by Natan Elia on 4/12/2015.
+ * Transaksi untuk melakukan pembayaran uang sekolah.
+ * @author Natan
  */
 public class PaySPP extends Transaction {
     private String schoolID;
@@ -42,10 +43,10 @@ public class PaySPP extends Transaction {
         return studentID;
     }
 
-    @Override
     /**
      * Melakukan pembayaran uang sekolah dengan nominal yang sudah didefinisikan di konstruktor
      */
+    @Override
     public synchronized void run() {
         acc.updateSaldo(-amount);
         addToAccount();
