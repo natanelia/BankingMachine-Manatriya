@@ -24,8 +24,8 @@ public abstract class Account{
 
     /**
      * Konstruktor dari kelas Account
-     * @param accountID account
-     * @param password
+     * @param accountID ID dari sebuah account
+     * @param password password untuk suatu acocunt
      */
     public Account(String accountID, String password) {
         this.accountID = accountID;
@@ -40,7 +40,7 @@ public abstract class Account{
     /**
      * Konstruktor dengan parameter dari kelas account
      * @param _accountFileName merupakan nama dari file yang berisi informasi dari account yang bersangkutan
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException exception yang dikeluarkan saat pencarian file dengan nama _accountfilename tidak ditemukan
      */
     public Account(String _accountFileName) throws FileNotFoundException {
         transactionHistory = new ArrayList<String[]>();
@@ -71,7 +71,7 @@ public abstract class Account{
 
     /**
      * Mengeset name dengan _name
-     * @param _name
+     * @param _name  sebuah string yang menandakan nama pemilik account
      */
     public void setName(String _name) {
         this.name = _name;
@@ -79,14 +79,14 @@ public abstract class Account{
 
     /**
      * Mengeset accountfilename dengan _accountFileName
-     * @param _accountFileName
+     * @param _accountFileName  sebuah string yang menandakan nama file yang berisi informasi mengenai suatu account
      */
     public void setAccountFileName(String _accountFileName) {
         this.accountFileName = _accountFileName;
     }
     /**
      * Mengeset currency dengan _currency
-     * @param _currency
+     * @param _currency sebuah string yang mewakili jenis mata uang, akan di set ke currency
      */
     public void setCurrency(String _currency) {
         this.currency = _currency;
@@ -94,7 +94,7 @@ public abstract class Account{
 
     /**
      * Mengeset transactionhistroy dengan _transactionHistory
-     * @param _transactionHistory
+     * @param _transactionHistory sebuah arraylist of string berisi riwayat transaksi, akan diset ke sebuah account
      */
     public void setTransactionHistory(ArrayList<String[]> _transactionHistory) {
         this.transactionHistory = transactionHistory;
@@ -116,7 +116,7 @@ public abstract class Account{
 
     /**
      * mengembalikan accountID dari account
-     * @return accountID
+     * @return accountID mengembalikan account id dari dari account
      */
     public String getAccountID() {
         return accountID;
@@ -130,7 +130,7 @@ public abstract class Account{
     }
     /**
      * Mengeset saldo dengan _saldo
-     * @param _saldo
+     * @param _saldo suatu variabel dengan type double, akan diset ke saldo dari account
      */
     public void setSaldo(double _saldo) {
         this.saldo = _saldo;
@@ -155,7 +155,7 @@ public abstract class Account{
 
     /**
      * mengeset password dari sebuah account dengan _password
-     * @param _password , password baru yang akan diset pada sebuah account
+     * @param _password  password baru yang akan diset pada sebuah account
      */
     public void setPassword(String _password) { this.password = _password; }
     /**
@@ -174,8 +174,8 @@ public abstract class Account{
 
     /**
      *
-     * @param i , indeks yang menunjukkan riwayat transaksi ke berapa yang ingin diambil
-     * @return , riwayat transaksi ke-i
+     * @param i  indeks yang menunjukkan riwayat transaksi ke berapa yang ingin diambil
+     * @return  riwayat transaksi ke-i
      */
     public String[] getTransactionHistoryAt(int i) { return transactionHistory.get(i); }
 
@@ -207,7 +207,8 @@ public abstract class Account{
 
     /**
      * Mengubah curreny menjadi newcurrency apabila newcurrency terdefinisi
-     * @param newCurrency
+     * @param newCurrency sebuah string yang mewakili jenis mata uang yang akan diset pada account
+     * @throw Exception exception yang dikeluarkan karena newcurrency tidak terdefinisi untuk sistem
      */
     public void changeCurrency(String newCurrency) throws FileNotFoundException, Exception {
         if (!currency.equalsIgnoreCase(newCurrency)) {
@@ -238,7 +239,7 @@ public abstract class Account{
 
     /**
      * Mengupdate saldo, merupakan abstract
-     * @param amount
+     * @param amount jumlah uang bertype double, akan digunakan sebagai faktor untuk menambah atau mengurangi saldo
      */
     public abstract void updateSaldo(double amount);
 
@@ -287,7 +288,7 @@ public abstract class Account{
     /**
      * Membandingkan account dengan other apakah objek yang sama atau tidak
      * @param other , objek yang akan dibandingkan dengan this
-     * @return
+     * @return true jika keduanya merupakan account dengan informasi yang sama, false jika keduanya merupakan account dengan informasi yang berbeda
      */
     @Override
     public boolean equals(Object other) {
