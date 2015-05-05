@@ -14,11 +14,11 @@ public class Transfer extends Transaction {
     private int transferDelay;
 
     /**
-     * Transfer constructor using
-     * @param account
-     * @param to_account_id
-     * @param transfer_delay
-     * @param amount
+     * Konstruktor transaksi Transfer
+     * @param account Akun untuk melakukan transfer
+     * @param to_account_id ID akun yang menerima transfer
+     * @param transfer_delay Delay transfer untuk timed transfer, dalam detik
+     * @param amount Banyak uang yang ditransfer
      */
     public Transfer(Account account, String to_account_id, int transfer_delay, double amount) {
         super(account, amount);
@@ -28,23 +28,42 @@ public class Transfer extends Transaction {
         setDescription("TO ID: " + getDestinationAccountID());
     }
 
+    /**
+     * Getter untuk ID akun tujuan
+     * @return ID akun tujuan
+     */
     public String getDestinationAccountID() {
         return destinationAccountID;
     }
 
+    /**
+     * Setter untuk ID akun tujuan
+     * @param destinationAccountID ID akun pengganti
+     */
     public void setDestinationAccountID(String destinationAccountID) {
         this.destinationAccountID = destinationAccountID;
     }
 
+    /**
+     * Getter untuk delay transfer
+     * @return Delay transfer dalam detik
+     */
     public int getTransferDelay() {
         return transferDelay;
     }
 
+    /**
+     * Setter untuk delay transfer
+     * @param transferDelay Delay transfer pengganti dalam detik
+     */
     public void setTransferDelay(int transferDelay) {
         this.transferDelay = transferDelay;
     }
 
     @Override
+    /**
+     * Melakukan penciptaan akun tujuan transfer dan melakukan proses transfer sejumlah uang yang telah didefinisikan pada konstruktor
+     */
     public synchronized void run() {
         try {
             AccountFactory accountFactory = new AccountFactory();

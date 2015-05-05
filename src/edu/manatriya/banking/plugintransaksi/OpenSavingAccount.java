@@ -18,7 +18,15 @@ public class OpenSavingAccount extends  Transaction{
     private String currency;
     private String name;
 
-
+    /**
+     * Konstruktor transaksi OpenSavingAccount, membuka tabungan debit baru
+     * @param account Akun yang membuka tabungan debit baru
+     * @param new_account_id ID akun yang baru
+     * @param password Password akun baru
+     * @param currency Mata uang akun baru
+     * @param amount Banyak uang awal dari akun baru, ditransfer dari param account
+     * @param name Nama pemilik akun baru
+     */
     public OpenSavingAccount(Account account, String new_account_id, String password, String currency, double amount, String name){
         super(account, amount);
         this.newAccountID = "DE" + new_account_id;
@@ -29,30 +37,57 @@ public class OpenSavingAccount extends  Transaction{
 
     }
 
+    /**
+     * Getter untuk ID akun baru
+     * @return ID akun baru
+     */
     public String getNewAccountID() {
         return newAccountID;
     }
 
+    /**
+     * Setter untuk ID akun baru
+     * @param newAccountID ID akun pengganti
+     */
     public void setNewAccountID(String newAccountID) {
         this.newAccountID = newAccountID;
     }
 
+    /**
+     * Getter untuk password akun baru
+     * @return Password akun baru
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Setter untuk password akun baru
+     * @param password Password pengganti
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * Getter untuk mata uang akun baru
+     * @return Mata uang akun baru
+     */
     public String getCurrency() {
         return currency;
     }
 
+    /**
+     * Setter untuk mata uang akun baru
+     * @param currency Mata uang pengganti
+     */
     public void setCurrency(String currency) {
         this.currency = currency;
     }
 
+    /**
+     * Membuat akun baru di database akun berdasarkan informasi yang sudah diset sebelumnya
+     */
     @Override
     public synchronized void run() {
         String filename = "out/Accounts/" + newAccountID + ".acc";
