@@ -20,7 +20,7 @@ public class AccountSignOut implements Command {
 
     /**
      * fungsi getter untuk mengembalikan atribut account
-     * @return
+     * @return mengembalikan atribut account
      */
     public Account getAccount() {
         return account;

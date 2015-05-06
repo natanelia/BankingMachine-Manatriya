@@ -145,7 +145,7 @@ public class TransactionProcessor {
      * bytecode resource that defined its class.
      *
      * @param constructor konstruktor yang ingin di list parameternya
-     * @return List<String> daftar nama parameter
+     * @return ListString daftar nama parameter
      * @throws IOException exception Input/Output
      */
     public static List<String> getParameterNames(Constructor<?> constructor) throws IOException {

@@ -209,7 +209,7 @@ public abstract class Account{
     /**
      * Mengubah curreny menjadi newcurrency apabila newcurrency terdefinisi
      * @param newCurrency sebuah string yang mewakili jenis mata uang yang akan diset pada account
-     * @throw Exception exception yang dikeluarkan karena newcurrency tidak terdefinisi untuk sistem
+     * @throws Exception exception yang dikeluarkan karena newcurrency tidak terdefinisi untuk sistem
      */
     public void changeCurrency(String newCurrency) throws FileNotFoundException, Exception {
         if (!currency.equalsIgnoreCase(newCurrency)) {
@@ -254,7 +254,7 @@ public abstract class Account{
 
     /**
      * I.S : Account terdefinisi , memiliki password, name , currency dan saldo
-     * F.S : Informasi mengenai account disimpan dalam <accountfilename>.acc
+     * F.S : Informasi mengenai account disimpan dalam accountfilename.acc
      *      jika sebelumnya sudah ada maka file akan dioverride isinya
      */
     public void saveAccount() {

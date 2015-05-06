@@ -12,7 +12,7 @@ public class NonTransactionFactory {
      * getCommand akan memanggil fungsi untuk diterapkan pada acc masukkan
      * @param cmd cmd adalah masukkan berberntuk string. diperlukan untuk menghidupkan command yang sesuai
      * @param acc acc adalah account yang akan diolah oleh command
-     * @return
+     * @return kelas yang sesuai dengan inputan cmd
      */
     public Command getCommand(String cmd, Account acc) {
         if (cmd.equals("AccountSignIn")) {
