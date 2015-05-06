@@ -3,7 +3,7 @@ package edu.manatriya.banking.PengolahNonTransaksi;
 import edu.manatriya.banking.akunbanking.Account;
 
 /**
- * Adalah kelas yang menangani aktivitas nontransaksi account untuk menampilkan history/riwayat transaksi dari account tersebut. Hasil akan ditampilkan dalam bentuk tabel.
+ *adalah kelas yang menangani aktivitas non transanksi
  */
 public class NonTransactionFactory {
 

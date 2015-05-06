@@ -4,14 +4,12 @@ import edu.manatriya.banking.akunbanking.Account;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
 /**
- * Created by Marco Orlando on 4/11/2015.
+ *  Adalah kelas yang menangani aktivitas nontransaksi account untuk menampilkan history/riwayat transaksi dari account tersebut. Hasil akan ditampilkan dalam bentuk tabel.
  */
 public class ShowTransactionHistory implements Command {
     private Account acc;

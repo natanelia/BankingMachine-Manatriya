@@ -13,7 +13,7 @@ import edu.manatriya.banking.pengolahtransaksi.TransactionProcessor;
 import edu.manatriya.banking.pengolahtransaksi.TransactionsAutoStarter;
 
 /**
- * Created by KEVIN on 14/04/2015.
+ * Kelas controller
  */
 
 public class OnlineBanking {
