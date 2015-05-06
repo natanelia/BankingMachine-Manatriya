@@ -9,9 +9,6 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 
-/**
- * Created by KEVIN on 22/04/2015.
- */
 public class PaymentForm extends JFrame implements ActionListener{
     private JPanel Panel;
     private JButton[] payPluginButton;
