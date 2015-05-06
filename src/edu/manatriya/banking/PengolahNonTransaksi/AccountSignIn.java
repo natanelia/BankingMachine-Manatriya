@@ -2,16 +2,12 @@ package edu.manatriya.banking.PengolahNonTransaksi;
 
 import edu.manatriya.banking.akunbanking.Account;
 import edu.manatriya.banking.akunbanking.AccountFactory;
-import edu.manatriya.banking.akunbanking.CreditAccount;
-import edu.manatriya.banking.akunbanking.DebitAccount;
 
-import javax.swing.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Created by Marco Orlando on 4/11/2015.
+ * adalah kelas yang menangani sign in account. Akan dilakukan pengecekan keberadaan acocunt pada database, dan verivikasi password account
  */
 public class AccountSignIn implements Command {
     private Account account;

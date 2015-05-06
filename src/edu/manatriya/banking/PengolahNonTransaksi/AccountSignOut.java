@@ -3,7 +3,7 @@ package edu.manatriya.banking.PengolahNonTransaksi;
 import edu.manatriya.banking.akunbanking.Account;
 
 /**
- * Created by Marco Orlando on 4/11/2015.
+ * Adalah kelas yang menangani proses sign out pada account. Semua aktivitas transaksi account akan disimpan sebelum sign out dilakukan.
  */
 public class AccountSignOut implements Command {
     private Account account;

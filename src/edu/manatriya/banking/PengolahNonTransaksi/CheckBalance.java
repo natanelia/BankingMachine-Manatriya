@@ -11,7 +11,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
- * Created by Marco Orlando on 4/11/2015.
+ * Adalah kelas yang menangani aktivitas non transaksi pengecekan saldo rekening.
  */
 public class CheckBalance implements Command {
     private Account account;
